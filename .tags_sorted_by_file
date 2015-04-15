@@ -1,0 +1,1401 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+DIRS	Makefile	/^DIRS = src app$/;"	m
+TARGETS	Makefile	/^TARGETS = all clean install$/;"	m
+APP	app/Makefile	/^APP = appserver appclient sendfile recvfile test$/;"	m
+CCFLAGS	app/Makefile	/^CCFLAGS = -Wall -D$(os) -I..\/src -finline-functions -O3 -g$/;"	m
+DIR	app/Makefile	/^DIR = $(shell pwd)$/;"	m
+LDFLAGS	app/Makefile	/^LDFLAGS = -L..\/src -ludt -lstdc++ -lpthread -lm$/;"	m
+arch	app/Makefile	/^   arch = IA32$/;"	m
+os	app/Makefile	/^   os = LINUX$/;"	m
+main	app/appclient.cpp	/^int main(int argc, char* argv[])$/;"	f
+monitor	app/appclient.cpp	/^void* monitor(void* s)$/;"	f
+main	app/appserver.cpp	/^int main(int argc, char* argv[])$/;"	f
+recvdata	app/appserver.cpp	/^void* recvdata(void* usocket)$/;"	f
+ACKAction	app/cc.h	/^   virtual void ACKAction()$/;"	f	class:CTCP
+CTCP	app/cc.h	/^class CTCP: public CCC$/;"	c
+CUDPBlast	app/cc.h	/^   CUDPBlast()$/;"	f	class:CUDPBlast
+CUDPBlast	app/cc.h	/^class CUDPBlast: public CCC$/;"	c
+DupACKAction	app/cc.h	/^   virtual void DupACKAction()$/;"	f	class:CTCP
+init	app/cc.h	/^   void init()$/;"	f	class:CTCP
+m_bSlowStart	app/cc.h	/^   bool m_bSlowStart;$/;"	m	class:CTCP
+m_iDupACKCount	app/cc.h	/^   int m_iDupACKCount;$/;"	m	class:CTCP
+m_iLastACK	app/cc.h	/^   int m_iLastACK;$/;"	m	class:CTCP
+m_issthresh	app/cc.h	/^   int m_issthresh;$/;"	m	class:CTCP
+onACK	app/cc.h	/^   virtual void onACK( int ack)$/;"	f	class:CTCP
+onTimeout	app/cc.h	/^   virtual void onTimeout()$/;"	f	class:CTCP
+setRate	app/cc.h	/^   void setRate(double mbps)$/;"	f	class:CUDPBlast
+main	app/recvfile.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	app/sendfile.cpp	/^int main(int argc, char* argv[])$/;"	f
+sendfile	app/sendfile.cpp	/^void* sendfile(void* usocket)$/;"	f
+Test_1_Cli	app/test.cpp	/^void* Test_1_Cli(void* param)$/;"	f
+Test_1_Srv	app/test.cpp	/^void* Test_1_Srv(void* param)$/;"	f
+Test_2_Cli	app/test.cpp	/^void* Test_2_Cli(void* param)$/;"	f
+Test_2_Srv	app/test.cpp	/^void* Test_2_Srv(void* param)$/;"	f
+Test_3_Cli	app/test.cpp	/^void* Test_3_Cli(void* param)$/;"	f
+Test_3_Srv	app/test.cpp	/^void* Test_3_Srv(void* param)$/;"	f
+Test_4_Cli	app/test.cpp	/^void* Test_4_Cli(void*)$/;"	f
+Test_4_Srv	app/test.cpp	/^void* Test_4_Srv(void* param)$/;"	f
+connect	app/test.cpp	/^int connect(UDTSOCKET& usock, int port)$/;"	f
+createTCPSocket	app/test.cpp	/^int createTCPSocket(SYSSOCKET& ssock, int port = 0, bool rendezvous = false)$/;"	f
+createUDTSocket	app/test.cpp	/^int createUDTSocket(UDTSOCKET& usock, int port = 0, bool rendezvous = false)$/;"	f
+g_ActualUDTNum	app/test.cpp	/^int g_ActualUDTNum = 0;$/;"	v
+g_IP_Version	app/test.cpp	/^const int g_IP_Version = AF_INET;$/;"	v
+g_IndUDTNum	app/test.cpp	/^const int g_IndUDTNum = 100;  \/\/ must < g_UDTNum.$/;"	v
+g_Localhost	app/test.cpp	/^const char g_Localhost[] = "127.0.0.1";$/;"	v
+g_Server_Port	app/test.cpp	/^const int g_Server_Port = 9000;$/;"	v
+g_Socket_Type	app/test.cpp	/^const int g_Socket_Type = SOCK_STREAM;$/;"	v
+g_TCPNum	app/test.cpp	/^const int g_TCPNum = 10;$/;"	v
+g_TotalNum	app/test.cpp	/^const int g_TotalNum = 10000;$/;"	v
+g_UDTNum	app/test.cpp	/^const int g_UDTNum = 200;$/;"	v
+g_UDTNum3	app/test.cpp	/^const int g_UDTNum3 = 50;$/;"	v
+g_UDTNum4	app/test.cpp	/^const int g_UDTNum4 = 1000;$/;"	v
+g_UDTPerThread	app/test.cpp	/^const int g_UDTPerThread = 25;$/;"	v
+g_UDTThreads	app/test.cpp	/^const int g_UDTThreads = 40;$/;"	v
+main	app/test.cpp	/^int main()$/;"	f
+start_and_destroy_clients	app/test.cpp	/^void* start_and_destroy_clients(void* param)$/;"	f
+tcp_connect	app/test.cpp	/^int tcp_connect(SYSSOCKET& ssock, int port)$/;"	f
+UDTUpDown	app/test_util.h	/^   UDTUpDown()$/;"	f	struct:UDTUpDown
+UDTUpDown	app/test_util.h	/^struct UDTUpDown{$/;"	s
+_UDT_TEST_UTIL_H_	app/test_util.h	/^#define _UDT_TEST_UTIL_H_$/;"	d
+~UDTUpDown	app/test_util.h	/^   ~UDTUpDown()$/;"	f	struct:UDTUpDown
+1	doc/doc/structure.htm	/^<h5><a name="1" id="1"><\/a>UDTSOCKET<\/h5>$/;"	a
+2	doc/doc/structure.htm	/^<h5><a name="2" id="2"><\/a>ERRORINFO<\/h5>$/;"	a
+3	doc/doc/structure.htm	/^<h5><a name="3" id="3"><\/a>UDSET<\/h5>$/;"	a
+4	doc/doc/structure.htm	/^<h5><a name="4" id="4"><\/a>TRACEINFO<\/h5>$/;"	a
+myError	doc/index.htm	/^function myError(msg, url, line) { return true; }$/;"	f
+resizeReload	doc/index.htm	/^function resizeReload()$/;"	f
+setFrameContent	doc/index.htm	/^function setFrameContent()$/;"	f
+DHTMLTreeView	doc/main.htm	/^function DHTMLTreeView(currKey) { \/\/ must return true ...$/;"	f
+TVversion	doc/main.htm	/^function TVversion() { \/* print version info *\/$/;"	f
+closeAll	doc/main.htm	/^function closeAll() { if (isDHTML) {$/;"	f
+end_Book	doc/main.htm	/^function end_Book () { treePfx = treePfx.substring(0, treePfx.length-1); }$/;"	f
+end_Tree	doc/main.htm	/^function end_Tree () { idx(); if (document.layers) wrt("<LAYER ID=\\"bottom\\""$/;"	f
+flush	doc/main.htm	/^function flush () { document.writeln(printBuffer); printBuffer = ""; }$/;"	f
+idx	doc/main.htm	/^function idx (text, key, link, prefix, code, opts) {$/;"	f
+img	doc/main.htm	/^function img (image, hint) { return "<IMG SRC=\\""$/;"	f
+index	doc/main.htm	/^function index (newKey, currKey, doneMouse) { window.status = waitText;$/;"	f
+initTree	doc/main.htm	/^function initTree (text, key, link, opts) { initTreeView(); treePfx = "";$/;"	f
+initTreeView	doc/main.htm	/^function initTreeView () { if (self.TVinitd) return;$/;"	f
+is	doc/main.htm	/^function is (opts, keyword) { return (myIndexOf(""+ opts, keyword) > -1); }$/;"	f
+lastBook	doc/main.htm	/^function lastBook (text, key, link, opts) {$/;"	f
+lastPage	doc/main.htm	/^function lastPage (text, key, link, opts) {$/;"	f
+lnk	doc/main.htm	/^function lnk (xHref, onOver, misc, xText) { return "<A H"+"REF=\\""$/;"	f
+makePrm	doc/main.htm	/^function makePrm (currPrm, add, sub) {$/;"	f
+myError	doc/main.htm	/^function myError(msg, url, line) { return true; } \/\/ error 'handler'$/;"	f
+myIndexOf	doc/main.htm	/^function myIndexOf(text, srch, start) {$/;"	f
+openAll	doc/main.htm	/^function openAll() { if (isDHTML) { for (var i = 1; i <= TVcount; i++)$/;"	f
+rld	doc/main.htm	/^function rld (currKey, newPrm, treecode, hint) {$/;"	f
+splitPrm	doc/main.htm	/^function splitPrm() { input = ""; if (top.key) input = ""+ top.key;$/;"	f
+sub_Book	doc/main.htm	/^function sub_Book (text, key, link, opts) {$/;"	f
+sub_Page	doc/main.htm	/^function sub_Page (text, key, link, opts) {$/;"	f
+tree	doc/main.htm	/^function tree (code) { var ret = "";$/;"	f
+unquote	doc/main.htm	/^function unquote (text) {$/;"	f
+wrt	doc/main.htm	/^function wrt (text) { printBuffer += text +"\\n"; }$/;"	f
+wrtEntry	doc/main.htm	/^function wrtEntry (tree, key, link, text) {$/;"	f
+wrtIdx	doc/main.htm	/^function wrtIdx (text, key, link, prefix, code) { var idxRet = "";$/;"	f
+xImg	doc/main.htm	/^function xImg (opts) { return (opts ? opts.substring$/;"	f
+xTarget	doc/main.htm	/^function xTarget (opts) { if (opts && is(opts, "target")) {$/;"	f
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+C	src/Makefile	/^C = gcc$/;"	m
+CCFLAGS	src/Makefile	/^CCFLAGS = -fPIC -Wall -Wextra -D$(os) -finline-functions -O3 -fno-strict-aliasing -fvisibility=hidden$/;"	m
+OBJS	src/Makefile	/^OBJS = api.o buffer.o cache.o ccc.o channel.o common.o core.o epoll.o list.o md5.o packet.o queue.o window.o tcp_vegas.o tcpabstract.o$/;"	m
+arch	src/Makefile	/^   arch = IA32$/;"	m
+os	src/Makefile	/^   os = LINUX$/;"	m
+CUDTSocket	src/api.cpp	/^CUDTSocket::CUDTSocket():$/;"	f	class:CUDTSocket
+CUDTUnited	src/api.cpp	/^CUDTUnited::CUDTUnited():$/;"	f	class:CUDTUnited
+SET_RESULT	src/api.cpp	/^#define SET_RESULT(/;"	d	file:
+UDT	src/api.cpp	/^namespace UDT$/;"	n	file:
+accept	src/api.cpp	/^UDTSOCKET CUDT::accept(UDTSOCKET u, sockaddr* addr, int* addrlen)$/;"	f	class:CUDT
+accept	src/api.cpp	/^UDTSOCKET CUDTUnited::accept(const UDTSOCKET listen, sockaddr* addr, int* addrlen)$/;"	f	class:CUDTUnited
+accept	src/api.cpp	/^UDTSOCKET accept(UDTSOCKET u, struct sockaddr* addr, int* addrlen)$/;"	f	namespace:UDT
+bind	src/api.cpp	/^int CUDT::bind(UDTSOCKET u, UDPSOCKET udpsock)$/;"	f	class:CUDT
+bind	src/api.cpp	/^int CUDT::bind(UDTSOCKET u, const sockaddr* name, int namelen)$/;"	f	class:CUDT
+bind	src/api.cpp	/^int CUDTUnited::bind(UDTSOCKET u, UDPSOCKET udpsock)$/;"	f	class:CUDTUnited
+bind	src/api.cpp	/^int CUDTUnited::bind(const UDTSOCKET u, const sockaddr* name, int namelen)$/;"	f	class:CUDTUnited
+bind	src/api.cpp	/^int bind(UDTSOCKET u, const struct sockaddr* name, int namelen)$/;"	f	namespace:UDT
+bind2	src/api.cpp	/^int bind2(UDTSOCKET u, UDPSOCKET udpsock)$/;"	f	namespace:UDT
+checkBrokenSockets	src/api.cpp	/^void CUDTUnited::checkBrokenSockets()$/;"	f	class:CUDTUnited
+checkTLSValue	src/api.cpp	/^void CUDTUnited::checkTLSValue()$/;"	f	class:CUDTUnited
+cleanup	src/api.cpp	/^int CUDT::cleanup()$/;"	f	class:CUDT
+cleanup	src/api.cpp	/^int CUDTUnited::cleanup()$/;"	f	class:CUDTUnited
+cleanup	src/api.cpp	/^int cleanup()$/;"	f	namespace:UDT
+close	src/api.cpp	/^int CUDT::close(UDTSOCKET u)$/;"	f	class:CUDT
+close	src/api.cpp	/^int CUDTUnited::close(const UDTSOCKET u)$/;"	f	class:CUDTUnited
+close	src/api.cpp	/^int close(UDTSOCKET u)$/;"	f	namespace:UDT
+connect	src/api.cpp	/^int CUDT::connect(UDTSOCKET u, const sockaddr* name, int namelen)$/;"	f	class:CUDT
+connect	src/api.cpp	/^int CUDTUnited::connect(const UDTSOCKET u, const sockaddr* name, int namelen)$/;"	f	class:CUDTUnited
+connect	src/api.cpp	/^int connect(UDTSOCKET u, const struct sockaddr* name, int namelen)$/;"	f	namespace:UDT
+connect_complete	src/api.cpp	/^void CUDTUnited::connect_complete(const UDTSOCKET u)$/;"	f	class:CUDTUnited
+epoll_add_ssock	src/api.cpp	/^int CUDT::epoll_add_ssock(const int eid, const SYSSOCKET s, const int* events)$/;"	f	class:CUDT
+epoll_add_ssock	src/api.cpp	/^int CUDTUnited::epoll_add_ssock(const int eid, const SYSSOCKET s, const int* events)$/;"	f	class:CUDTUnited
+epoll_add_ssock	src/api.cpp	/^int epoll_add_ssock(int eid, SYSSOCKET s, const int* events)$/;"	f	namespace:UDT
+epoll_add_usock	src/api.cpp	/^int CUDT::epoll_add_usock(const int eid, const UDTSOCKET u, const int* events)$/;"	f	class:CUDT
+epoll_add_usock	src/api.cpp	/^int CUDTUnited::epoll_add_usock(const int eid, const UDTSOCKET u, const int* events)$/;"	f	class:CUDTUnited
+epoll_add_usock	src/api.cpp	/^int epoll_add_usock(int eid, UDTSOCKET u, const int* events)$/;"	f	namespace:UDT
+epoll_create	src/api.cpp	/^int CUDT::epoll_create()$/;"	f	class:CUDT
+epoll_create	src/api.cpp	/^int CUDTUnited::epoll_create()$/;"	f	class:CUDTUnited
+epoll_create	src/api.cpp	/^int epoll_create()$/;"	f	namespace:UDT
+epoll_release	src/api.cpp	/^int CUDT::epoll_release(const int eid)$/;"	f	class:CUDT
+epoll_release	src/api.cpp	/^int CUDTUnited::epoll_release(const int eid)$/;"	f	class:CUDTUnited
+epoll_release	src/api.cpp	/^int epoll_release(int eid)$/;"	f	namespace:UDT
+epoll_remove_ssock	src/api.cpp	/^int CUDT::epoll_remove_ssock(const int eid, const SYSSOCKET s)$/;"	f	class:CUDT
+epoll_remove_ssock	src/api.cpp	/^int CUDTUnited::epoll_remove_ssock(const int eid, const SYSSOCKET s)$/;"	f	class:CUDTUnited
+epoll_remove_ssock	src/api.cpp	/^int epoll_remove_ssock(int eid, SYSSOCKET s)$/;"	f	namespace:UDT
+epoll_remove_usock	src/api.cpp	/^int CUDT::epoll_remove_usock(const int eid, const UDTSOCKET u)$/;"	f	class:CUDT
+epoll_remove_usock	src/api.cpp	/^int CUDTUnited::epoll_remove_usock(const int eid, const UDTSOCKET u)$/;"	f	class:CUDTUnited
+epoll_remove_usock	src/api.cpp	/^int epoll_remove_usock(int eid, UDTSOCKET u)$/;"	f	namespace:UDT
+epoll_wait	src/api.cpp	/^int CUDT::epoll_wait(const int eid, set<UDTSOCKET>* readfds, set<UDTSOCKET>* writefds, int64_t msTimeOut, set<SYSSOCKET>* lrfds, set<SYSSOCKET>* lwfds)$/;"	f	class:CUDT
+epoll_wait	src/api.cpp	/^int CUDTUnited::epoll_wait(const int eid, set<UDTSOCKET>* readfds, set<UDTSOCKET>* writefds, int64_t msTimeOut, set<SYSSOCKET>* lrfds, set<SYSSOCKET>* lwfds)$/;"	f	class:CUDTUnited
+epoll_wait	src/api.cpp	/^int epoll_wait(int eid, set<UDTSOCKET>* readfds, set<UDTSOCKET>* writefds, int64_t msTimeOut, set<SYSSOCKET>* lrfds, set<SYSSOCKET>* lwfds)$/;"	f	namespace:UDT
+epoll_wait2	src/api.cpp	/^int epoll_wait2(int eid, UDTSOCKET* readfds, int* rnum, UDTSOCKET* writefds, int* wnum, int64_t msTimeOut,$/;"	f	namespace:UDT
+garbageCollect	src/api.cpp	/^   void* CUDTUnited::garbageCollect(void* p)$/;"	f	class:CUDTUnited
+getError	src/api.cpp	/^CUDTException* CUDTUnited::getError()$/;"	f	class:CUDTUnited
+getStatus	src/api.cpp	/^UDTSTATUS CUDTUnited::getStatus(const UDTSOCKET u)$/;"	f	class:CUDTUnited
+getUDTHandle	src/api.cpp	/^CUDT* CUDT::getUDTHandle(UDTSOCKET u)$/;"	f	class:CUDT
+getlasterror	src/api.cpp	/^CUDTException& CUDT::getlasterror()$/;"	f	class:CUDT
+getlasterror	src/api.cpp	/^ERRORINFO& getlasterror()$/;"	f	namespace:UDT
+getlasterror_code	src/api.cpp	/^int getlasterror_code()$/;"	f	namespace:UDT
+getlasterror_desc	src/api.cpp	/^const char* getlasterror_desc()$/;"	f	namespace:UDT
+getpeername	src/api.cpp	/^int CUDT::getpeername(UDTSOCKET u, sockaddr* name, int* namelen)$/;"	f	class:CUDT
+getpeername	src/api.cpp	/^int CUDTUnited::getpeername(const UDTSOCKET u, sockaddr* name, int* namelen)$/;"	f	class:CUDTUnited
+getpeername	src/api.cpp	/^int getpeername(UDTSOCKET u, struct sockaddr* name, int* namelen)$/;"	f	namespace:UDT
+getsockname	src/api.cpp	/^int CUDT::getsockname(UDTSOCKET u, sockaddr* name, int* namelen)$/;"	f	class:CUDT
+getsockname	src/api.cpp	/^int CUDTUnited::getsockname(const UDTSOCKET u, sockaddr* name, int* namelen)$/;"	f	class:CUDTUnited
+getsockname	src/api.cpp	/^int getsockname(UDTSOCKET u, struct sockaddr* name, int* namelen)$/;"	f	namespace:UDT
+getsockopt	src/api.cpp	/^int CUDT::getsockopt(UDTSOCKET u, int, UDTOpt optname, void* optval, int* optlen)$/;"	f	class:CUDT
+getsockopt	src/api.cpp	/^int getsockopt(UDTSOCKET u, int level, SOCKOPT optname, void* optval, int* optlen)$/;"	f	namespace:UDT
+getsockstate	src/api.cpp	/^UDTSTATUS CUDT::getsockstate(UDTSOCKET u)$/;"	f	class:CUDT
+getsockstate	src/api.cpp	/^UDTSTATUS getsockstate(UDTSOCKET u)$/;"	f	namespace:UDT
+listen	src/api.cpp	/^int CUDT::listen(UDTSOCKET u, int backlog)$/;"	f	class:CUDT
+listen	src/api.cpp	/^int CUDTUnited::listen(const UDTSOCKET u, int backlog)$/;"	f	class:CUDTUnited
+listen	src/api.cpp	/^int listen(UDTSOCKET u, int backlog)$/;"	f	namespace:UDT
+locate	src/api.cpp	/^CUDTSocket* CUDTUnited::locate(const UDTSOCKET u)$/;"	f	class:CUDTUnited
+locate	src/api.cpp	/^CUDTSocket* CUDTUnited::locate(const sockaddr* peer, const UDTSOCKET id, int32_t isn)$/;"	f	class:CUDTUnited
+lookup	src/api.cpp	/^CUDT* CUDTUnited::lookup(const UDTSOCKET u)$/;"	f	class:CUDTUnited
+newConnection	src/api.cpp	/^int CUDTUnited::newConnection(const UDTSOCKET listen, const sockaddr* peer, CHandShake* hs)$/;"	f	class:CUDTUnited
+newSocket	src/api.cpp	/^UDTSOCKET CUDTUnited::newSocket(int af, int type)$/;"	f	class:CUDTUnited
+perfmon	src/api.cpp	/^int CUDT::perfmon(UDTSOCKET u, CPerfMon* perf, bool clear)$/;"	f	class:CUDT
+perfmon	src/api.cpp	/^int perfmon(UDTSOCKET u, TRACEINFO* perf, bool clear)$/;"	f	namespace:UDT
+recv	src/api.cpp	/^int CUDT::recv(UDTSOCKET u, char* buf, int len, int)$/;"	f	class:CUDT
+recv	src/api.cpp	/^int recv(UDTSOCKET u, char* buf, int len, int flags)$/;"	f	namespace:UDT
+recvfile	src/api.cpp	/^int64_t CUDT::recvfile(UDTSOCKET u, fstream& ofs, int64_t& offset, int64_t size, int block)$/;"	f	class:CUDT
+recvfile	src/api.cpp	/^int64_t recvfile(UDTSOCKET u, fstream& ofs, int64_t& offset, int64_t size, int block)$/;"	f	namespace:UDT
+recvfile2	src/api.cpp	/^int64_t recvfile2(UDTSOCKET u, const char* path, int64_t* offset, int64_t size, int block)$/;"	f	namespace:UDT
+recvmsg	src/api.cpp	/^int CUDT::recvmsg(UDTSOCKET u, char* buf, int len)$/;"	f	class:CUDT
+recvmsg	src/api.cpp	/^int recvmsg(UDTSOCKET u, char* buf, int len)$/;"	f	namespace:UDT
+removeSocket	src/api.cpp	/^void CUDTUnited::removeSocket(const UDTSOCKET u)$/;"	f	class:CUDTUnited
+select	src/api.cpp	/^int CUDT::select(int, ud_set* readfds, ud_set* writefds, ud_set* exceptfds, const timeval* timeout)$/;"	f	class:CUDT
+select	src/api.cpp	/^int CUDTUnited::select(ud_set* readfds, ud_set* writefds, ud_set* exceptfds, const timeval* timeout)$/;"	f	class:CUDTUnited
+select	src/api.cpp	/^int select(int nfds, UDSET* readfds, UDSET* writefds, UDSET* exceptfds, const struct timeval* timeout)$/;"	f	namespace:UDT
+selectEx	src/api.cpp	/^int CUDT::selectEx(const vector<UDTSOCKET>& fds, vector<UDTSOCKET>* readfds, vector<UDTSOCKET>* writefds, vector<UDTSOCKET>* exceptfds, int64_t msTimeOut)$/;"	f	class:CUDT
+selectEx	src/api.cpp	/^int CUDTUnited::selectEx(const vector<UDTSOCKET>& fds, vector<UDTSOCKET>* readfds, vector<UDTSOCKET>* writefds, vector<UDTSOCKET>* exceptfds, int64_t msTimeOut)$/;"	f	class:CUDTUnited
+selectEx	src/api.cpp	/^int selectEx(const vector<UDTSOCKET>& fds, vector<UDTSOCKET>* readfds, vector<UDTSOCKET>* writefds, vector<UDTSOCKET>* exceptfds, int64_t msTimeOut)$/;"	f	namespace:UDT
+send	src/api.cpp	/^int CUDT::send(UDTSOCKET u, const char* buf, int len, int)$/;"	f	class:CUDT
+send	src/api.cpp	/^int send(UDTSOCKET u, const char* buf, int len, int flags)$/;"	f	namespace:UDT
+sendfile	src/api.cpp	/^int64_t CUDT::sendfile(UDTSOCKET u, fstream& ifs, int64_t& offset, int64_t size, int block)$/;"	f	class:CUDT
+sendfile	src/api.cpp	/^int64_t sendfile(UDTSOCKET u, fstream& ifs, int64_t& offset, int64_t size, int block)$/;"	f	namespace:UDT
+sendfile2	src/api.cpp	/^int64_t sendfile2(UDTSOCKET u, const char* path, int64_t* offset, int64_t size, int block)$/;"	f	namespace:UDT
+sendmsg	src/api.cpp	/^int CUDT::sendmsg(UDTSOCKET u, const char* buf, int len, int ttl, bool inorder)$/;"	f	class:CUDT
+sendmsg	src/api.cpp	/^int sendmsg(UDTSOCKET u, const char* buf, int len, int ttl, bool inorder)$/;"	f	namespace:UDT
+setError	src/api.cpp	/^void CUDTUnited::setError(CUDTException* e)$/;"	f	class:CUDTUnited
+setsockopt	src/api.cpp	/^int CUDT::setsockopt(UDTSOCKET u, int, UDTOpt optname, const void* optval, int optlen)$/;"	f	class:CUDT
+setsockopt	src/api.cpp	/^int setsockopt(UDTSOCKET u, int level, SOCKOPT optname, const void* optval, int optlen)$/;"	f	namespace:UDT
+socket	src/api.cpp	/^UDTSOCKET CUDT::socket(int af, int type, int)$/;"	f	class:CUDT
+socket	src/api.cpp	/^UDTSOCKET socket(int af, int type, int protocol)$/;"	f	namespace:UDT
+startup	src/api.cpp	/^int CUDT::startup()$/;"	f	class:CUDT
+startup	src/api.cpp	/^int CUDTUnited::startup()$/;"	f	class:CUDTUnited
+startup	src/api.cpp	/^int startup()$/;"	f	namespace:UDT
+updateMux	src/api.cpp	/^void CUDTUnited::updateMux(CUDTSocket* s, const CUDTSocket* ls)$/;"	f	class:CUDTUnited
+updateMux	src/api.cpp	/^void CUDTUnited::updateMux(CUDTSocket* s, const sockaddr* addr, const UDPSOCKET* udpsock)$/;"	f	class:CUDTUnited
+~CUDTSocket	src/api.cpp	/^CUDTSocket::~CUDTSocket()$/;"	f	class:CUDTSocket
+~CUDTUnited	src/api.cpp	/^CUDTUnited::~CUDTUnited()$/;"	f	class:CUDTUnited
+CUDTSocket	src/api.h	/^class CUDTSocket$/;"	c
+CUDTUnited	src/api.h	/^class CUDTUnited$/;"	c
+TLSDestroy	src/api.h	/^      static void TLSDestroy(void* e) {if (NULL != e) delete (CUDTException*)e;}$/;"	f	class:CUDTUnited
+__UDT_API_H__	src/api.h	/^#define __UDT_API_H__$/;"	d
+m_AcceptCond	src/api.h	/^   pthread_cond_t m_AcceptCond;              \/\/ used to block "accept" call$/;"	m	class:CUDTSocket
+m_AcceptLock	src/api.h	/^   pthread_mutex_t m_AcceptLock;             \/\/ mutex associated to m_AcceptCond$/;"	m	class:CUDTSocket
+m_ClosedSockets	src/api.h	/^   std::map<UDTSOCKET, CUDTSocket*> m_ClosedSockets;   \/\/ temporarily store closed sockets$/;"	m	class:CUDTUnited
+m_ControlLock	src/api.h	/^   pthread_mutex_t m_ControlLock;                    \/\/ used to synchronize UDT API$/;"	m	class:CUDTUnited
+m_ControlLock	src/api.h	/^   pthread_mutex_t m_ControlLock;            \/\/ lock this socket exclusively for control APIs: bind\/listen\/connect$/;"	m	class:CUDTSocket
+m_EPoll	src/api.h	/^   CEPoll m_EPoll;                                     \/\/ handling epoll data structures and events$/;"	m	class:CUDTUnited
+m_GCStopCond	src/api.h	/^   pthread_cond_t m_GCStopCond;$/;"	m	class:CUDTUnited
+m_GCStopLock	src/api.h	/^   pthread_mutex_t m_GCStopLock;$/;"	m	class:CUDTUnited
+m_GCThread	src/api.h	/^   pthread_t m_GCThread;$/;"	m	class:CUDTUnited
+m_IDLock	src/api.h	/^   pthread_mutex_t m_IDLock;                         \/\/ used to synchronize ID generation$/;"	m	class:CUDTUnited
+m_InitLock	src/api.h	/^   pthread_mutex_t m_InitLock;$/;"	m	class:CUDTUnited
+m_ListenSocket	src/api.h	/^   UDTSOCKET m_ListenSocket;                 \/\/ ID of the listener socket; 0 means this is an independent socket$/;"	m	class:CUDTSocket
+m_MultiplexerLock	src/api.h	/^   pthread_mutex_t m_MultiplexerLock;$/;"	m	class:CUDTUnited
+m_PeerID	src/api.h	/^   UDTSOCKET m_PeerID;                       \/\/ peer socket ID$/;"	m	class:CUDTSocket
+m_PeerRec	src/api.h	/^   std::map<int64_t, std::set<UDTSOCKET> > m_PeerRec;\/\/ record sockets from peers to avoid repeated connection request, int64_t = (socker_id << 30) + isn$/;"	m	class:CUDTUnited
+m_SocketID	src/api.h	/^   UDTSOCKET m_SocketID;                             \/\/ seed to generate a new unique socket ID$/;"	m	class:CUDTUnited
+m_SocketID	src/api.h	/^   UDTSOCKET m_SocketID;                     \/\/ socket ID$/;"	m	class:CUDTSocket
+m_Sockets	src/api.h	/^   std::map<UDTSOCKET, CUDTSocket*> m_Sockets;       \/\/ stores all the socket structures$/;"	m	class:CUDTUnited
+m_Status	src/api.h	/^   UDTSTATUS m_Status;                       \/\/ current socket state$/;"	m	class:CUDTSocket
+m_TLSError	src/api.h	/^   pthread_key_t m_TLSError;                         \/\/ thread local error record (last error)$/;"	m	class:CUDTUnited
+m_TLSLock	src/api.h	/^      pthread_mutex_t m_TLSLock;$/;"	m	class:CUDTUnited
+m_TimeStamp	src/api.h	/^   uint64_t m_TimeStamp;                     \/\/ time when the socket is closed$/;"	m	class:CUDTSocket
+m_bClosing	src/api.h	/^   volatile bool m_bClosing;$/;"	m	class:CUDTUnited
+m_bGCStatus	src/api.h	/^   bool m_bGCStatus;					\/\/ if the GC thread is working (true)$/;"	m	class:CUDTUnited
+m_iIPversion	src/api.h	/^   int m_iIPversion;                         \/\/ IP version$/;"	m	class:CUDTSocket
+m_iISN	src/api.h	/^   int32_t m_iISN;                           \/\/ initial sequence number, used to tell different connection from same IP:port$/;"	m	class:CUDTSocket
+m_iInstanceCount	src/api.h	/^   int m_iInstanceCount;				\/\/ number of startup() called by application$/;"	m	class:CUDTUnited
+m_iMuxID	src/api.h	/^   int m_iMuxID;                             \/\/ multiplexer ID$/;"	m	class:CUDTSocket
+m_mMultiplexer	src/api.h	/^   std::map<int, CMultiplexer> m_mMultiplexer;		\/\/ UDP multiplexer$/;"	m	class:CUDTUnited
+m_mTLSRecord	src/api.h	/^      std::map<DWORD, CUDTException*> m_mTLSRecord;$/;"	m	class:CUDTUnited
+m_pAcceptSockets	src/api.h	/^   std::set<UDTSOCKET>* m_pAcceptSockets;    \/\/ set of accept()ed connections$/;"	m	class:CUDTSocket
+m_pCache	src/api.h	/^   CCache<CInfoBlock>* m_pCache;			\/\/ UDT network information cache$/;"	m	class:CUDTUnited
+m_pPeerAddr	src/api.h	/^   sockaddr* m_pPeerAddr;                    \/\/ pointer to the peer address of the socket$/;"	m	class:CUDTSocket
+m_pQueuedSockets	src/api.h	/^   std::set<UDTSOCKET>* m_pQueuedSockets;    \/\/ set of connections waiting for accept()$/;"	m	class:CUDTSocket
+m_pSelfAddr	src/api.h	/^   sockaddr* m_pSelfAddr;                    \/\/ pointer to the local address of the socket$/;"	m	class:CUDTSocket
+m_pUDT	src/api.h	/^   CUDT* m_pUDT;                             \/\/ pointer to the UDT entity$/;"	m	class:CUDTSocket
+m_uiBackLog	src/api.h	/^   unsigned int m_uiBackLog;                 \/\/ maximum number of connections in queue$/;"	m	class:CUDTSocket
+CRcvBuffer	src/buffer.cpp	/^CRcvBuffer::CRcvBuffer(CUnitQueue* queue, int bufsize):$/;"	f	class:CRcvBuffer
+CSndBuffer	src/buffer.cpp	/^CSndBuffer::CSndBuffer(int size, int mss):$/;"	f	class:CSndBuffer
+ackData	src/buffer.cpp	/^void CRcvBuffer::ackData(int len)$/;"	f	class:CRcvBuffer
+ackData	src/buffer.cpp	/^void CSndBuffer::ackData(int offset)$/;"	f	class:CSndBuffer
+addBuffer	src/buffer.cpp	/^void CSndBuffer::addBuffer(const char* data, int len, int ttl, bool order)$/;"	f	class:CSndBuffer
+addBufferFromFile	src/buffer.cpp	/^int CSndBuffer::addBufferFromFile(fstream& ifs, int len)$/;"	f	class:CSndBuffer
+addData	src/buffer.cpp	/^int CRcvBuffer::addData(CUnit* unit, int offset)$/;"	f	class:CRcvBuffer
+dropMsg	src/buffer.cpp	/^void CRcvBuffer::dropMsg(int32_t msgno)$/;"	f	class:CRcvBuffer
+getAvailBufSize	src/buffer.cpp	/^int CRcvBuffer::getAvailBufSize() const$/;"	f	class:CRcvBuffer
+getCurrBufSize	src/buffer.cpp	/^int CSndBuffer::getCurrBufSize() const$/;"	f	class:CSndBuffer
+getRcvDataSize	src/buffer.cpp	/^int CRcvBuffer::getRcvDataSize() const$/;"	f	class:CRcvBuffer
+getRcvMsgNum	src/buffer.cpp	/^int CRcvBuffer::getRcvMsgNum()$/;"	f	class:CRcvBuffer
+increase	src/buffer.cpp	/^void CSndBuffer::increase()$/;"	f	class:CSndBuffer
+readBuffer	src/buffer.cpp	/^int CRcvBuffer::readBuffer(char* data, int len)$/;"	f	class:CRcvBuffer
+readBufferToFile	src/buffer.cpp	/^int CRcvBuffer::readBufferToFile(fstream& ofs, int len)$/;"	f	class:CRcvBuffer
+readData	src/buffer.cpp	/^int CSndBuffer::readData(char** data, const int offset, int32_t& msgno, int& msglen)$/;"	f	class:CSndBuffer
+readData	src/buffer.cpp	/^int CSndBuffer::readData(char** data, int32_t& msgno)$/;"	f	class:CSndBuffer
+readMsg	src/buffer.cpp	/^int CRcvBuffer::readMsg(char* data, int len)$/;"	f	class:CRcvBuffer
+scanMsg	src/buffer.cpp	/^bool CRcvBuffer::scanMsg(int& p, int& q, bool& passack)$/;"	f	class:CRcvBuffer
+~CRcvBuffer	src/buffer.cpp	/^CRcvBuffer::~CRcvBuffer()$/;"	f	class:CRcvBuffer
+~CSndBuffer	src/buffer.cpp	/^CSndBuffer::~CSndBuffer()$/;"	f	class:CSndBuffer
+Block	src/buffer.h	/^   struct Block$/;"	s	class:CSndBuffer
+Buffer	src/buffer.h	/^   struct Buffer$/;"	s	class:CSndBuffer
+CRcvBuffer	src/buffer.h	/^class CRcvBuffer$/;"	c
+CSndBuffer	src/buffer.h	/^class CSndBuffer$/;"	c
+__UDT_BUFFER_H__	src/buffer.h	/^#define __UDT_BUFFER_H__$/;"	d
+m_BufLock	src/buffer.h	/^   pthread_mutex_t m_BufLock;           \/\/ used to synchronize buffer operation$/;"	m	class:CSndBuffer
+m_OriginTime	src/buffer.h	/^      uint64_t m_OriginTime;            \/\/ original request time$/;"	m	struct:CSndBuffer::Block
+m_iCount	src/buffer.h	/^   int m_iCount;			\/\/ number of used blocks$/;"	m	class:CSndBuffer
+m_iLastAckPos	src/buffer.h	/^   int m_iLastAckPos;                   \/\/ the last ACKed position (exclusive)$/;"	m	class:CRcvBuffer
+m_iLength	src/buffer.h	/^      int m_iLength;                    \/\/ length of the block$/;"	m	struct:CSndBuffer::Block
+m_iMSS	src/buffer.h	/^   int m_iMSS;                          \/\/ maximum seqment\/packet size$/;"	m	class:CSndBuffer
+m_iMaxPos	src/buffer.h	/^   int m_iMaxPos;			\/\/ the furthest data position$/;"	m	class:CRcvBuffer
+m_iMsgNo	src/buffer.h	/^      int32_t m_iMsgNo;                 \/\/ message number$/;"	m	struct:CSndBuffer::Block
+m_iNextMsgNo	src/buffer.h	/^   int32_t m_iNextMsgNo;                \/\/ next message number$/;"	m	class:CSndBuffer
+m_iNotch	src/buffer.h	/^   int m_iNotch;			\/\/ the starting read point of the first unit$/;"	m	class:CRcvBuffer
+m_iSize	src/buffer.h	/^      int m_iSize;			\/\/ size$/;"	m	struct:CSndBuffer::Buffer
+m_iSize	src/buffer.h	/^   int m_iSize;				\/\/ buffer size (number of packets)$/;"	m	class:CSndBuffer
+m_iSize	src/buffer.h	/^   int m_iSize;                         \/\/ size of the protocol buffer$/;"	m	class:CRcvBuffer
+m_iStartPos	src/buffer.h	/^   int m_iStartPos;                     \/\/ the head position for I\/O (inclusive)$/;"	m	class:CRcvBuffer
+m_iTTL	src/buffer.h	/^      int m_iTTL;                       \/\/ time to live (milliseconds)$/;"	m	struct:CSndBuffer::Block
+m_pBlock	src/buffer.h	/^   } *m_pBlock, *m_pFirstBlock, *m_pCurrBlock, *m_pLastBlock;$/;"	m	class:CSndBuffer	typeref:struct:CSndBuffer::Block
+m_pBuffer	src/buffer.h	/^   } *m_pBuffer;			\/\/ physical buffer$/;"	m	class:CSndBuffer	typeref:struct:CSndBuffer::Buffer
+m_pCurrBlock	src/buffer.h	/^   } *m_pBlock, *m_pFirstBlock, *m_pCurrBlock, *m_pLastBlock;$/;"	m	class:CSndBuffer	typeref:struct:CSndBuffer::Block
+m_pFirstBlock	src/buffer.h	/^   } *m_pBlock, *m_pFirstBlock, *m_pCurrBlock, *m_pLastBlock;$/;"	m	class:CSndBuffer	typeref:struct:CSndBuffer::Block
+m_pLastBlock	src/buffer.h	/^   } *m_pBlock, *m_pFirstBlock, *m_pCurrBlock, *m_pLastBlock;$/;"	m	class:CSndBuffer	typeref:struct:CSndBuffer::Block
+m_pNext	src/buffer.h	/^      Block* m_pNext;                   \/\/ next block$/;"	m	struct:CSndBuffer::Block
+m_pNext	src/buffer.h	/^      Buffer* m_pNext;			\/\/ next buffer$/;"	m	struct:CSndBuffer::Buffer
+m_pUnit	src/buffer.h	/^   CUnit** m_pUnit;                     \/\/ pointer to the protocol buffer$/;"	m	class:CRcvBuffer
+m_pUnitQueue	src/buffer.h	/^   CUnitQueue* m_pUnitQueue;		\/\/ the shared unit queue$/;"	m	class:CRcvBuffer
+m_pcData	src/buffer.h	/^      char* m_pcData;			\/\/ buffer$/;"	m	struct:CSndBuffer::Buffer
+m_pcData	src/buffer.h	/^      char* m_pcData;                   \/\/ pointer to the data block$/;"	m	struct:CSndBuffer::Block
+clone	src/cache.cpp	/^CInfoBlock* CInfoBlock::clone()$/;"	f	class:CInfoBlock
+convert	src/cache.cpp	/^void CInfoBlock::convert(const sockaddr* addr, int ver, uint32_t ip[])$/;"	f	class:CInfoBlock
+getKey	src/cache.cpp	/^int CInfoBlock::getKey()$/;"	f	class:CInfoBlock
+operator =	src/cache.cpp	/^CInfoBlock& CInfoBlock::operator=(const CInfoBlock& obj)$/;"	f	class:CInfoBlock
+operator ==	src/cache.cpp	/^bool CInfoBlock::operator==(const CInfoBlock& obj)$/;"	f	class:CInfoBlock
+CCache	src/cache.h	/^   CCache(int size = 1024):$/;"	f	class:CCache
+CCache	src/cache.h	/^template<typename T> class CCache$/;"	c
+CCacheItem	src/cache.h	/^class CCacheItem$/;"	c
+CInfoBlock	src/cache.h	/^class CInfoBlock$/;"	c
+ItemPtr	src/cache.h	/^   typedef typename std::list<T*>::iterator ItemPtr;$/;"	t	class:CCache
+ItemPtrList	src/cache.h	/^   typedef std::list<ItemPtr> ItemPtrList;$/;"	t	class:CCache
+__UDT_CACHE_H__	src/cache.h	/^#define __UDT_CACHE_H__$/;"	d
+clear	src/cache.h	/^   void clear()$/;"	f	class:CCache
+lookup	src/cache.h	/^   int lookup(T* data)$/;"	f	class:CCache
+m_Lock	src/cache.h	/^   pthread_mutex_t m_Lock;$/;"	m	class:CCache
+m_StorageList	src/cache.h	/^   std::list<T*> m_StorageList;$/;"	m	class:CCache
+m_dCWnd	src/cache.h	/^   double m_dCWnd;		\/\/ congestion window size, congestion control$/;"	m	class:CInfoBlock
+m_dInterval	src/cache.h	/^   double m_dInterval;		\/\/ inter-packet time, congestion control$/;"	m	class:CInfoBlock
+m_iBandwidth	src/cache.h	/^   int m_iBandwidth;		\/\/ estimated bandwidth$/;"	m	class:CInfoBlock
+m_iCurrSize	src/cache.h	/^   int m_iCurrSize;$/;"	m	class:CCache
+m_iHashSize	src/cache.h	/^   int m_iHashSize;$/;"	m	class:CCache
+m_iIPversion	src/cache.h	/^   int m_iIPversion;		\/\/ IP version$/;"	m	class:CInfoBlock
+m_iLossRate	src/cache.h	/^   int m_iLossRate;		\/\/ average loss rate$/;"	m	class:CInfoBlock
+m_iMaxSize	src/cache.h	/^   int m_iMaxSize;$/;"	m	class:CCache
+m_iRTT	src/cache.h	/^   int m_iRTT;			\/\/ RTT$/;"	m	class:CInfoBlock
+m_iReorderDistance	src/cache.h	/^   int m_iReorderDistance;	\/\/ packet reordering distance$/;"	m	class:CInfoBlock
+m_piIP	src/cache.h	/^   uint32_t m_piIP[4];		\/\/ IP address, machine read only, not human readable format$/;"	m	class:CInfoBlock
+m_ullTimeStamp	src/cache.h	/^   uint64_t m_ullTimeStamp;	\/\/ last update time$/;"	m	class:CInfoBlock
+m_vHashPtr	src/cache.h	/^   std::vector<ItemPtrList> m_vHashPtr;$/;"	m	class:CCache
+release	src/cache.h	/^   virtual void release() {}$/;"	f	class:CCacheItem
+release	src/cache.h	/^   virtual void release() {}$/;"	f	class:CInfoBlock
+setSizeLimit	src/cache.h	/^   void setSizeLimit(int size)$/;"	f	class:CCache
+update	src/cache.h	/^   int update(T* data)$/;"	f	class:CCache
+~CCache	src/cache.h	/^   ~CCache()$/;"	f	class:CCache
+~CCacheItem	src/cache.h	/^   virtual ~CCacheItem() {}$/;"	f	class:CCacheItem
+~CInfoBlock	src/cache.h	/^   virtual ~CInfoBlock() {}$/;"	f	class:CInfoBlock
+CCC	src/ccc.cpp	/^CCC::CCC():$/;"	f	class:CCC
+CUDTCC	src/ccc.cpp	/^CUDTCC::CUDTCC():$/;"	f	class:CUDTCC
+LINUXCC	src/ccc.cpp	/^LINUXCC::LINUXCC()$/;"	f	class:LINUXCC
+getPerfInfo	src/ccc.cpp	/^const CPerfMon* CCC::getPerfInfo()$/;"	f	class:CCC
+init	src/ccc.cpp	/^void CUDTCC::init()$/;"	f	class:CUDTCC
+init	src/ccc.cpp	/^void LINUXCC::init(){$/;"	f	class:LINUXCC
+onACK	src/ccc.cpp	/^void CUDTCC::onACK(int32_t ack)$/;"	f	class:CUDTCC
+onACK	src/ccc.cpp	/^void LINUXCC::onACK(int32_t ack){$/;"	f	class:LINUXCC
+onLoss	src/ccc.cpp	/^void CUDTCC::onLoss(const int32_t* losslist, int)$/;"	f	class:CUDTCC
+onLoss	src/ccc.cpp	/^void LINUXCC::onLoss(const int32_t *,int)$/;"	f	class:LINUXCC
+onTimeout	src/ccc.cpp	/^void CUDTCC::onTimeout()$/;"	f	class:CUDTCC
+onTimeout	src/ccc.cpp	/^void LINUXCC::onTimeout()$/;"	f	class:LINUXCC
+registerLinuxprotocol	src/ccc.cpp	/^void LINUXCC::registerLinuxprotocol(struct tcp_congestion_ops *ops)$/;"	f	class:LINUXCC
+sendCustomMsg	src/ccc.cpp	/^void CCC::sendCustomMsg(CPacket& pkt) const$/;"	f	class:CCC
+setACKInterval	src/ccc.cpp	/^void CCC::setACKInterval(int pktINT)$/;"	f	class:CCC
+setACKTimer	src/ccc.cpp	/^void CCC::setACKTimer(int msINT)$/;"	f	class:CCC
+setBandwidth	src/ccc.cpp	/^void CCC::setBandwidth(int bw)$/;"	f	class:CCC
+setMSS	src/ccc.cpp	/^void CCC::setMSS(int mss)$/;"	f	class:CCC
+setMaxCWndSize	src/ccc.cpp	/^void CCC::setMaxCWndSize(int cwnd)$/;"	f	class:CCC
+setRTO	src/ccc.cpp	/^void CCC::setRTO(int usRTO)$/;"	f	class:CCC
+setRTT	src/ccc.cpp	/^void CCC::setRTT(int rtt)$/;"	f	class:CCC
+setRcvRate	src/ccc.cpp	/^void CCC::setRcvRate(int rcvrate)$/;"	f	class:CCC
+setSndCurrSeqNo	src/ccc.cpp	/^void CCC::setSndCurrSeqNo(int32_t seqno)$/;"	f	class:CCC
+setUserParam	src/ccc.cpp	/^void CCC::setUserParam(const char* param, int size)$/;"	f	class:CCC
+statemachine	src/ccc.cpp	/^void LINUXCC::statemachine(int32_t)$/;"	f	class:LINUXCC
+updatesock	src/ccc.cpp	/^void LINUXCC::updatesock()$/;"	f	class:LINUXCC
+updateudt	src/ccc.cpp	/^void LINUXCC::updateudt()$/;"	f	class:LINUXCC
+~CCC	src/ccc.cpp	/^CCC::~CCC()$/;"	f	class:CCC
+CCC	src/ccc.h	/^class UDT_API CCC$/;"	c
+CCCFactory	src/ccc.h	/^class CCCFactory: public CCCVirtualFactory$/;"	c
+CCCVirtualFactory	src/ccc.h	/^class CCCVirtualFactory$/;"	c
+CUDTCC	src/ccc.h	/^class CUDTCC: public CCC$/;"	c
+LINUXCC	src/ccc.h	/^class LINUXCC: public CCC{$/;"	c
+__UDT_CCC_H__	src/ccc.h	/^#define __UDT_CCC_H__$/;"	d
+ca_ops	src/ccc.h	/^	struct tcp_congestion_ops *ca_ops;$/;"	m	class:LINUXCC	typeref:struct:LINUXCC::tcp_congestion_ops
+ca_state	src/ccc.h	/^	unsigned char ca_state;	\/\/TCP state$/;"	m	class:LINUXCC
+clone	src/ccc.h	/^   virtual CCCVirtualFactory* clone() {return new CCCFactory<T>;}$/;"	f	class:CCCFactory
+close	src/ccc.h	/^   virtual void close() {}$/;"	f	class:CCC
+create	src/ccc.h	/^   virtual CCC* create() {return new T;}$/;"	f	class:CCCFactory
+init	src/ccc.h	/^   virtual void init() {}$/;"	f	class:CCC
+m_LastRCTime	src/ccc.h	/^   uint64_t m_LastRCTime;		\/\/ last rate increase time$/;"	m	class:CUDTCC
+m_PerfInfo	src/ccc.h	/^   CPerfMon m_PerfInfo;                 \/\/ protocol statistics information$/;"	m	class:CCC
+m_UDT	src/ccc.h	/^   UDTSOCKET m_UDT;                     \/\/ The UDT entity that this congestion control algorithm is bound to$/;"	m	class:CCC
+m_bLoss	src/ccc.h	/^   bool m_bLoss;			\/\/ if loss happened since last rate increase$/;"	m	class:CUDTCC
+m_bSlowStart	src/ccc.h	/^	bool m_bSlowStart;		\/\/see if in slowstart phase$/;"	m	class:LINUXCC
+m_bSlowStart	src/ccc.h	/^   bool m_bSlowStart;			\/\/ if in slow start phase$/;"	m	class:CUDTCC
+m_bUserDefinedRTO	src/ccc.h	/^   bool m_bUserDefinedRTO;              \/\/ if the RTO value is defined by users$/;"	m	class:CCC
+m_dCWndSize	src/ccc.h	/^   double m_dCWndSize;                  \/\/ Congestion window size, in packets$/;"	m	class:CCC
+m_dLastDecPeriod	src/ccc.h	/^   double m_dLastDecPeriod;		\/\/ value of pktsndperiod when last decrease happened$/;"	m	class:CUDTCC
+m_dMaxCWndSize	src/ccc.h	/^   double m_dMaxCWndSize;               \/\/ maximum cwnd size, in packets$/;"	m	class:CCC
+m_dPktSndPeriod	src/ccc.h	/^   double m_dPktSndPeriod;              \/\/ Packet sending period, in microseconds$/;"	m	class:CCC
+m_iACKInterval	src/ccc.h	/^   int m_iACKInterval;                  \/\/ How many packets to send one ACK, in packets$/;"	m	class:CCC
+m_iACKPeriod	src/ccc.h	/^   int m_iACKPeriod;                    \/\/ Periodical timer to send an ACK, in milliseconds$/;"	m	class:CCC
+m_iAvgNAKNum	src/ccc.h	/^   int m_iAvgNAKNum;                    \/\/ average number of NAKs per congestion$/;"	m	class:CUDTCC
+m_iBandwidth	src/ccc.h	/^   int m_iBandwidth;			\/\/ estimated bandwidth, packets per second$/;"	m	class:CCC
+m_iDecCount	src/ccc.h	/^   int m_iDecCount;			\/\/ number of decreases in a congestion epoch$/;"	m	class:CUDTCC
+m_iDecRandom	src/ccc.h	/^   int m_iDecRandom;                    \/\/ random threshold on decrease by number of loss events$/;"	m	class:CUDTCC
+m_iDupACKCount	src/ccc.h	/^	int m_iDupACKCount;		\/\/count DupAck$/;"	m	class:LINUXCC
+m_iLastACK	src/ccc.h	/^	int m_iLastACK;			\/\/Last Ack Seq no$/;"	m	class:LINUXCC
+m_iLastAck	src/ccc.h	/^   int32_t m_iLastAck;			\/\/ last ACKed seq no$/;"	m	class:CUDTCC
+m_iLastDecSeq	src/ccc.h	/^   int32_t m_iLastDecSeq;		\/\/ max pkt seq no sent out when last decrease happened$/;"	m	class:CUDTCC
+m_iMSS	src/ccc.h	/^   int m_iMSS;				\/\/ Maximum Packet Size, including all packet headers$/;"	m	class:CCC
+m_iNAKCount	src/ccc.h	/^   int m_iNAKCount;                     \/\/ NAK counter$/;"	m	class:CUDTCC
+m_iPSize	src/ccc.h	/^   int m_iPSize;			\/\/ size of m_pcParam$/;"	m	class:CCC
+m_iRCInterval	src/ccc.h	/^   int m_iRCInterval;			\/\/ UDT Rate control interval$/;"	m	class:CUDTCC
+m_iRTO	src/ccc.h	/^   int m_iRTO;                          \/\/ RTO value, microseconds$/;"	m	class:CCC
+m_iRTT	src/ccc.h	/^   int m_iRTT;				\/\/ current estimated RTT, microsecond$/;"	m	class:CCC
+m_iRcvRate	src/ccc.h	/^   int m_iRcvRate;			\/\/ packet arrive rate at receiver side, packets per second$/;"	m	class:CCC
+m_iSYNInterval	src/ccc.h	/^   const int32_t& m_iSYNInterval;	\/\/ UDT constant parameter, SYN$/;"	m	class:CCC
+m_iSndCurrSeqNo	src/ccc.h	/^   int32_t m_iSndCurrSeqNo;		\/\/ current maximum seq no sent out$/;"	m	class:CCC
+m_issthresh	src/ccc.h	/^	int m_issthresh;		\/\/slowstart threshold$/;"	m	class:LINUXCC
+m_pcParam	src/ccc.h	/^   char* m_pcParam;			\/\/ user defined parameter$/;"	m	class:CCC
+onACK	src/ccc.h	/^   virtual void onACK(int32_t) {}$/;"	f	class:CCC
+onLoss	src/ccc.h	/^   virtual void onLoss(const int32_t*, int) {}$/;"	f	class:CCC
+onPktReceived	src/ccc.h	/^   virtual void onPktReceived(const CPacket*) {}$/;"	f	class:CCC
+onPktSent	src/ccc.h	/^   virtual void onPktSent(const CPacket*) {}$/;"	f	class:CCC
+onTimeout	src/ccc.h	/^   virtual void onTimeout() {}$/;"	f	class:CCC
+operator =	src/ccc.h	/^   CCC& operator=(const CCC&) {return *this;}$/;"	f	class:CCC
+processCustomMsg	src/ccc.h	/^   virtual void processCustomMsg(const CPacket*) {}$/;"	f	class:CCC
+sk	src/ccc.h	/^	struct sock sk;$/;"	m	class:LINUXCC	typeref:struct:LINUXCC::sock
+~CCCFactory	src/ccc.h	/^   virtual ~CCCFactory() {}$/;"	f	class:CCCFactory
+~CCCVirtualFactory	src/ccc.h	/^   virtual ~CCCVirtualFactory() {}$/;"	f	class:CCCVirtualFactory
+CChannel	src/channel.cpp	/^CChannel::CChannel():$/;"	f	class:CChannel
+CChannel	src/channel.cpp	/^CChannel::CChannel(int version):$/;"	f	class:CChannel
+NET_ERROR	src/channel.cpp	/^   #define NET_ERROR /;"	d	file:
+close	src/channel.cpp	/^void CChannel::close() const$/;"	f	class:CChannel
+getPeerAddr	src/channel.cpp	/^void CChannel::getPeerAddr(sockaddr* addr) const$/;"	f	class:CChannel
+getRcvBufSize	src/channel.cpp	/^int CChannel::getRcvBufSize()$/;"	f	class:CChannel
+getSndBufSize	src/channel.cpp	/^int CChannel::getSndBufSize()$/;"	f	class:CChannel
+getSockAddr	src/channel.cpp	/^void CChannel::getSockAddr(sockaddr* addr) const$/;"	f	class:CChannel
+open	src/channel.cpp	/^void CChannel::open(UDPSOCKET udpsock)$/;"	f	class:CChannel
+open	src/channel.cpp	/^void CChannel::open(const sockaddr* addr)$/;"	f	class:CChannel
+recvfrom	src/channel.cpp	/^int CChannel::recvfrom(sockaddr* addr, CPacket& packet) const$/;"	f	class:CChannel
+sendto	src/channel.cpp	/^int CChannel::sendto(const sockaddr* addr, CPacket& packet) const$/;"	f	class:CChannel
+setRcvBufSize	src/channel.cpp	/^void CChannel::setRcvBufSize(int size)$/;"	f	class:CChannel
+setSndBufSize	src/channel.cpp	/^void CChannel::setSndBufSize(int size)$/;"	f	class:CChannel
+setUDPSockOpt	src/channel.cpp	/^void CChannel::setUDPSockOpt()$/;"	f	class:CChannel
+socklen_t	src/channel.cpp	/^   #define socklen_t /;"	d	file:
+~CChannel	src/channel.cpp	/^CChannel::~CChannel()$/;"	f	class:CChannel
+CChannel	src/channel.h	/^class CChannel$/;"	c
+__UDT_CHANNEL_H__	src/channel.h	/^#define __UDT_CHANNEL_H__$/;"	d
+m_iIPversion	src/channel.h	/^   int m_iIPversion;                    \/\/ IP version$/;"	m	class:CChannel
+m_iRcvBufSize	src/channel.h	/^   int m_iRcvBufSize;                   \/\/ UDP receiving buffer size$/;"	m	class:CChannel
+m_iSndBufSize	src/channel.h	/^   int m_iSndBufSize;                   \/\/ UDP sending buffer size$/;"	m	class:CChannel
+m_iSockAddrSize	src/channel.h	/^   int m_iSockAddrSize;                 \/\/ socket address structure size (pre-defined to avoid run-time test)$/;"	m	class:CChannel
+m_iSocket	src/channel.h	/^   UDPSOCKET m_iSocket;                 \/\/ socket descriptor$/;"	m	class:CChannel
+CGuard	src/common.cpp	/^CGuard::CGuard(pthread_mutex_t& lock):$/;"	f	class:CGuard
+CTimer	src/common.cpp	/^CTimer::CTimer():$/;"	f	class:CTimer
+CUDTException	src/common.cpp	/^CUDTException::CUDTException(const CUDTException& e):$/;"	f	class:CUDTException
+CUDTException	src/common.cpp	/^CUDTException::CUDTException(int major, int minor, int err):$/;"	f	class:CUDTException
+EASYNCFAIL	src/common.cpp	/^const int CUDTException::EASYNCFAIL = 6000;$/;"	m	class:CUDTException	file:
+EASYNCRCV	src/common.cpp	/^const int CUDTException::EASYNCRCV = 6002;$/;"	m	class:CUDTException	file:
+EASYNCSND	src/common.cpp	/^const int CUDTException::EASYNCSND = 6001;$/;"	m	class:CUDTException	file:
+EBOUNDSOCK	src/common.cpp	/^const int CUDTException::EBOUNDSOCK = 5001;$/;"	m	class:CUDTException	file:
+ECONNFAIL	src/common.cpp	/^const int CUDTException::ECONNFAIL = 2000;$/;"	m	class:CUDTException	file:
+ECONNLOST	src/common.cpp	/^const int CUDTException::ECONNLOST = 2001;$/;"	m	class:CUDTException	file:
+ECONNREJ	src/common.cpp	/^const int CUDTException::ECONNREJ = 1002;$/;"	m	class:CUDTException	file:
+ECONNSETUP	src/common.cpp	/^const int CUDTException::ECONNSETUP = 1000;$/;"	m	class:CUDTException	file:
+ECONNSOCK	src/common.cpp	/^const int CUDTException::ECONNSOCK = 5002;$/;"	m	class:CUDTException	file:
+EDGRAMILL	src/common.cpp	/^const int CUDTException::EDGRAMILL = 5010;$/;"	m	class:CUDTException	file:
+EDUPLISTEN	src/common.cpp	/^const int CUDTException::EDUPLISTEN = 5011;$/;"	m	class:CUDTException	file:
+EFILE	src/common.cpp	/^const int CUDTException::EFILE = 4000;$/;"	m	class:CUDTException	file:
+EINVOP	src/common.cpp	/^const int CUDTException::EINVOP = 5000;$/;"	m	class:CUDTException	file:
+EINVPARAM	src/common.cpp	/^const int CUDTException::EINVPARAM = 5003;$/;"	m	class:CUDTException	file:
+EINVPOLLID	src/common.cpp	/^const int CUDTException::EINVPOLLID = 5013;$/;"	m	class:CUDTException	file:
+EINVRDOFF	src/common.cpp	/^const int CUDTException::EINVRDOFF = 4001;$/;"	m	class:CUDTException	file:
+EINVSOCK	src/common.cpp	/^const int CUDTException::EINVSOCK = 5004;$/;"	m	class:CUDTException	file:
+EINVWROFF	src/common.cpp	/^const int CUDTException::EINVWROFF = 4003;$/;"	m	class:CUDTException	file:
+ELARGEMSG	src/common.cpp	/^const int CUDTException::ELARGEMSG = 5012;$/;"	m	class:CUDTException	file:
+ENOBUF	src/common.cpp	/^const int CUDTException::ENOBUF = 3002;$/;"	m	class:CUDTException	file:
+ENOCONN	src/common.cpp	/^const int CUDTException::ENOCONN = 2002;$/;"	m	class:CUDTException	file:
+ENOLISTEN	src/common.cpp	/^const int CUDTException::ENOLISTEN = 5006;$/;"	m	class:CUDTException	file:
+ENOSERVER	src/common.cpp	/^const int CUDTException::ENOSERVER = 1001;$/;"	m	class:CUDTException	file:
+EPEERERR	src/common.cpp	/^const int CUDTException::EPEERERR = 7000;$/;"	m	class:CUDTException	file:
+ERDPERM	src/common.cpp	/^const int CUDTException::ERDPERM = 4002;$/;"	m	class:CUDTException	file:
+ERDVNOSERV	src/common.cpp	/^const int CUDTException::ERDVNOSERV = 5007;$/;"	m	class:CUDTException	file:
+ERDVUNBOUND	src/common.cpp	/^const int CUDTException::ERDVUNBOUND = 5008;$/;"	m	class:CUDTException	file:
+ERESOURCE	src/common.cpp	/^const int CUDTException::ERESOURCE = 3000;$/;"	m	class:CUDTException	file:
+ESECFAIL	src/common.cpp	/^const int CUDTException::ESECFAIL = 1004;$/;"	m	class:CUDTException	file:
+ESOCKFAIL	src/common.cpp	/^const int CUDTException::ESOCKFAIL = 1003;$/;"	m	class:CUDTException	file:
+ESTREAMILL	src/common.cpp	/^const int CUDTException::ESTREAMILL = 5009;$/;"	m	class:CUDTException	file:
+ETHREAD	src/common.cpp	/^const int CUDTException::ETHREAD = 3001;$/;"	m	class:CUDTException	file:
+ETIMEOUT	src/common.cpp	/^const int CUDTException::ETIMEOUT = 6003;$/;"	m	class:CUDTException	file:
+EUNBOUNDSOCK	src/common.cpp	/^const int CUDTException::EUNBOUNDSOCK = 5005;$/;"	m	class:CUDTException	file:
+EUNKNOWN	src/common.cpp	/^const int CUDTException::EUNKNOWN = -1;$/;"	m	class:CUDTException	file:
+EWRPERM	src/common.cpp	/^const int CUDTException::EWRPERM = 4004;$/;"	m	class:CUDTException	file:
+SUCCESS	src/common.cpp	/^const int CUDTException::SUCCESS = 0;$/;"	m	class:CUDTException	file:
+clear	src/common.cpp	/^void CUDTException::clear()$/;"	f	class:CUDTException
+compute	src/common.cpp	/^void CMD5::compute(const char* input, unsigned char result[16])$/;"	f	class:CMD5
+createCond	src/common.cpp	/^void CGuard::createCond(pthread_cond_t& cond)$/;"	f	class:CGuard
+createMutex	src/common.cpp	/^void CGuard::createMutex(pthread_mutex_t& lock)$/;"	f	class:CGuard
+enterCS	src/common.cpp	/^void CGuard::enterCS(pthread_mutex_t& lock)$/;"	f	class:CGuard
+getCPUFrequency	src/common.cpp	/^uint64_t CTimer::getCPUFrequency()$/;"	f	class:CTimer
+getErrorCode	src/common.cpp	/^int CUDTException::getErrorCode() const$/;"	f	class:CUDTException
+getErrorMessage	src/common.cpp	/^const char* CUDTException::getErrorMessage()$/;"	f	class:CUDTException
+getTime	src/common.cpp	/^uint64_t CTimer::getTime()$/;"	f	class:CTimer
+interrupt	src/common.cpp	/^void CTimer::interrupt()$/;"	f	class:CTimer
+ipcmp	src/common.cpp	/^bool CIPAddress::ipcmp(const sockaddr* addr1, const sockaddr* addr2, int ver)$/;"	f	class:CIPAddress
+leaveCS	src/common.cpp	/^void CGuard::leaveCS(pthread_mutex_t& lock)$/;"	f	class:CGuard
+m_EventCond	src/common.cpp	/^   pthread_cond_t CTimer::m_EventCond = CreateEvent(NULL, false, false, NULL);$/;"	m	class:CTimer	file:
+m_EventCond	src/common.cpp	/^   pthread_cond_t CTimer::m_EventCond = PTHREAD_COND_INITIALIZER;$/;"	m	class:CTimer	file:
+m_EventLock	src/common.cpp	/^   pthread_mutex_t CTimer::m_EventLock = CreateMutex(NULL, false, NULL);$/;"	m	class:CTimer	file:
+m_EventLock	src/common.cpp	/^   pthread_mutex_t CTimer::m_EventLock = PTHREAD_MUTEX_INITIALIZER;$/;"	m	class:CTimer	file:
+m_bUseMicroSecond	src/common.cpp	/^bool CTimer::m_bUseMicroSecond = false;$/;"	m	class:CTimer	file:
+ntop	src/common.cpp	/^void CIPAddress::ntop(const sockaddr* addr, uint32_t ip[4], int ver)$/;"	f	class:CIPAddress
+pton	src/common.cpp	/^void CIPAddress::pton(sockaddr* addr, const uint32_t ip[4], int ver)$/;"	f	class:CIPAddress
+rdtsc	src/common.cpp	/^void CTimer::rdtsc(uint64_t &x)$/;"	f	class:CTimer
+readCPUFrequency	src/common.cpp	/^uint64_t CTimer::readCPUFrequency()$/;"	f	class:CTimer
+releaseCond	src/common.cpp	/^void CGuard::releaseCond(pthread_cond_t& cond)$/;"	f	class:CGuard
+releaseMutex	src/common.cpp	/^void CGuard::releaseMutex(pthread_mutex_t& lock)$/;"	f	class:CGuard
+s_ullCPUFrequency	src/common.cpp	/^uint64_t CTimer::s_ullCPUFrequency = CTimer::readCPUFrequency();$/;"	m	class:CTimer	file:
+sleep	src/common.cpp	/^void CTimer::sleep()$/;"	f	class:CTimer
+sleep	src/common.cpp	/^void CTimer::sleep(uint64_t interval)$/;"	f	class:CTimer
+sleepto	src/common.cpp	/^void CTimer::sleepto(uint64_t nexttime)$/;"	f	class:CTimer
+tick	src/common.cpp	/^void CTimer::tick()$/;"	f	class:CTimer
+triggerEvent	src/common.cpp	/^void CTimer::triggerEvent()$/;"	f	class:CTimer
+waitForEvent	src/common.cpp	/^void CTimer::waitForEvent()$/;"	f	class:CTimer
+~CGuard	src/common.cpp	/^CGuard::~CGuard()$/;"	f	class:CGuard
+~CTimer	src/common.cpp	/^CTimer::~CTimer()$/;"	f	class:CTimer
+~CUDTException	src/common.cpp	/^CUDTException::~CUDTException()$/;"	f	class:CUDTException
+CAckNo	src/common.h	/^class CAckNo$/;"	c
+CGuard	src/common.h	/^class CGuard$/;"	c
+CIPAddress	src/common.h	/^struct CIPAddress$/;"	s
+CMD5	src/common.h	/^struct CMD5$/;"	s
+CMsgNo	src/common.h	/^class CMsgNo$/;"	c
+CSeqNo	src/common.h	/^class CSeqNo$/;"	c
+CTimer	src/common.h	/^class CTimer$/;"	c
+__UDT_COMMON_H__	src/common.h	/^#define __UDT_COMMON_H__$/;"	d
+decseq	src/common.h	/^   inline static int32_t decseq(int32_t seq)$/;"	f	class:CSeqNo
+incack	src/common.h	/^   inline static int32_t incack(int32_t ackno)$/;"	f	class:CAckNo
+incmsg	src/common.h	/^   inline static int32_t incmsg(int32_t msgno)$/;"	f	class:CMsgNo
+incseq	src/common.h	/^   inline static int32_t incseq(int32_t seq)$/;"	f	class:CSeqNo
+incseq	src/common.h	/^   inline static int32_t incseq(int32_t seq, int32_t inc)$/;"	f	class:CSeqNo
+m_EventCond	src/common.h	/^   static pthread_cond_t m_EventCond;$/;"	m	class:CTimer
+m_EventLock	src/common.h	/^   static pthread_mutex_t m_EventLock;$/;"	m	class:CTimer
+m_Mutex	src/common.h	/^   pthread_mutex_t& m_Mutex;            \/\/ Alias name of the mutex to be protected$/;"	m	class:CGuard
+m_TickCond	src/common.h	/^   pthread_cond_t m_TickCond;$/;"	m	class:CTimer
+m_TickLock	src/common.h	/^   pthread_mutex_t m_TickLock;$/;"	m	class:CTimer
+m_bUseMicroSecond	src/common.h	/^   static bool m_bUseMicroSecond;       \/\/ No higher resolution timer available, use gettimeofday().$/;"	m	class:CTimer
+m_iLocked	src/common.h	/^   int m_iLocked;                       \/\/ Locking status$/;"	m	class:CGuard
+m_iMaxAckSeqNo	src/common.h	/^   static const int32_t m_iMaxAckSeqNo;         \/\/ maximum ACK sub-sequence number used in UDT$/;"	m	class:CAckNo
+m_iMaxMsgNo	src/common.h	/^   static const int32_t m_iMaxMsgNo;            \/\/ maximum message number used in UDT$/;"	m	class:CMsgNo
+m_iMaxSeqNo	src/common.h	/^   static const int32_t m_iMaxSeqNo;            \/\/ maximum sequence number used in UDT$/;"	m	class:CSeqNo
+m_iMsgNoTH	src/common.h	/^   static const int32_t m_iMsgNoTH;             \/\/ threshold for comparing msg. no.$/;"	m	class:CMsgNo
+m_iSeqNoTH	src/common.h	/^   static const int32_t m_iSeqNoTH;             \/\/ threshold for comparing seq. no.$/;"	m	class:CSeqNo
+m_ullSchedTime	src/common.h	/^   uint64_t m_ullSchedTime;             \/\/ next schedulled time$/;"	m	class:CTimer
+msgcmp	src/common.h	/^   inline static int msgcmp(int32_t msgno1, int32_t msgno2)$/;"	f	class:CMsgNo
+msglen	src/common.h	/^   inline static int msglen(int32_t msgno1, int32_t msgno2)$/;"	f	class:CMsgNo
+msgoff	src/common.h	/^   inline static int msgoff(int32_t msgno1, int32_t msgno2)$/;"	f	class:CMsgNo
+pthread_cond_t	src/common.h	/^   typedef HANDLE pthread_cond_t;$/;"	t
+pthread_key_t	src/common.h	/^   typedef DWORD pthread_key_t;$/;"	t
+pthread_mutex_t	src/common.h	/^   typedef HANDLE pthread_mutex_t;$/;"	t
+pthread_t	src/common.h	/^   typedef HANDLE pthread_t;$/;"	t
+s_ullCPUFrequency	src/common.h	/^   static uint64_t s_ullCPUFrequency;	\/\/ CPU frequency : clock cycles per microsecond$/;"	m	class:CTimer
+seqcmp	src/common.h	/^   inline static int seqcmp(int32_t seq1, int32_t seq2)$/;"	f	class:CSeqNo
+seqlen	src/common.h	/^   inline static int seqlen(int32_t seq1, int32_t seq2)$/;"	f	class:CSeqNo
+seqoff	src/common.h	/^   inline static int seqoff(int32_t seq1, int32_t seq2)$/;"	f	class:CSeqNo
+CCUpdate	src/core.cpp	/^void CUDT::CCUpdate()$/;"	f	class:CUDT
+CUDT	src/core.cpp	/^CUDT::CUDT()$/;"	f	class:CUDT
+CUDT	src/core.cpp	/^CUDT::CUDT(const CUDT& ancestor)$/;"	f	class:CUDT
+ERROR	src/core.cpp	/^const int CUDT::ERROR = -1;$/;"	m	class:CUDT	file:
+ERROR	src/core.cpp	/^const int UDT::ERROR = CUDT::ERROR;$/;"	m	class:UDT	file:
+INVALID_SOCK	src/core.cpp	/^const UDTSOCKET CUDT::INVALID_SOCK = -1;$/;"	m	class:CUDT	file:
+INVALID_SOCK	src/core.cpp	/^const UDTSOCKET UDT::INVALID_SOCK = CUDT::INVALID_SOCK;$/;"	m	class:UDT	file:
+addEPoll	src/core.cpp	/^void CUDT::addEPoll(const int eid)$/;"	f	class:CUDT
+checkTimers	src/core.cpp	/^void CUDT::checkTimers()$/;"	f	class:CUDT
+close	src/core.cpp	/^void CUDT::close()$/;"	f	class:CUDT
+connect	src/core.cpp	/^int CUDT::connect(const CPacket& response) throw ()$/;"	f	class:CUDT
+connect	src/core.cpp	/^void CUDT::connect(const sockaddr* peer, CHandShake* hs)$/;"	f	class:CUDT
+connect	src/core.cpp	/^void CUDT::connect(const sockaddr* serv_addr)$/;"	f	class:CUDT
+destroySynch	src/core.cpp	/^void CUDT::destroySynch()$/;"	f	class:CUDT
+getOpt	src/core.cpp	/^void CUDT::getOpt(UDTOpt optName, void* optval, int& optlen)$/;"	f	class:CUDT
+initSynch	src/core.cpp	/^void CUDT::initSynch()$/;"	f	class:CUDT
+listen	src/core.cpp	/^int CUDT::listen(sockaddr* addr, CPacket& packet)$/;"	f	class:CUDT
+listen	src/core.cpp	/^void CUDT::listen()$/;"	f	class:CUDT
+m_iMaxAckSeqNo	src/core.cpp	/^const int32_t CAckNo::m_iMaxAckSeqNo = 0x7FFFFFFF;$/;"	m	class:CAckNo	file:
+m_iMaxMsgNo	src/core.cpp	/^const int32_t CMsgNo::m_iMaxMsgNo = 0x1FFFFFFF;$/;"	m	class:CMsgNo	file:
+m_iMaxSeqNo	src/core.cpp	/^const int32_t CSeqNo::m_iMaxSeqNo = 0x7FFFFFFF;$/;"	m	class:CSeqNo	file:
+m_iMsgNoTH	src/core.cpp	/^const int32_t CMsgNo::m_iMsgNoTH = 0xFFFFFFF;$/;"	m	class:CMsgNo	file:
+m_iSYNInterval	src/core.cpp	/^const int CUDT::m_iSYNInterval = 10000;$/;"	m	class:CUDT	file:
+m_iSelfClockInterval	src/core.cpp	/^const int CUDT::m_iSelfClockInterval = 64;$/;"	m	class:CUDT	file:
+m_iSeqNoTH	src/core.cpp	/^const int32_t CSeqNo::m_iSeqNoTH = 0x3FFFFFFF;$/;"	m	class:CSeqNo	file:
+m_iVersion	src/core.cpp	/^const int CUDT::m_iVersion = 4;$/;"	m	class:CUDT	file:
+open	src/core.cpp	/^void CUDT::open()$/;"	f	class:CUDT
+packData	src/core.cpp	/^int CUDT::packData(CPacket& packet, uint64_t& ts)$/;"	f	class:CUDT
+processCtrl	src/core.cpp	/^void CUDT::processCtrl(CPacket& ctrlpkt)$/;"	f	class:CUDT
+processData	src/core.cpp	/^int CUDT::processData(CUnit* unit)$/;"	f	class:CUDT
+recv	src/core.cpp	/^int CUDT::recv(char* data, int len)$/;"	f	class:CUDT
+recvfile	src/core.cpp	/^int64_t CUDT::recvfile(fstream& ofs, int64_t& offset, int64_t size, int block)$/;"	f	class:CUDT
+recvmsg	src/core.cpp	/^int CUDT::recvmsg(char* data, int len)$/;"	f	class:CUDT
+releaseSynch	src/core.cpp	/^void CUDT::releaseSynch()$/;"	f	class:CUDT
+removeEPoll	src/core.cpp	/^void CUDT::removeEPoll(const int eid)$/;"	f	class:CUDT
+sample	src/core.cpp	/^void CUDT::sample(CPerfMon* perf, bool clear)$/;"	f	class:CUDT
+send	src/core.cpp	/^int CUDT::send(const char* data, int len)$/;"	f	class:CUDT
+sendCtrl	src/core.cpp	/^void CUDT::sendCtrl(int pkttype, void* lparam, void* rparam, int size)$/;"	f	class:CUDT
+sendfile	src/core.cpp	/^int64_t CUDT::sendfile(fstream& ifs, int64_t& offset, int64_t size, int block)$/;"	f	class:CUDT
+sendmsg	src/core.cpp	/^int CUDT::sendmsg(const char* data, int len, int msttl, bool inorder)$/;"	f	class:CUDT
+setOpt	src/core.cpp	/^void CUDT::setOpt(UDTOpt optName, const void* optval, int)$/;"	f	class:CUDT
+~CUDT	src/core.cpp	/^CUDT::~CUDT()$/;"	f	class:CUDT
+CUDT	src/core.h	/^class CUDT$/;"	c
+ERROR	src/core.h	/^   static const int ERROR;                      \/\/ socket api error returned value$/;"	m	class:CUDT
+INVALID_SOCK	src/core.h	/^   static const UDTSOCKET INVALID_SOCK;         \/\/ invalid socket descriptor$/;"	m	class:CUDT
+UDTSockType	src/core.h	/^enum UDTSockType {UDT_STREAM = 1, UDT_DGRAM};$/;"	g
+UDT_DGRAM	src/core.h	/^enum UDTSockType {UDT_STREAM = 1, UDT_DGRAM};$/;"	e	enum:UDTSockType
+UDT_STREAM	src/core.h	/^enum UDTSockType {UDT_STREAM = 1, UDT_DGRAM};$/;"	e	enum:UDTSockType
+__UDT_CORE_H__	src/core.h	/^#define __UDT_CORE_H__$/;"	d
+m_AckLock	src/core.h	/^   pthread_mutex_t m_AckLock;                   \/\/ used to protected sender's loss list when processing ACK$/;"	m	class:CUDT
+m_ConnReq	src/core.h	/^   CHandShake m_ConnReq;			\/\/ connection request$/;"	m	class:CUDT
+m_ConnRes	src/core.h	/^   CHandShake m_ConnRes;			\/\/ connection response$/;"	m	class:CUDT
+m_ConnectionLock	src/core.h	/^   pthread_mutex_t m_ConnectionLock;            \/\/ used to synchronize connection operation$/;"	m	class:CUDT
+m_LastSampleTime	src/core.h	/^   uint64_t m_LastSampleTime;                   \/\/ last performance sample time$/;"	m	class:CUDT
+m_Linger	src/core.h	/^   linger m_Linger;                             \/\/ Linger information on close$/;"	m	class:CUDT
+m_PeerID	src/core.h	/^   UDTSOCKET m_PeerID;				\/\/ peer id, for multiplexer$/;"	m	class:CUDT
+m_RecvDataCond	src/core.h	/^   pthread_cond_t m_RecvDataCond;               \/\/ used to block "recv" when there is no data$/;"	m	class:CUDT
+m_RecvDataLock	src/core.h	/^   pthread_mutex_t m_RecvDataLock;              \/\/ lock associated to m_RecvDataCond$/;"	m	class:CUDT
+m_RecvLock	src/core.h	/^   pthread_mutex_t m_RecvLock;                  \/\/ used to synchronize "recv" call$/;"	m	class:CUDT
+m_SendBlockCond	src/core.h	/^   pthread_cond_t m_SendBlockCond;              \/\/ used to block "send" call$/;"	m	class:CUDT
+m_SendBlockLock	src/core.h	/^   pthread_mutex_t m_SendBlockLock;             \/\/ lock associated to m_SendBlockCond$/;"	m	class:CUDT
+m_SendLock	src/core.h	/^   pthread_mutex_t m_SendLock;                  \/\/ used to synchronize "send" call$/;"	m	class:CUDT
+m_SocketID	src/core.h	/^   UDTSOCKET m_SocketID;                        \/\/ UDT socket number$/;"	m	class:CUDT
+m_StartTime	src/core.h	/^   uint64_t m_StartTime;                        \/\/ timestamp when the UDT entity is started$/;"	m	class:CUDT
+m_bBroken	src/core.h	/^   volatile bool m_bBroken;                     \/\/ If the connection has been broken$/;"	m	class:CUDT
+m_bClosing	src/core.h	/^   volatile bool m_bClosing;                    \/\/ If the UDT entity is closing$/;"	m	class:CUDT
+m_bConnected	src/core.h	/^   volatile bool m_bConnected;                  \/\/ Whether the connection is on or off$/;"	m	class:CUDT
+m_bConnecting	src/core.h	/^   volatile bool m_bConnecting;			\/\/ The short phase when connect() is called but not yet completed$/;"	m	class:CUDT
+m_bListening	src/core.h	/^   volatile bool m_bListening;                  \/\/ If the UDT entit is listening to connection$/;"	m	class:CUDT
+m_bOpened	src/core.h	/^   bool m_bOpened;                              \/\/ If the UDT entity has been opened$/;"	m	class:CUDT
+m_bPeerHealth	src/core.h	/^   volatile bool m_bPeerHealth;                 \/\/ If the peer status is normal$/;"	m	class:CUDT
+m_bRendezvous	src/core.h	/^   bool m_bRendezvous;                          \/\/ Rendezvous connection mode$/;"	m	class:CUDT
+m_bReuseAddr	src/core.h	/^   bool m_bReuseAddr;				\/\/ reuse an exiting port or not, for UDP multiplexer$/;"	m	class:CUDT
+m_bShutdown	src/core.h	/^   volatile bool m_bShutdown;                   \/\/ If the peer side has shutdown the connection$/;"	m	class:CUDT
+m_bSynRecving	src/core.h	/^   bool m_bSynRecving;                          \/\/ Receiving syncronization mode$/;"	m	class:CUDT
+m_bSynSending	src/core.h	/^   bool m_bSynSending;                          \/\/ Sending syncronization mode$/;"	m	class:CUDT
+m_dCongestionWindow	src/core.h	/^   volatile double m_dCongestionWindow;         \/\/ congestion window size$/;"	m	class:CUDT
+m_iAckSeqNo	src/core.h	/^   int32_t m_iAckSeqNo;                         \/\/ Last ACK sequence number$/;"	m	class:CUDT
+m_iBandwidth	src/core.h	/^   int m_iBandwidth;                            \/\/ Estimated bandwidth, number of packets per second$/;"	m	class:CUDT
+m_iBrokenCounter	src/core.h	/^   int m_iBrokenCounter;			\/\/ a counter (number of GC checks) to let the GC tag this socket as disconnected$/;"	m	class:CUDT
+m_iDeliveryRate	src/core.h	/^   int m_iDeliveryRate;				\/\/ Packet arrival rate at the receiver side$/;"	m	class:CUDT
+m_iEXPCount	src/core.h	/^   int m_iEXPCount;                             \/\/ Expiration counter$/;"	m	class:CUDT
+m_iFlightFlagSize	src/core.h	/^   int m_iFlightFlagSize;                       \/\/ Maximum number of packets in flight from the peer side$/;"	m	class:CUDT
+m_iFlowWindowSize	src/core.h	/^   volatile int m_iFlowWindowSize;              \/\/ Flow control window size$/;"	m	class:CUDT
+m_iIPversion	src/core.h	/^   int m_iIPversion;                            \/\/ IP version$/;"	m	class:CUDT
+m_iISN	src/core.h	/^   int32_t m_iISN;                              \/\/ Initial Sequence Number$/;"	m	class:CUDT
+m_iLastDecSeq	src/core.h	/^   int32_t m_iLastDecSeq;                       \/\/ Sequence number sent last decrease occurs$/;"	m	class:CUDT
+m_iLightACKCount	src/core.h	/^   int m_iLightACKCount;			\/\/ light ACK counter$/;"	m	class:CUDT
+m_iMSS	src/core.h	/^   int m_iMSS;                                  \/\/ Maximum Segment Size, in bytes$/;"	m	class:CUDT
+m_iPayloadSize	src/core.h	/^   int m_iPayloadSize;                          \/\/ Maximum\/regular payload size, in bytes$/;"	m	class:CUDT
+m_iPeerISN	src/core.h	/^   int32_t m_iPeerISN;                          \/\/ Initial Sequence Number of the peer side$/;"	m	class:CUDT
+m_iPktCount	src/core.h	/^   int m_iPktCount;				\/\/ packet counter for ACK$/;"	m	class:CUDT
+m_iPktSize	src/core.h	/^   int m_iPktSize;                              \/\/ Maximum\/regular packet size, in bytes$/;"	m	class:CUDT
+m_iRTT	src/core.h	/^   int m_iRTT;                                  \/\/ RTT, in microseconds$/;"	m	class:CUDT
+m_iRTTVar	src/core.h	/^   int m_iRTTVar;                               \/\/ RTT variance$/;"	m	class:CUDT
+m_iRcvBufSize	src/core.h	/^   int m_iRcvBufSize;                           \/\/ Maximum UDT receiver buffer size$/;"	m	class:CUDT
+m_iRcvCurrSeqNo	src/core.h	/^   int32_t m_iRcvCurrSeqNo;                     \/\/ Largest received sequence number$/;"	m	class:CUDT
+m_iRcvLastAck	src/core.h	/^   int32_t m_iRcvLastAck;                       \/\/ Last sent ACK$/;"	m	class:CUDT
+m_iRcvLastAckAck	src/core.h	/^   int32_t m_iRcvLastAckAck;                    \/\/ Last sent ACK that has been acknowledged$/;"	m	class:CUDT
+m_iRcvLossTotal	src/core.h	/^   int m_iRcvLossTotal;                         \/\/ total number of lost packets (receiver side)$/;"	m	class:CUDT
+m_iRcvTimeOut	src/core.h	/^   int m_iRcvTimeOut;                           \/\/ receiving timeout in milliseconds$/;"	m	class:CUDT
+m_iRecvACK	src/core.h	/^   int m_iRecvACK;                              \/\/ number of ACKs received in the last trace interval$/;"	m	class:CUDT
+m_iRecvACKTotal	src/core.h	/^   int m_iRecvACKTotal;                         \/\/ total number of received ACK packets$/;"	m	class:CUDT
+m_iRecvNAK	src/core.h	/^   int m_iRecvNAK;                              \/\/ number of NAKs received in the last trace interval$/;"	m	class:CUDT
+m_iRecvNAKTotal	src/core.h	/^   int m_iRecvNAKTotal;                         \/\/ total number of received NAK packets$/;"	m	class:CUDT
+m_iRetransTotal	src/core.h	/^   int m_iRetransTotal;                         \/\/ total number of retransmitted packets$/;"	m	class:CUDT
+m_iSYNInterval	src/core.h	/^   static const int m_iSYNInterval;             \/\/ Periodical Rate Control Interval, 10000 microsecond$/;"	m	class:CUDT
+m_iSelfClockInterval	src/core.h	/^   static const int m_iSelfClockInterval;       \/\/ ACK interval for self-clocking$/;"	m	class:CUDT
+m_iSentACK	src/core.h	/^   int m_iSentACK;                              \/\/ number of ACKs sent in the last trace interval$/;"	m	class:CUDT
+m_iSentACKTotal	src/core.h	/^   int m_iSentACKTotal;                         \/\/ total number of sent ACK packets$/;"	m	class:CUDT
+m_iSentNAK	src/core.h	/^   int m_iSentNAK;                              \/\/ number of NAKs sent in the last trace interval$/;"	m	class:CUDT
+m_iSentNAKTotal	src/core.h	/^   int m_iSentNAKTotal;                         \/\/ total number of sent NAK packets$/;"	m	class:CUDT
+m_iSndBufSize	src/core.h	/^   int m_iSndBufSize;                           \/\/ Maximum UDT sender buffer size$/;"	m	class:CUDT
+m_iSndCurrSeqNo	src/core.h	/^   volatile int32_t m_iSndCurrSeqNo;            \/\/ The largest sequence number that has been sent$/;"	m	class:CUDT
+m_iSndLastAck	src/core.h	/^   volatile int32_t m_iSndLastAck;              \/\/ Last ACK received$/;"	m	class:CUDT
+m_iSndLastAck2	src/core.h	/^   int32_t m_iSndLastAck2;                      \/\/ Last ACK2 sent back$/;"	m	class:CUDT
+m_iSndLastDataAck	src/core.h	/^   volatile int32_t m_iSndLastDataAck;          \/\/ The real last ACK that updates the sender buffer and loss list$/;"	m	class:CUDT
+m_iSndLossTotal	src/core.h	/^   int m_iSndLossTotal;                         \/\/ total number of lost packets (sender side)$/;"	m	class:CUDT
+m_iSndTimeOut	src/core.h	/^   int m_iSndTimeOut;                           \/\/ sending timeout in milliseconds$/;"	m	class:CUDT
+m_iSockType	src/core.h	/^   UDTSockType m_iSockType;                     \/\/ Type of the UDT connection (SOCK_STREAM or SOCK_DGRAM)$/;"	m	class:CUDT
+m_iTraceRcvLoss	src/core.h	/^   int m_iTraceRcvLoss;                         \/\/ number of lost packets in the last trace interval (receiver side)$/;"	m	class:CUDT
+m_iTraceRetrans	src/core.h	/^   int m_iTraceRetrans;                         \/\/ number of retransmitted packets in the last trace interval$/;"	m	class:CUDT
+m_iTraceSndLoss	src/core.h	/^   int m_iTraceSndLoss;                         \/\/ number of lost packets in the last trace interval (sender side)$/;"	m	class:CUDT
+m_iUDPRcvBufSize	src/core.h	/^   int m_iUDPRcvBufSize;                        \/\/ UDP receiving buffer size$/;"	m	class:CUDT
+m_iUDPSndBufSize	src/core.h	/^   int m_iUDPSndBufSize;                        \/\/ UDP sending buffer size$/;"	m	class:CUDT
+m_iVersion	src/core.h	/^   static const int m_iVersion;                 \/\/ UDT version, for compatibility use$/;"	m	class:CUDT
+m_llLastReqTime	src/core.h	/^   int64_t m_llLastReqTime;			\/\/ last time when a connection request is sent$/;"	m	class:CUDT
+m_llMaxBW	src/core.h	/^   int64_t m_llMaxBW;				\/\/ maximum data transfer rate (threshold)$/;"	m	class:CUDT
+m_llRecvTotal	src/core.h	/^   int64_t m_llRecvTotal;                       \/\/ total number of received packets$/;"	m	class:CUDT
+m_llSentTotal	src/core.h	/^   int64_t m_llSentTotal;                       \/\/ total number of sent data packets, including retransmissions$/;"	m	class:CUDT
+m_llSndDuration	src/core.h	/^   int64_t m_llSndDuration;			\/\/ real time for sending$/;"	m	class:CUDT
+m_llSndDurationCounter	src/core.h	/^   int64_t m_llSndDurationCounter;		\/\/ timers to record the sending duration$/;"	m	class:CUDT
+m_llSndDurationTotal	src/core.h	/^   int64_t m_llSndDurationTotal;		\/\/ total real time for sending$/;"	m	class:CUDT
+m_llTraceRecv	src/core.h	/^   int64_t m_llTraceRecv;                       \/\/ number of pakctes received in the last trace interval$/;"	m	class:CUDT
+m_llTraceSent	src/core.h	/^   int64_t m_llTraceSent;                       \/\/ number of pakctes sent in the last trace interval$/;"	m	class:CUDT
+m_pACKWindow	src/core.h	/^   CACKWindow* m_pACKWindow;                    \/\/ ACK history window$/;"	m	class:CUDT
+m_pCC	src/core.h	/^   CCC* m_pCC;                                  \/\/ congestion control class$/;"	m	class:CUDT
+m_pCCFactory	src/core.h	/^   CCCVirtualFactory* m_pCCFactory;             \/\/ Factory class to create a specific CC instance$/;"	m	class:CUDT
+m_pCache	src/core.h	/^   CCache<CInfoBlock>* m_pCache;		\/\/ network information cache$/;"	m	class:CUDT
+m_pPeerAddr	src/core.h	/^   sockaddr* m_pPeerAddr;			\/\/ peer address$/;"	m	class:CUDT
+m_pRNode	src/core.h	/^   CRNode* m_pRNode;                            \/\/ node information for UDT list used in rcv queue$/;"	m	class:CUDT
+m_pRcvBuffer	src/core.h	/^   CRcvBuffer* m_pRcvBuffer;                    \/\/ Receiver buffer$/;"	m	class:CUDT
+m_pRcvLossList	src/core.h	/^   CRcvLossList* m_pRcvLossList;                \/\/ Receiver loss list$/;"	m	class:CUDT
+m_pRcvQueue	src/core.h	/^   CRcvQueue* m_pRcvQueue;			\/\/ packet receiving queue$/;"	m	class:CUDT
+m_pRcvTimeWindow	src/core.h	/^   CPktTimeWindow* m_pRcvTimeWindow;            \/\/ Packet arrival time window$/;"	m	class:CUDT
+m_pSNode	src/core.h	/^   CSNode* m_pSNode;				\/\/ node information for UDT list used in snd queue$/;"	m	class:CUDT
+m_pSndBuffer	src/core.h	/^   CSndBuffer* m_pSndBuffer;                    \/\/ Sender buffer$/;"	m	class:CUDT
+m_pSndLossList	src/core.h	/^   CSndLossList* m_pSndLossList;                \/\/ Sender loss list$/;"	m	class:CUDT
+m_pSndQueue	src/core.h	/^   CSndQueue* m_pSndQueue;			\/\/ packet sending queue$/;"	m	class:CUDT
+m_pSndTimeWindow	src/core.h	/^   CPktTimeWindow* m_pSndTimeWindow;            \/\/ Packet sending time window$/;"	m	class:CUDT
+m_piSelfIP	src/core.h	/^   uint32_t m_piSelfIP[4];			\/\/ local UDP IP address$/;"	m	class:CUDT
+m_sPollID	src/core.h	/^   std::set<int> m_sPollID;                     \/\/ set of epoll ID to trigger$/;"	m	class:CUDT
+m_ullACKInt	src/core.h	/^   volatile uint64_t m_ullACKInt;		\/\/ ACK interval$/;"	m	class:CUDT
+m_ullCPUFrequency	src/core.h	/^   uint64_t m_ullCPUFrequency;                  \/\/ CPU clock frequency, used for Timer, ticks per microsecond$/;"	m	class:CUDT
+m_ullInterval	src/core.h	/^   volatile uint64_t m_ullInterval;             \/\/ Inter-packet time, in CPU clock cycles$/;"	m	class:CUDT
+m_ullLastAckTime	src/core.h	/^   uint64_t m_ullLastAckTime;                   \/\/ Timestamp of last ACK$/;"	m	class:CUDT
+m_ullLastRspTime	src/core.h	/^   volatile uint64_t m_ullLastRspTime;		\/\/ time stamp of last response from the peer$/;"	m	class:CUDT
+m_ullLastWarningTime	src/core.h	/^   uint64_t m_ullLastWarningTime;               \/\/ Last time that a warning message is sent$/;"	m	class:CUDT
+m_ullLingerExpiration	src/core.h	/^   uint64_t m_ullLingerExpiration;		\/\/ Linger expiration time (for GC to close a socket with data in sending buffer)$/;"	m	class:CUDT
+m_ullMinExpInt	src/core.h	/^   uint64_t m_ullMinExpInt;			\/\/ timeout lower bound threshold: too small timeout can cause problem$/;"	m	class:CUDT
+m_ullMinNakInt	src/core.h	/^   uint64_t m_ullMinNakInt;			\/\/ NAK timeout lower bound; too small value can cause unnecessary retransmission$/;"	m	class:CUDT
+m_ullNAKInt	src/core.h	/^   volatile uint64_t m_ullNAKInt;		\/\/ NAK interval$/;"	m	class:CUDT
+m_ullNextACKTime	src/core.h	/^   uint64_t m_ullNextACKTime;			\/\/ Next ACK time, in CPU clock cycles, same below$/;"	m	class:CUDT
+m_ullNextNAKTime	src/core.h	/^   uint64_t m_ullNextNAKTime;			\/\/ Next NAK time$/;"	m	class:CUDT
+m_ullSYNInt	src/core.h	/^   volatile uint64_t m_ullSYNInt;		\/\/ SYN interval$/;"	m	class:CUDT
+m_ullSndLastAck2Time	src/core.h	/^   uint64_t m_ullSndLastAck2Time;               \/\/ The time when last ACK2 was sent back$/;"	m	class:CUDT
+m_ullTargetTime	src/core.h	/^   uint64_t m_ullTargetTime;			\/\/ scheduled time of next packet sending$/;"	m	class:CUDT
+m_ullTimeDiff	src/core.h	/^   uint64_t m_ullTimeDiff;                      \/\/ aggregate difference in inter-packet time$/;"	m	class:CUDT
+operator =	src/core.h	/^   const CUDT& operator=(const CUDT&) {return *this;}$/;"	f	class:CUDT
+s_UDTUnited	src/core.h	/^   static CUDTUnited s_UDTUnited;   \/\/ UDT global management base$/;"	m	class:CUDT
+test	src/core.h	/^   static CUDTUnited test;$/;"	m	class:CUDT
+CEPoll	src/epoll.cpp	/^CEPoll::CEPoll():$/;"	f	class:CEPoll
+add_ssock	src/epoll.cpp	/^int CEPoll::add_ssock(const int eid, const SYSSOCKET& s, const int* events)$/;"	f	class:CEPoll
+add_usock	src/epoll.cpp	/^int CEPoll::add_usock(const int eid, const UDTSOCKET& u, const int* events)$/;"	f	class:CEPoll
+create	src/epoll.cpp	/^int CEPoll::create()$/;"	f	class:CEPoll
+release	src/epoll.cpp	/^int CEPoll::release(const int eid)$/;"	f	class:CEPoll
+remove_ssock	src/epoll.cpp	/^int CEPoll::remove_ssock(const int eid, const SYSSOCKET& s)$/;"	f	class:CEPoll
+remove_usock	src/epoll.cpp	/^int CEPoll::remove_usock(const int eid, const UDTSOCKET& u)$/;"	f	class:CEPoll
+update_epoll_sets	src/epoll.cpp	/^void update_epoll_sets(const UDTSOCKET& uid, const set<UDTSOCKET>& watch, set<UDTSOCKET>& result, bool enable)$/;"	f	namespace:__anon1
+update_events	src/epoll.cpp	/^int CEPoll::update_events(const UDTSOCKET& uid, std::set<int>& eids, int events, bool enable)$/;"	f	class:CEPoll
+wait	src/epoll.cpp	/^int CEPoll::wait(const int eid, set<UDTSOCKET>* readfds, set<UDTSOCKET>* writefds, int64_t msTimeOut, set<SYSSOCKET>* lrfds, set<SYSSOCKET>* lwfds)$/;"	f	class:CEPoll
+~CEPoll	src/epoll.cpp	/^CEPoll::~CEPoll()$/;"	f	class:CEPoll
+CEPoll	src/epoll.h	/^class CEPoll$/;"	c
+CEPollDesc	src/epoll.h	/^struct CEPollDesc$/;"	s
+__UDT_EPOLL_H__	src/epoll.h	/^#define __UDT_EPOLL_H__$/;"	d
+m_EPollLock	src/epoll.h	/^   pthread_mutex_t m_EPollLock;$/;"	m	class:CEPoll
+m_SeedLock	src/epoll.h	/^   pthread_mutex_t m_SeedLock;$/;"	m	class:CEPoll
+m_iID	src/epoll.h	/^   int m_iID;                                \/\/ epoll ID$/;"	m	struct:CEPollDesc
+m_iIDSeed	src/epoll.h	/^   int m_iIDSeed;                            \/\/ seed to generate a new ID$/;"	m	class:CEPoll
+m_iLocalID	src/epoll.h	/^   int m_iLocalID;                           \/\/ local system epoll ID$/;"	m	struct:CEPollDesc
+m_mPolls	src/epoll.h	/^   std::map<int, CEPollDesc> m_mPolls;       \/\/ all epolls$/;"	m	class:CEPoll
+m_sLocals	src/epoll.h	/^   std::set<SYSSOCKET> m_sLocals;            \/\/ set of local (non-UDT) descriptors$/;"	m	struct:CEPollDesc
+m_sUDTExcepts	src/epoll.h	/^   std::set<UDTSOCKET> m_sUDTExcepts;        \/\/ UDT sockets with exceptions (connection broken, etc.)$/;"	m	struct:CEPollDesc
+m_sUDTReads	src/epoll.h	/^   std::set<UDTSOCKET> m_sUDTReads;          \/\/ UDT sockets ready for read$/;"	m	struct:CEPollDesc
+m_sUDTSocksEx	src/epoll.h	/^   std::set<UDTSOCKET> m_sUDTSocksEx;        \/\/ set of UDT sockets waiting for exceptions$/;"	m	struct:CEPollDesc
+m_sUDTSocksIn	src/epoll.h	/^   std::set<UDTSOCKET> m_sUDTSocksIn;        \/\/ set of UDT sockets waiting for read events$/;"	m	struct:CEPollDesc
+m_sUDTSocksOut	src/epoll.h	/^   std::set<UDTSOCKET> m_sUDTSocksOut;       \/\/ set of UDT sockets waiting for write events$/;"	m	struct:CEPollDesc
+m_sUDTWrites	src/epoll.h	/^   std::set<UDTSOCKET> m_sUDTWrites;         \/\/ UDT sockets ready for write$/;"	m	struct:CEPollDesc
+CRcvLossList	src/list.cpp	/^CRcvLossList::CRcvLossList(int size):$/;"	f	class:CRcvLossList
+CSndLossList	src/list.cpp	/^CSndLossList::CSndLossList(int size):$/;"	f	class:CSndLossList
+find	src/list.cpp	/^bool CRcvLossList::find(int32_t seqno1, int32_t seqno2) const$/;"	f	class:CRcvLossList
+getFirstLostSeq	src/list.cpp	/^int CRcvLossList::getFirstLostSeq() const$/;"	f	class:CRcvLossList
+getLossArray	src/list.cpp	/^void CRcvLossList::getLossArray(int32_t* array, int& len, int limit)$/;"	f	class:CRcvLossList
+getLossLength	src/list.cpp	/^int CRcvLossList::getLossLength() const$/;"	f	class:CRcvLossList
+getLossLength	src/list.cpp	/^int CSndLossList::getLossLength()$/;"	f	class:CSndLossList
+getLostSeq	src/list.cpp	/^int32_t CSndLossList::getLostSeq()$/;"	f	class:CSndLossList
+insert	src/list.cpp	/^int CSndLossList::insert(int32_t seqno1, int32_t seqno2)$/;"	f	class:CSndLossList
+insert	src/list.cpp	/^void CRcvLossList::insert(int32_t seqno1, int32_t seqno2)$/;"	f	class:CRcvLossList
+remove	src/list.cpp	/^bool CRcvLossList::remove(int32_t seqno)$/;"	f	class:CRcvLossList
+remove	src/list.cpp	/^bool CRcvLossList::remove(int32_t seqno1, int32_t seqno2)$/;"	f	class:CRcvLossList
+remove	src/list.cpp	/^void CSndLossList::remove(int32_t seqno)$/;"	f	class:CSndLossList
+~CRcvLossList	src/list.cpp	/^CRcvLossList::~CRcvLossList()$/;"	f	class:CRcvLossList
+~CSndLossList	src/list.cpp	/^CSndLossList::~CSndLossList()$/;"	f	class:CSndLossList
+CRcvLossList	src/list.h	/^class CRcvLossList$/;"	c
+CSndLossList	src/list.h	/^class CSndLossList$/;"	c
+__UDT_LIST_H__	src/list.h	/^#define __UDT_LIST_H__$/;"	d
+m_ListLock	src/list.h	/^   pthread_mutex_t m_ListLock;          \/\/ used to synchronize list operation$/;"	m	class:CSndLossList
+m_iHead	src/list.h	/^   int m_iHead;                         \/\/ first node in the list$/;"	m	class:CRcvLossList
+m_iHead	src/list.h	/^   int m_iHead;                         \/\/ first node$/;"	m	class:CSndLossList
+m_iLastInsertPos	src/list.h	/^   int m_iLastInsertPos;                \/\/ position of last insert node$/;"	m	class:CSndLossList
+m_iLength	src/list.h	/^   int m_iLength;                       \/\/ loss length$/;"	m	class:CRcvLossList
+m_iLength	src/list.h	/^   int m_iLength;                       \/\/ loss length$/;"	m	class:CSndLossList
+m_iSize	src/list.h	/^   int m_iSize;                         \/\/ size of the static array$/;"	m	class:CRcvLossList
+m_iSize	src/list.h	/^   int m_iSize;                         \/\/ size of the static array$/;"	m	class:CSndLossList
+m_iTail	src/list.h	/^   int m_iTail;                         \/\/ last node in the list;$/;"	m	class:CRcvLossList
+m_piData1	src/list.h	/^   int32_t* m_piData1;                  \/\/ sequence number starts$/;"	m	class:CRcvLossList
+m_piData1	src/list.h	/^   int32_t* m_piData1;                  \/\/ sequence number starts$/;"	m	class:CSndLossList
+m_piData2	src/list.h	/^   int32_t* m_piData2;                  \/\/ seqnence number ends$/;"	m	class:CSndLossList
+m_piData2	src/list.h	/^   int32_t* m_piData2;                  \/\/ sequence number ends$/;"	m	class:CRcvLossList
+m_piNext	src/list.h	/^   int* m_piNext;                       \/\/ next node in the list$/;"	m	class:CRcvLossList
+m_piNext	src/list.h	/^   int* m_piNext;                       \/\/ next node in the list$/;"	m	class:CSndLossList
+m_piPrior	src/list.h	/^   int* m_piPrior;                      \/\/ prior node in the list;$/;"	m	class:CRcvLossList
+BYTE_ORDER	src/md5.cpp	/^#  define BYTE_ORDER /;"	d	file:
+BYTE_ORDER	src/md5.cpp	/^#undef BYTE_ORDER	/;"	d	file:
+F	src/md5.cpp	/^#define F(/;"	d	file:
+G	src/md5.cpp	/^#define G(/;"	d	file:
+H	src/md5.cpp	/^#define H(/;"	d	file:
+I	src/md5.cpp	/^#define I(/;"	d	file:
+ROTATE_LEFT	src/md5.cpp	/^#define ROTATE_LEFT(/;"	d	file:
+SET	src/md5.cpp	/^#define SET(/;"	d	file:
+SET	src/md5.cpp	/^#undef SET$/;"	d	file:
+T1	src/md5.cpp	/^#define T1 /;"	d	file:
+T10	src/md5.cpp	/^#define T10 /;"	d	file:
+T11	src/md5.cpp	/^#define T11 /;"	d	file:
+T12	src/md5.cpp	/^#define T12 /;"	d	file:
+T13	src/md5.cpp	/^#define T13 /;"	d	file:
+T14	src/md5.cpp	/^#define T14 /;"	d	file:
+T15	src/md5.cpp	/^#define T15 /;"	d	file:
+T16	src/md5.cpp	/^#define T16 /;"	d	file:
+T17	src/md5.cpp	/^#define T17 /;"	d	file:
+T18	src/md5.cpp	/^#define T18 /;"	d	file:
+T19	src/md5.cpp	/^#define T19 /;"	d	file:
+T2	src/md5.cpp	/^#define T2 /;"	d	file:
+T20	src/md5.cpp	/^#define T20 /;"	d	file:
+T21	src/md5.cpp	/^#define T21 /;"	d	file:
+T22	src/md5.cpp	/^#define T22 /;"	d	file:
+T23	src/md5.cpp	/^#define T23 /;"	d	file:
+T24	src/md5.cpp	/^#define T24 /;"	d	file:
+T25	src/md5.cpp	/^#define T25 /;"	d	file:
+T26	src/md5.cpp	/^#define T26 /;"	d	file:
+T27	src/md5.cpp	/^#define T27 /;"	d	file:
+T28	src/md5.cpp	/^#define T28 /;"	d	file:
+T29	src/md5.cpp	/^#define T29 /;"	d	file:
+T3	src/md5.cpp	/^#define T3 /;"	d	file:
+T30	src/md5.cpp	/^#define T30 /;"	d	file:
+T31	src/md5.cpp	/^#define T31 /;"	d	file:
+T32	src/md5.cpp	/^#define T32 /;"	d	file:
+T33	src/md5.cpp	/^#define T33 /;"	d	file:
+T34	src/md5.cpp	/^#define T34 /;"	d	file:
+T35	src/md5.cpp	/^#define T35 /;"	d	file:
+T36	src/md5.cpp	/^#define T36 /;"	d	file:
+T37	src/md5.cpp	/^#define T37 /;"	d	file:
+T38	src/md5.cpp	/^#define T38 /;"	d	file:
+T39	src/md5.cpp	/^#define T39 /;"	d	file:
+T4	src/md5.cpp	/^#define T4 /;"	d	file:
+T40	src/md5.cpp	/^#define T40 /;"	d	file:
+T41	src/md5.cpp	/^#define T41 /;"	d	file:
+T42	src/md5.cpp	/^#define T42 /;"	d	file:
+T43	src/md5.cpp	/^#define T43 /;"	d	file:
+T44	src/md5.cpp	/^#define T44 /;"	d	file:
+T45	src/md5.cpp	/^#define T45 /;"	d	file:
+T46	src/md5.cpp	/^#define T46 /;"	d	file:
+T47	src/md5.cpp	/^#define T47 /;"	d	file:
+T48	src/md5.cpp	/^#define T48 /;"	d	file:
+T49	src/md5.cpp	/^#define T49 /;"	d	file:
+T5	src/md5.cpp	/^#define T5 /;"	d	file:
+T50	src/md5.cpp	/^#define T50 /;"	d	file:
+T51	src/md5.cpp	/^#define T51 /;"	d	file:
+T52	src/md5.cpp	/^#define T52 /;"	d	file:
+T53	src/md5.cpp	/^#define T53 /;"	d	file:
+T54	src/md5.cpp	/^#define T54 /;"	d	file:
+T55	src/md5.cpp	/^#define T55 /;"	d	file:
+T56	src/md5.cpp	/^#define T56 /;"	d	file:
+T57	src/md5.cpp	/^#define T57 /;"	d	file:
+T58	src/md5.cpp	/^#define T58 /;"	d	file:
+T59	src/md5.cpp	/^#define T59 /;"	d	file:
+T6	src/md5.cpp	/^#define T6 /;"	d	file:
+T60	src/md5.cpp	/^#define T60 /;"	d	file:
+T61	src/md5.cpp	/^#define T61 /;"	d	file:
+T62	src/md5.cpp	/^#define T62 /;"	d	file:
+T63	src/md5.cpp	/^#define T63 /;"	d	file:
+T64	src/md5.cpp	/^#define T64 /;"	d	file:
+T7	src/md5.cpp	/^#define T7 /;"	d	file:
+T8	src/md5.cpp	/^#define T8 /;"	d	file:
+T9	src/md5.cpp	/^#define T9 /;"	d	file:
+T_MASK	src/md5.cpp	/^#define T_MASK /;"	d	file:
+md5_append	src/md5.cpp	/^md5_append(md5_state_t *pms, const md5_byte_t *data, int nbytes)$/;"	f
+md5_finish	src/md5.cpp	/^md5_finish(md5_state_t *pms, md5_byte_t digest[16])$/;"	f
+md5_init	src/md5.cpp	/^md5_init(md5_state_t *pms)$/;"	f
+md5_process	src/md5.cpp	/^md5_process(md5_state_t *pms, const md5_byte_t *data \/*[64]*\/)$/;"	f	file:
+abcd	src/md5.h	/^    md5_word_t abcd[4];		\/* digest buffer *\/$/;"	m	struct:md5_state_s
+buf	src/md5.h	/^    md5_byte_t buf[64];		\/* accumulate block *\/$/;"	m	struct:md5_state_s
+count	src/md5.h	/^    md5_word_t count[2];	\/* message length in bits, lsw first *\/$/;"	m	struct:md5_state_s
+md5_INCLUDED	src/md5.h	/^#  define md5_INCLUDED$/;"	d
+md5_byte_t	src/md5.h	/^typedef unsigned char md5_byte_t; \/* 8-bit byte *\/$/;"	t
+md5_state_s	src/md5.h	/^typedef struct md5_state_s {$/;"	s
+md5_state_t	src/md5.h	/^} md5_state_t;$/;"	t	typeref:struct:md5_state_s
+md5_word_t	src/md5.h	/^typedef unsigned int md5_word_t; \/* 32-bit word *\/$/;"	t
+CHandShake	src/packet.cpp	/^CHandShake::CHandShake():$/;"	f	class:CHandShake
+CPacket	src/packet.cpp	/^CPacket::CPacket():$/;"	f	class:CPacket
+clone	src/packet.cpp	/^CPacket* CPacket::clone() const$/;"	f	class:CPacket
+deserialize	src/packet.cpp	/^int CHandShake::deserialize(const char* buf, int size)$/;"	f	class:CHandShake
+getAckSeqNo	src/packet.cpp	/^int32_t CPacket::getAckSeqNo() const$/;"	f	class:CPacket
+getExtendedType	src/packet.cpp	/^int CPacket::getExtendedType() const$/;"	f	class:CPacket
+getFlag	src/packet.cpp	/^int CPacket::getFlag() const$/;"	f	class:CPacket
+getLength	src/packet.cpp	/^int CPacket::getLength() const$/;"	f	class:CPacket
+getMsgBoundary	src/packet.cpp	/^int CPacket::getMsgBoundary() const$/;"	f	class:CPacket
+getMsgOrderFlag	src/packet.cpp	/^bool CPacket::getMsgOrderFlag() const$/;"	f	class:CPacket
+getMsgSeq	src/packet.cpp	/^int32_t CPacket::getMsgSeq() const$/;"	f	class:CPacket
+getPacketVector	src/packet.cpp	/^iovec* CPacket::getPacketVector()$/;"	f	class:CPacket
+getType	src/packet.cpp	/^int CPacket::getType() const$/;"	f	class:CPacket
+m_iContentSize	src/packet.cpp	/^const int CHandShake::m_iContentSize = 48;$/;"	m	class:CHandShake	file:
+m_iPktHdrSize	src/packet.cpp	/^const int CPacket::m_iPktHdrSize = 16;$/;"	m	class:CPacket	file:
+pack	src/packet.cpp	/^void CPacket::pack(int pkttype, void* lparam, void* rparam, int size)$/;"	f	class:CPacket
+serialize	src/packet.cpp	/^int CHandShake::serialize(char* buf, int& size)$/;"	f	class:CHandShake
+setLength	src/packet.cpp	/^void CPacket::setLength(int len)$/;"	f	class:CPacket
+~CPacket	src/packet.cpp	/^CPacket::~CPacket()$/;"	f	class:CPacket
+CHandShake	src/packet.h	/^class CHandShake$/;"	c
+CPacket	src/packet.h	/^class CPacket$/;"	c
+__UDT_PACKET_H__	src/packet.h	/^#define __UDT_PACKET_H__$/;"	d
+__pad	src/packet.h	/^   int32_t __pad;$/;"	m	class:CPacket
+iov_base	src/packet.h	/^      char* iov_base;$/;"	m	struct:iovec
+iov_len	src/packet.h	/^      int iov_len;$/;"	m	struct:iovec
+iovec	src/packet.h	/^   struct iovec$/;"	s
+m_PacketVector	src/packet.h	/^   iovec m_PacketVector[2];             \/\/ The 2-demension vector of UDT packet [header, data]$/;"	m	class:CPacket
+m_iContentSize	src/packet.h	/^   static const int m_iContentSize;	\/\/ Size of hand shake data$/;"	m	class:CHandShake
+m_iCookie	src/packet.h	/^   int32_t m_iCookie;		\/\/ cookie$/;"	m	class:CHandShake
+m_iFlightFlagSize	src/packet.h	/^   int32_t m_iFlightFlagSize;   \/\/ flow control window size$/;"	m	class:CHandShake
+m_iID	src/packet.h	/^   int32_t m_iID;		\/\/ socket ID$/;"	m	class:CHandShake
+m_iID	src/packet.h	/^   int32_t& m_iID;			\/\/ alias: socket ID$/;"	m	class:CPacket
+m_iISN	src/packet.h	/^   int32_t m_iISN;              \/\/ random initial sequence number$/;"	m	class:CHandShake
+m_iMSS	src/packet.h	/^   int32_t m_iMSS;              \/\/ maximum segment size$/;"	m	class:CHandShake
+m_iMsgNo	src/packet.h	/^   int32_t& m_iMsgNo;                   \/\/ alias: message number$/;"	m	class:CPacket
+m_iPktHdrSize	src/packet.h	/^   static const int m_iPktHdrSize;	\/\/ packet header size$/;"	m	class:CPacket
+m_iReqType	src/packet.h	/^   int32_t m_iReqType;          \/\/ connection request type: 1: regular connection request, 0: rendezvous connection request, -1\/-2: response$/;"	m	class:CHandShake
+m_iSeqNo	src/packet.h	/^   int32_t& m_iSeqNo;                   \/\/ alias: sequence number$/;"	m	class:CPacket
+m_iTimeStamp	src/packet.h	/^   int32_t& m_iTimeStamp;               \/\/ alias: timestamp$/;"	m	class:CPacket
+m_iType	src/packet.h	/^   int32_t m_iType;             \/\/ UDT socket type$/;"	m	class:CHandShake
+m_iVersion	src/packet.h	/^   int32_t m_iVersion;          \/\/ UDT version$/;"	m	class:CHandShake
+m_nHeader	src/packet.h	/^   uint32_t m_nHeader[4];               \/\/ The 128-bit header field$/;"	m	class:CPacket
+m_pcData	src/packet.h	/^   char*& m_pcData;                     \/\/ alias: data\/control information$/;"	m	class:CPacket
+m_piPeerIP	src/packet.h	/^   uint32_t m_piPeerIP[4];	\/\/ The IP address that the peer's UDP port is bound to$/;"	m	class:CHandShake
+CHash	src/queue.cpp	/^CHash::CHash():$/;"	f	class:CHash
+CRcvQueue	src/queue.cpp	/^CRcvQueue::CRcvQueue():$/;"	f	class:CRcvQueue
+CRcvUList	src/queue.cpp	/^CRcvUList::CRcvUList():$/;"	f	class:CRcvUList
+CRendezvousQueue	src/queue.cpp	/^CRendezvousQueue::CRendezvousQueue():$/;"	f	class:CRendezvousQueue
+CSndQueue	src/queue.cpp	/^CSndQueue::CSndQueue():$/;"	f	class:CSndQueue
+CSndUList	src/queue.cpp	/^CSndUList::CSndUList():$/;"	f	class:CSndUList
+CUnitQueue	src/queue.cpp	/^CUnitQueue::CUnitQueue():$/;"	f	class:CUnitQueue
+getNewEntry	src/queue.cpp	/^CUDT* CRcvQueue::getNewEntry()$/;"	f	class:CRcvQueue
+getNextAvailUnit	src/queue.cpp	/^CUnit* CUnitQueue::getNextAvailUnit()$/;"	f	class:CUnitQueue
+getNextProcTime	src/queue.cpp	/^uint64_t CSndUList::getNextProcTime()$/;"	f	class:CSndUList
+ifNewEntry	src/queue.cpp	/^bool CRcvQueue::ifNewEntry()$/;"	f	class:CRcvQueue
+increase	src/queue.cpp	/^int CUnitQueue::increase()$/;"	f	class:CUnitQueue
+init	src/queue.cpp	/^int CUnitQueue::init(int size, int mss, int version)$/;"	f	class:CUnitQueue
+init	src/queue.cpp	/^void CHash::init(int size)$/;"	f	class:CHash
+init	src/queue.cpp	/^void CRcvQueue::init(int qsize, int payload, int version, int hsize, CChannel* cc, CTimer* t)$/;"	f	class:CRcvQueue
+init	src/queue.cpp	/^void CSndQueue::init(CChannel* c, CTimer* t)$/;"	f	class:CSndQueue
+insert	src/queue.cpp	/^void CHash::insert(int32_t id, CUDT* u)$/;"	f	class:CHash
+insert	src/queue.cpp	/^void CRcvUList::insert(const CUDT* u)$/;"	f	class:CRcvUList
+insert	src/queue.cpp	/^void CRendezvousQueue::insert(const UDTSOCKET& id, CUDT* u, int ipv, const sockaddr* addr, uint64_t ttl)$/;"	f	class:CRendezvousQueue
+insert	src/queue.cpp	/^void CSndUList::insert(int64_t ts, const CUDT* u)$/;"	f	class:CSndUList
+insert_	src/queue.cpp	/^void CSndUList::insert_(int64_t ts, const CUDT* u)$/;"	f	class:CSndUList
+lookup	src/queue.cpp	/^CUDT* CHash::lookup(int32_t id)$/;"	f	class:CHash
+pop	src/queue.cpp	/^int CSndUList::pop(sockaddr*& addr, CPacket& pkt)$/;"	f	class:CSndUList
+recvfrom	src/queue.cpp	/^int CRcvQueue::recvfrom(int32_t id, CPacket& packet)$/;"	f	class:CRcvQueue
+registerConnector	src/queue.cpp	/^void CRcvQueue::registerConnector(const UDTSOCKET& id, CUDT* u, int ipv, const sockaddr* addr, uint64_t ttl)$/;"	f	class:CRcvQueue
+remove	src/queue.cpp	/^void CHash::remove(int32_t id)$/;"	f	class:CHash
+remove	src/queue.cpp	/^void CRcvUList::remove(const CUDT* u)$/;"	f	class:CRcvUList
+remove	src/queue.cpp	/^void CRendezvousQueue::remove(const UDTSOCKET& id)$/;"	f	class:CRendezvousQueue
+remove	src/queue.cpp	/^void CSndUList::remove(const CUDT* u)$/;"	f	class:CSndUList
+removeConnector	src/queue.cpp	/^void CRcvQueue::removeConnector(const UDTSOCKET& id)$/;"	f	class:CRcvQueue
+removeListener	src/queue.cpp	/^void CRcvQueue::removeListener(const CUDT* u)$/;"	f	class:CRcvQueue
+remove_	src/queue.cpp	/^void CSndUList::remove_(const CUDT* u)$/;"	f	class:CSndUList
+retrieve	src/queue.cpp	/^CUDT* CRendezvousQueue::retrieve(const sockaddr* addr, UDTSOCKET& id)$/;"	f	class:CRendezvousQueue
+sendto	src/queue.cpp	/^int CSndQueue::sendto(const sockaddr* addr, CPacket& packet)$/;"	f	class:CSndQueue
+setListener	src/queue.cpp	/^int CRcvQueue::setListener(CUDT* u)$/;"	f	class:CRcvQueue
+setNewEntry	src/queue.cpp	/^void CRcvQueue::setNewEntry(CUDT* u)$/;"	f	class:CRcvQueue
+shrink	src/queue.cpp	/^int CUnitQueue::shrink()$/;"	f	class:CUnitQueue
+storePkt	src/queue.cpp	/^void CRcvQueue::storePkt(int32_t id, CPacket* pkt)$/;"	f	class:CRcvQueue
+update	src/queue.cpp	/^void CRcvUList::update(const CUDT* u)$/;"	f	class:CRcvUList
+update	src/queue.cpp	/^void CSndUList::update(const CUDT* u, bool reschedule)$/;"	f	class:CSndUList
+updateConnStatus	src/queue.cpp	/^void CRendezvousQueue::updateConnStatus()$/;"	f	class:CRendezvousQueue
+worker	src/queue.cpp	/^   void* CRcvQueue::worker(void* param)$/;"	f	class:CRcvQueue
+worker	src/queue.cpp	/^   void* CSndQueue::worker(void* param)$/;"	f	class:CSndQueue
+~CHash	src/queue.cpp	/^CHash::~CHash()$/;"	f	class:CHash
+~CRcvQueue	src/queue.cpp	/^CRcvQueue::~CRcvQueue()$/;"	f	class:CRcvQueue
+~CRcvUList	src/queue.cpp	/^CRcvUList::~CRcvUList()$/;"	f	class:CRcvUList
+~CRendezvousQueue	src/queue.cpp	/^CRendezvousQueue::~CRendezvousQueue()$/;"	f	class:CRendezvousQueue
+~CSndQueue	src/queue.cpp	/^CSndQueue::~CSndQueue()$/;"	f	class:CSndQueue
+~CSndUList	src/queue.cpp	/^CSndUList::~CSndUList()$/;"	f	class:CSndUList
+~CUnitQueue	src/queue.cpp	/^CUnitQueue::~CUnitQueue()$/;"	f	class:CUnitQueue
+CBucket	src/queue.h	/^   struct CBucket$/;"	s	class:CHash
+CHash	src/queue.h	/^class CHash$/;"	c
+CMultiplexer	src/queue.h	/^struct CMultiplexer$/;"	s
+CQEntry	src/queue.h	/^   struct CQEntry$/;"	s	class:CUnitQueue
+CRL	src/queue.h	/^   struct CRL$/;"	s	class:CRendezvousQueue
+CRNode	src/queue.h	/^struct CRNode$/;"	s
+CRcvQueue	src/queue.h	/^class CRcvQueue$/;"	c
+CRcvUList	src/queue.h	/^class CRcvUList$/;"	c
+CRendezvousQueue	src/queue.h	/^class CRendezvousQueue$/;"	c
+CSNode	src/queue.h	/^struct CSNode$/;"	s
+CSndQueue	src/queue.h	/^class CSndQueue$/;"	c
+CSndUList	src/queue.h	/^class CSndUList$/;"	c
+CUnit	src/queue.h	/^struct CUnit$/;"	s
+CUnitQueue	src/queue.h	/^class CUnitQueue$/;"	c
+__UDT_QUEUE_H__	src/queue.h	/^#define __UDT_QUEUE_H__$/;"	d
+m_ExitCond	src/queue.h	/^   pthread_cond_t m_ExitCond;$/;"	m	class:CRcvQueue
+m_ExitCond	src/queue.h	/^   pthread_cond_t m_ExitCond;$/;"	m	class:CSndQueue
+m_IDLock	src/queue.h	/^   pthread_mutex_t m_IDLock;$/;"	m	class:CRcvQueue
+m_LSLock	src/queue.h	/^   pthread_mutex_t m_LSLock;$/;"	m	class:CRcvQueue
+m_ListLock	src/queue.h	/^   pthread_mutex_t m_ListLock;$/;"	m	class:CSndUList
+m_Packet	src/queue.h	/^   CPacket m_Packet;		\/\/ packet$/;"	m	struct:CUnit
+m_PassCond	src/queue.h	/^   pthread_cond_t m_PassCond;$/;"	m	class:CRcvQueue
+m_PassLock	src/queue.h	/^   pthread_mutex_t m_PassLock;$/;"	m	class:CRcvQueue
+m_RIDVectorLock	src/queue.h	/^   pthread_mutex_t m_RIDVectorLock;$/;"	m	class:CRendezvousQueue
+m_UnitQueue	src/queue.h	/^   CUnitQueue m_UnitQueue;		\/\/ The received packet queue$/;"	m	class:CRcvQueue
+m_WindowCond	src/queue.h	/^   pthread_cond_t m_WindowCond;$/;"	m	class:CSndQueue
+m_WindowLock	src/queue.h	/^   pthread_mutex_t m_WindowLock;$/;"	m	class:CSndQueue
+m_WorkerThread	src/queue.h	/^   pthread_t m_WorkerThread;$/;"	m	class:CRcvQueue
+m_WorkerThread	src/queue.h	/^   pthread_t m_WorkerThread;$/;"	m	class:CSndQueue
+m_bClosing	src/queue.h	/^   volatile bool m_bClosing;		\/\/ closing the worker$/;"	m	class:CSndQueue
+m_bClosing	src/queue.h	/^   volatile bool m_bClosing;            \/\/ closing the workder$/;"	m	class:CRcvQueue
+m_bOnList	src/queue.h	/^   bool m_bOnList;              \/\/ if the node is already on the list$/;"	m	struct:CRNode
+m_bReusable	src/queue.h	/^   bool m_bReusable;		\/\/ if this one can be shared with others$/;"	m	struct:CMultiplexer
+m_iArrayLength	src/queue.h	/^   int m_iArrayLength;			\/\/ physical length of the array$/;"	m	class:CSndUList
+m_iCount	src/queue.h	/^   int m_iCount;		\/\/ total number of valid packets in the queue$/;"	m	class:CUnitQueue
+m_iFlag	src/queue.h	/^   int m_iFlag;			\/\/ 0: free, 1: occupied, 2: msg read but not freed (out-of-order), 3: msg dropped$/;"	m	struct:CUnit
+m_iHashSize	src/queue.h	/^   int m_iHashSize;		\/\/ size of hash table$/;"	m	class:CHash
+m_iHeapLoc	src/queue.h	/^   int m_iHeapLoc;		\/\/ location on the heap, -1 means not on the heap$/;"	m	struct:CSNode
+m_iID	src/queue.h	/^      UDTSOCKET m_iID;			\/\/ UDT socket ID (self)$/;"	m	struct:CRendezvousQueue::CRL
+m_iID	src/queue.h	/^      int32_t m_iID;		\/\/ Socket ID$/;"	m	struct:CHash::CBucket
+m_iID	src/queue.h	/^   int m_iID;			\/\/ multiplexer ID$/;"	m	struct:CMultiplexer
+m_iIPversion	src/queue.h	/^      int m_iIPversion;                 \/\/ IP version$/;"	m	struct:CRendezvousQueue::CRL
+m_iIPversion	src/queue.h	/^   int m_iIPversion;		\/\/ IP version$/;"	m	class:CUnitQueue
+m_iIPversion	src/queue.h	/^   int m_iIPversion;		\/\/ IP version$/;"	m	struct:CMultiplexer
+m_iLastEntry	src/queue.h	/^   int m_iLastEntry;			\/\/ position of last entry on the heap array$/;"	m	class:CSndUList
+m_iMSS	src/queue.h	/^   int m_iMSS;			\/\/ Maximum Segment Size$/;"	m	struct:CMultiplexer
+m_iMSS	src/queue.h	/^   int m_iMSS;			\/\/ unit buffer size$/;"	m	class:CUnitQueue
+m_iPayloadSize	src/queue.h	/^   int m_iPayloadSize;                  \/\/ packet payload size$/;"	m	class:CRcvQueue
+m_iPort	src/queue.h	/^   int m_iPort;			\/\/ The UDP port number of this multiplexer$/;"	m	struct:CMultiplexer
+m_iRefCount	src/queue.h	/^   int m_iRefCount;		\/\/ number of UDT instances that are associated with this multiplexer$/;"	m	struct:CMultiplexer
+m_iSize	src/queue.h	/^      int m_iSize;		\/\/ size of each queue$/;"	m	struct:CUnitQueue::CQEntry
+m_iSize	src/queue.h	/^   int m_iSize;			\/\/ total size of the unit queue, in number of packets$/;"	m	class:CUnitQueue
+m_lRendezvousID	src/queue.h	/^   std::list<CRL> m_lRendezvousID;      \/\/ The sockets currently in rendezvous mode$/;"	m	class:CRendezvousQueue
+m_llTimeStamp	src/queue.h	/^   uint64_t m_llTimeStamp;      \/\/ Time Stamp$/;"	m	struct:CRNode
+m_llTimeStamp	src/queue.h	/^   uint64_t m_llTimeStamp;      \/\/ Time Stamp$/;"	m	struct:CSNode
+m_mBuffer	src/queue.h	/^   std::map<int32_t, std::queue<CPacket*> > m_mBuffer;	\/\/ temporary buffer for rendezvous connection request$/;"	m	class:CRcvQueue
+m_pAvailUnit	src/queue.h	/^   CUnit* m_pAvailUnit;         \/\/ recent available unit$/;"	m	class:CUnitQueue
+m_pBucket	src/queue.h	/^   } **m_pBucket;		\/\/ list of buckets (the hash table)$/;"	m	class:CHash	typeref:struct:CHash::CBucket
+m_pBuffer	src/queue.h	/^      char* m_pBuffer;		\/\/ data buffer$/;"	m	struct:CUnitQueue::CQEntry
+m_pChannel	src/queue.h	/^   CChannel* m_pChannel;		\/\/ UDP channel for receving packets$/;"	m	class:CRcvQueue
+m_pChannel	src/queue.h	/^   CChannel* m_pChannel;	\/\/ The UDP channel for sending and receiving$/;"	m	struct:CMultiplexer
+m_pChannel	src/queue.h	/^   CChannel* m_pChannel;                \/\/ The UDP channel for data sending$/;"	m	class:CSndQueue
+m_pCurrQueue	src/queue.h	/^   *m_pCurrQueue,		\/\/ pointer to the current available queue$/;"	m	class:CUnitQueue	typeref:struct:CUnitQueue::CQEntry
+m_pHash	src/queue.h	/^   CHash* m_pHash;			\/\/ Hash table for UDT socket looking up$/;"	m	class:CRcvQueue
+m_pHeap	src/queue.h	/^   CSNode** m_pHeap;			\/\/ The heap array$/;"	m	class:CSndUList
+m_pLast	src/queue.h	/^   CRNode* m_pLast;		\/\/ the last node$/;"	m	class:CRcvUList
+m_pLastQueue	src/queue.h	/^   *m_pLastQueue;		\/\/ pointer to the last unit queue$/;"	m	class:CUnitQueue	typeref:struct:CUnitQueue::CQEntry
+m_pListener	src/queue.h	/^   CUDT* m_pListener;                                   \/\/ pointer to the (unique, if any) listening UDT entity$/;"	m	class:CRcvQueue
+m_pNext	src/queue.h	/^      CBucket* m_pNext;		\/\/ next bucket$/;"	m	struct:CHash::CBucket
+m_pNext	src/queue.h	/^      CQEntry* m_pNext;$/;"	m	struct:CUnitQueue::CQEntry
+m_pNext	src/queue.h	/^   CRNode* m_pNext;             \/\/ next link$/;"	m	struct:CRNode
+m_pPeerAddr	src/queue.h	/^      sockaddr* m_pPeerAddr;		\/\/ UDT sonnection peer address$/;"	m	struct:CRendezvousQueue::CRL
+m_pPrev	src/queue.h	/^   CRNode* m_pPrev;             \/\/ previous link$/;"	m	struct:CRNode
+m_pQEntry	src/queue.h	/^   *m_pQEntry,			\/\/ pointer to the first unit queue$/;"	m	class:CUnitQueue	typeref:struct:CUnitQueue::CQEntry
+m_pRcvQueue	src/queue.h	/^   CRcvQueue* m_pRcvQueue;	\/\/ The receiving queue$/;"	m	struct:CMultiplexer
+m_pRcvUList	src/queue.h	/^   CRcvUList* m_pRcvUList;		\/\/ List of UDT instances that will read packets from the queue$/;"	m	class:CRcvQueue
+m_pRendezvousQueue	src/queue.h	/^   CRendezvousQueue* m_pRendezvousQueue;                \/\/ The list of sockets in rendezvous mode$/;"	m	class:CRcvQueue
+m_pSndQueue	src/queue.h	/^   CSndQueue* m_pSndQueue;	\/\/ The sending queue$/;"	m	struct:CMultiplexer
+m_pSndUList	src/queue.h	/^   CSndUList* m_pSndUList;		\/\/ List of UDT instances for data sending$/;"	m	class:CSndQueue
+m_pTimer	src/queue.h	/^   CTimer* m_pTimer;			\/\/ Timing facility$/;"	m	class:CSndQueue
+m_pTimer	src/queue.h	/^   CTimer* m_pTimer;			\/\/ shared timer with the snd queue$/;"	m	class:CRcvQueue
+m_pTimer	src/queue.h	/^   CTimer* m_pTimer;		\/\/ The timer$/;"	m	struct:CMultiplexer
+m_pTimer	src/queue.h	/^   CTimer* m_pTimer;$/;"	m	class:CSndUList
+m_pUDT	src/queue.h	/^      CUDT* m_pUDT;			\/\/ UDT instance$/;"	m	struct:CRendezvousQueue::CRL
+m_pUDT	src/queue.h	/^      CUDT* m_pUDT;		\/\/ Socket instance$/;"	m	struct:CHash::CBucket
+m_pUDT	src/queue.h	/^   CUDT* m_pUDT;		\/\/ Pointer to the instance of CUDT socket$/;"	m	struct:CSNode
+m_pUDT	src/queue.h	/^   CUDT* m_pUDT;                \/\/ Pointer to the instance of CUDT socket$/;"	m	struct:CRNode
+m_pUList	src/queue.h	/^   CRNode* m_pUList;		\/\/ the head node$/;"	m	class:CRcvUList
+m_pUnit	src/queue.h	/^      CUnit* m_pUnit;		\/\/ unit queue$/;"	m	struct:CUnitQueue::CQEntry
+m_pWindowCond	src/queue.h	/^   pthread_cond_t* m_pWindowCond;$/;"	m	class:CSndUList
+m_pWindowLock	src/queue.h	/^   pthread_mutex_t* m_pWindowLock;$/;"	m	class:CSndUList
+m_ullTTL	src/queue.h	/^      uint64_t m_ullTTL;			\/\/ the time that this request expires$/;"	m	struct:CRendezvousQueue::CRL
+m_vNewEntry	src/queue.h	/^   std::vector<CUDT*> m_vNewEntry;                      \/\/ newly added entries, to be inserted$/;"	m	class:CRcvQueue
+alpha	src/tcp_vegas.c	/^static int alpha = 2;$/;"	v	file:
+beta	src/tcp_vegas.c	/^static int beta  = 4;$/;"	v	file:
+gamma	src/tcp_vegas.c	/^static int gamma = 1;$/;"	v	file:
+tcp_vegas_cong_avoid	src/tcp_vegas.c	/^static void tcp_vegas_cong_avoid(struct sock *sk, u32 ack, u32 in_flight)$/;"	f	file:
+tcp_vegas_cwnd_event	src/tcp_vegas.c	/^EXPORT_SYMBOL_GPL(tcp_vegas_cwnd_event);$/;"	v
+tcp_vegas_cwnd_event	src/tcp_vegas.c	/^void tcp_vegas_cwnd_event(struct sock *sk, enum tcp_ca_event event)$/;"	f
+tcp_vegas_get_info	src/tcp_vegas.c	/^EXPORT_SYMBOL_GPL(tcp_vegas_get_info);$/;"	v
+tcp_vegas_get_info	src/tcp_vegas.c	/^void tcp_vegas_get_info(struct sock *sk, u32 ext, struct sk_buff *skb)$/;"	f
+tcp_vegas_init	src/tcp_vegas.c	/^EXPORT_SYMBOL_GPL(tcp_vegas_init);$/;"	v
+tcp_vegas_init	src/tcp_vegas.c	/^void tcp_vegas_init(struct sock *sk)$/;"	f
+tcp_vegas_pkts_acked	src/tcp_vegas.c	/^EXPORT_SYMBOL_GPL(tcp_vegas_pkts_acked);$/;"	v
+tcp_vegas_pkts_acked	src/tcp_vegas.c	/^void tcp_vegas_pkts_acked(struct sock *sk, u32 cnt, s32 rtt_us)$/;"	f
+tcp_vegas_register	src/tcp_vegas.c	/^module_init(tcp_vegas_register);$/;"	v
+tcp_vegas_register	src/tcp_vegas.c	/^static int __init tcp_vegas_register(void)$/;"	f	file:
+tcp_vegas_ssthresh	src/tcp_vegas.c	/^static inline u32 tcp_vegas_ssthresh(struct tcp_sock *tp)$/;"	f	file:
+tcp_vegas_state	src/tcp_vegas.c	/^EXPORT_SYMBOL_GPL(tcp_vegas_state);$/;"	v
+tcp_vegas_state	src/tcp_vegas.c	/^void tcp_vegas_state(struct sock *sk, u8 ca_state)$/;"	f
+tcp_vegas_unregister	src/tcp_vegas.c	/^module_exit(tcp_vegas_unregister);$/;"	v
+tcp_vegas_unregister	src/tcp_vegas.c	/^static void __exit tcp_vegas_unregister(void)$/;"	f	file:
+tcp_vegasx	src/tcp_vegas.c	/^struct tcp_congestion_ops tcp_vegasx = {$/;"	v	typeref:struct:tcp_congestion_ops
+vegas_disable	src/tcp_vegas.c	/^static inline void vegas_disable(struct sock *sk)$/;"	f	file:
+vegas_enable	src/tcp_vegas.c	/^static void vegas_enable(struct sock *sk)$/;"	f	file:
+__TCP_VEGAS_H	src/tcp_vegas.h	/^#define __TCP_VEGAS_H /;"	d
+baseRTT	src/tcp_vegas.h	/^	u32	baseRTT;	\/* the min of all Vegas RTT measurements seen (in usec) *\/$/;"	m	struct:vegas
+beg_snd_cwnd	src/tcp_vegas.h	/^	u32	beg_snd_cwnd;	\/* saves the size of the cwnd *\/$/;"	m	struct:vegas
+beg_snd_nxt	src/tcp_vegas.h	/^	u32	beg_snd_nxt;	\/* right edge during last RTT *\/$/;"	m	struct:vegas
+beg_snd_una	src/tcp_vegas.h	/^	u32	beg_snd_una;	\/* left edge  during last RTT *\/$/;"	m	struct:vegas
+cntRTT	src/tcp_vegas.h	/^	u16	cntRTT;		\/* # of RTTs measured within last RTT *\/$/;"	m	struct:vegas
+doing_vegas_now	src/tcp_vegas.h	/^	u8	doing_vegas_now;\/* if true, do vegas for this RTT *\/$/;"	m	struct:vegas
+minRTT	src/tcp_vegas.h	/^	u32	minRTT;		\/* min of RTTs measured within last RTT (in usec) *\/$/;"	m	struct:vegas
+vegas	src/tcp_vegas.h	/^struct vegas {$/;"	s
+tcp_cong_avoid_ai	src/tcpabstract.c	/^void tcp_cong_avoid_ai(struct tcp_sock *tp, u32 w)$/;"	f
+tcp_current_ssthresh	src/tcpabstract.c	/^u32 tcp_current_ssthresh(struct sock *sk)$/;"	f
+tcp_is_cwnd_limited	src/tcpabstract.c	/^int tcp_is_cwnd_limited(const struct sock *sk, u32 in_flight)$/;"	f
+tcp_reno_cong_avoid	src/tcpabstract.c	/^void tcp_reno_cong_avoid(struct sock *sk, u32 ack, u32 in_flight)$/;"	f
+tcp_reno_min_cwnd	src/tcpabstract.c	/^u32 tcp_reno_min_cwnd(const struct sock *sk)$/;"	f
+tcp_reno_ssthresh	src/tcpabstract.c	/^u32 tcp_reno_ssthresh(struct sock *sk)$/;"	f
+tcp_slow_start	src/tcpabstract.c	/^void tcp_slow_start(struct tcp_sock *tp)$/;"	f
+ARRAY_SIZE	src/tcpabstract.h	/^#define ARRAY_SIZE(/;"	d
+BUG_ON	src/tcpabstract.h	/^#define BUG_ON(/;"	d
+BUILD_BUG_ON	src/tcpabstract.h	/^#define BUILD_BUG_ON(/;"	d
+CA_EVENT_COMPLETE_CWR	src/tcpabstract.h	/^	CA_EVENT_COMPLETE_CWR,	\/* end of congestion recovery *\/$/;"	e	enum:tcp_ca_event
+CA_EVENT_CWND_RESTART	src/tcpabstract.h	/^	CA_EVENT_CWND_RESTART,	\/* congestion window restart *\/$/;"	e	enum:tcp_ca_event
+CA_EVENT_FAST_ACK	src/tcpabstract.h	/^	CA_EVENT_FAST_ACK,		\/* in sequence ack *\/$/;"	e	enum:tcp_ca_event
+CA_EVENT_FRTO	src/tcpabstract.h	/^	CA_EVENT_FRTO,			\/* fast recovery timeout *\/$/;"	e	enum:tcp_ca_event
+CA_EVENT_LOSS	src/tcpabstract.h	/^	CA_EVENT_LOSS,			\/* loss timeout *\/$/;"	e	enum:tcp_ca_event
+CA_EVENT_SLOW_ACK	src/tcpabstract.h	/^	CA_EVENT_SLOW_ACK,		\/* other ack *\/$/;"	e	enum:tcp_ca_event
+CA_EVENT_TX_START	src/tcpabstract.h	/^	CA_EVENT_TX_START,		\/* first transmit when no packets in flight *\/$/;"	e	enum:tcp_ca_event
+CONFIG_DEFAULT_TCP_CONG	src/tcpabstract.h	/^#define CONFIG_DEFAULT_TCP_CONG /;"	d
+EXPORT_SYMBOL_GPL	src/tcpabstract.h	/^#define EXPORT_SYMBOL_GPL(/;"	d
+FLAG_CA_ALERT	src/tcpabstract.h	/^#define FLAG_CA_ALERT /;"	d
+FLAG_DATA_ACKED	src/tcpabstract.h	/^#define FLAG_DATA_ACKED /;"	d
+FLAG_DATA_LOST	src/tcpabstract.h	/^#define FLAG_DATA_LOST /;"	d
+FLAG_DATA_SACKED	src/tcpabstract.h	/^#define FLAG_DATA_SACKED /;"	d
+FLAG_ECE	src/tcpabstract.h	/^#define FLAG_ECE /;"	d
+FLAG_NOT_DUP	src/tcpabstract.h	/^#define FLAG_NOT_DUP	/;"	d
+FLAG_UNSURE_TSTAMP	src/tcpabstract.h	/^#define FLAG_UNSURE_TSTAMP /;"	d
+INET_DIAG_CONG	src/tcpabstract.h	/^	INET_DIAG_CONG,$/;"	e	enum:__anon2
+INET_DIAG_INFO	src/tcpabstract.h	/^	INET_DIAG_INFO,$/;"	e	enum:__anon2
+INET_DIAG_MEMINFO	src/tcpabstract.h	/^	INET_DIAG_MEMINFO,$/;"	e	enum:__anon2
+INET_DIAG_NONE	src/tcpabstract.h	/^	INET_DIAG_NONE,$/;"	e	enum:__anon2
+INET_DIAG_VEGASINFO	src/tcpabstract.h	/^	INET_DIAG_VEGASINFO,$/;"	e	enum:__anon2
+JIFFY_RATIO	src/tcpabstract.h	/^#define JIFFY_RATIO /;"	d
+KERN_ERR	src/tcpabstract.h	/^#define KERN_ERR /;"	d
+KERN_INFO	src/tcpabstract.h	/^#define KERN_INFO /;"	d
+KERN_NOTICE	src/tcpabstract.h	/^#define KERN_NOTICE /;"	d
+MODULE_AUTHOR	src/tcpabstract.h	/^#define MODULE_AUTHOR(/;"	d
+MODULE_DESCRIPTION	src/tcpabstract.h	/^#define MODULE_DESCRIPTION(/;"	d
+MODULE_LICENSE	src/tcpabstract.h	/^#define MODULE_LICENSE(/;"	d
+MODULE_PARM_DESC	src/tcpabstract.h	/^#define MODULE_PARM_DESC(/;"	d
+MODULE_VERSION	src/tcpabstract.h	/^#define MODULE_VERSION(/;"	d
+MS_RATIO	src/tcpabstract.h	/^#define MS_RATIO /;"	d
+TCPF_CA_CWR	src/tcpabstract.h	/^#define TCPF_CA_CWR	/;"	d
+TCPF_CA_Disorder	src/tcpabstract.h	/^#define TCPF_CA_Disorder /;"	d
+TCPF_CA_Loss	src/tcpabstract.h	/^#define TCPF_CA_Loss	/;"	d
+TCPF_CA_Open	src/tcpabstract.h	/^#define TCPF_CA_Open	/;"	d
+TCPF_CA_Recovery	src/tcpabstract.h	/^#define TCPF_CA_Recovery /;"	d
+TCP_CA_BUF_MAX	src/tcpabstract.h	/^#define TCP_CA_BUF_MAX	/;"	d
+TCP_CA_CWR	src/tcpabstract.h	/^	TCP_CA_CWR = 2,$/;"	e	enum:tcp_ca_state
+TCP_CA_Disorder	src/tcpabstract.h	/^	TCP_CA_Disorder = 1,$/;"	e	enum:tcp_ca_state
+TCP_CA_Loss	src/tcpabstract.h	/^	TCP_CA_Loss = 4$/;"	e	enum:tcp_ca_state
+TCP_CA_MAX	src/tcpabstract.h	/^#define TCP_CA_MAX	/;"	d
+TCP_CA_NAME_MAX	src/tcpabstract.h	/^#define TCP_CA_NAME_MAX	/;"	d
+TCP_CA_Open	src/tcpabstract.h	/^	TCP_CA_Open = 0,$/;"	e	enum:tcp_ca_state
+TCP_CA_Recovery	src/tcpabstract.h	/^	TCP_CA_Recovery = 3,$/;"	e	enum:tcp_ca_state
+TCP_CLOSE	src/tcpabstract.h	/^#define TCP_CLOSE /;"	d
+TCP_CONG_NON_RESTRICTED	src/tcpabstract.h	/^#define TCP_CONG_NON_RESTRICTED /;"	d
+TCP_CONG_RTT_STAMP	src/tcpabstract.h	/^#define TCP_CONG_RTT_STAMP	/;"	d
+THIS_LIST	src/tcpabstract.h	/^#define THIS_LIST /;"	d
+THIS_MODULE	src/tcpabstract.h	/^#define THIS_MODULE /;"	d
+US_RATIO	src/tcpabstract.h	/^#define US_RATIO /;"	d
+WARN_ON	src/tcpabstract.h	/^#define WARN_ON(/;"	d
+__UDT_LINUXWRAP_H__	src/tcpabstract.h	/^#define __UDT_LINUXWRAP_H__ /;"	d
+__exit	src/tcpabstract.h	/^#define __exit$/;"	d
+__init	src/tcpabstract.h	/^#define __init$/;"	d
+__u16	src/tcpabstract.h	/^#define __u16 /;"	d
+__u32	src/tcpabstract.h	/^#define __u32 /;"	d
+__u64	src/tcpabstract.h	/^#define __u64 /;"	d
+__u8	src/tcpabstract.h	/^#define __u8 /;"	d
+after	src/tcpabstract.h	/^#define after(/;"	d
+before	src/tcpabstract.h	/^#define before(/;"	d
+cong_avoid	src/tcpabstract.h	/^	void (*cong_avoid)(struct sock *sk, u32 ack, u32 in_flight);$/;"	m	struct:tcp_congestion_ops
+cwnd_event	src/tcpabstract.h	/^	void (*cwnd_event)(struct sock *sk, enum tcp_ca_event ev);$/;"	m	struct:tcp_congestion_ops
+empty	src/tcpabstract.h	/^	char empty;	$/;"	m	struct:list_head
+empty	src/tcpabstract.h	/^	char empty;$/;"	m	struct:module
+flags	src/tcpabstract.h	/^	unsigned long flags;$/;"	m	struct:tcp_congestion_ops
+get_info	src/tcpabstract.h	/^	void (*get_info)(struct sock *sk, u32 ext, struct sk_buff *skb);$/;"	m	struct:tcp_congestion_ops
+icsk_ca_priv	src/tcpabstract.h	/^	u32	icsk_ca_priv[16];	\/*Protocol specific struct*\/$/;"	m	struct:sock
+inet_csk	src/tcpabstract.h	/^#define inet_csk(/;"	d
+inet_csk_ca	src/tcpabstract.h	/^#define inet_csk_ca(/;"	d
+init	src/tcpabstract.h	/^	void (*init)(struct sock *sk);$/;"	m	struct:tcp_congestion_ops
+jiffies_to_usecs	src/tcpabstract.h	/^#define jiffies_to_usecs(/;"	d
+ktime_t	src/tcpabstract.h	/^#define ktime_t /;"	d
+list	src/tcpabstract.h	/^	struct list_head	list;$/;"	m	struct:tcp_congestion_ops	typeref:struct:tcp_congestion_ops::list_head
+list_head	src/tcpabstract.h	/^struct list_head$/;"	s
+max	src/tcpabstract.h	/^#define max(/;"	d
+max_t	src/tcpabstract.h	/^#define max_t(/;"	d
+min	src/tcpabstract.h	/^#define min(/;"	d
+min_cwnd	src/tcpabstract.h	/^	u32 (*min_cwnd)(const struct sock *sk);$/;"	m	struct:tcp_congestion_ops
+min_t	src/tcpabstract.h	/^#define min_t(/;"	d
+module	src/tcpabstract.h	/^struct module$/;"	s
+module_param	src/tcpabstract.h	/^#define module_param(/;"	d
+module_put	src/tcpabstract.h	/^#define module_put(/;"	d
+msecs_to_jiffies	src/tcpabstract.h	/^#define msecs_to_jiffies(/;"	d
+name	src/tcpabstract.h	/^	char 		name[TCP_CA_NAME_MAX];$/;"	m	struct:tcp_congestion_ops
+nla_put	src/tcpabstract.h	/^#define nla_put(/;"	d
+owner	src/tcpabstract.h	/^	struct module 	*owner;$/;"	m	struct:tcp_congestion_ops	typeref:struct:tcp_congestion_ops::module
+pkts_acked	src/tcpabstract.h	/^	void (*pkts_acked)(struct sock *sk, u32 num_acked, s32 rtt_us);$/;"	m	struct:tcp_congestion_ops
+printk	src/tcpabstract.h	/^#define printk(/;"	d
+release	src/tcpabstract.h	/^	void (*release)(struct sock *sk);$/;"	m	struct:tcp_congestion_ops
+s32	src/tcpabstract.h	/^#define s32 /;"	d
+s64	src/tcpabstract.h	/^#define s64 /;"	d
+set_state	src/tcpabstract.h	/^	void (*set_state)(struct sock *sk, u8 new_state);$/;"	m	struct:tcp_congestion_ops
+sk_buff	src/tcpabstract.h	/^struct sk_buff{};$/;"	s
+snd_cwnd	src/tcpabstract.h	/^ 	u32	snd_cwnd;			\/*Sending congestion window*\/	$/;"	m	struct:sock
+snd_cwnd_clamp	src/tcpabstract.h	/^	u32 snd_cwnd_clamp;		\/*Max cwnd size*\/$/;"	m	struct:sock
+snd_cwnd_cnt	src/tcpabstract.h	/^	u32	snd_cwnd_cnt;		\/*Linear increase counter*\/$/;"	m	struct:sock
+snd_nxt	src/tcpabstract.h	/^	u32	snd_nxt;			\/* Next sequence we send*\/$/;"	m	struct:sock
+snd_ssthresh	src/tcpabstract.h	/^	u32	snd_ssthresh;		\/*Slow start size threshold*\/$/;"	m	struct:sock
+snd_una	src/tcpabstract.h	/^ 	u32	snd_una;			\/*First byte we want an ack for*\/$/;"	m	struct:sock
+snd_wnd	src/tcpabstract.h	/^ 	u32	snd_wnd;			\/*The window we expect to receive*\/$/;"	m	struct:sock
+sock	src/tcpabstract.h	/^struct sock$/;"	s
+srtt	src/tcpabstract.h	/^ 	u32	srtt;				\/*smoothed round trip time << 3	*\/$/;"	m	struct:sock
+ssthresh	src/tcpabstract.h	/^	u32 (*ssthresh)(struct sock *sk);$/;"	m	struct:tcp_congestion_ops
+tcp_ca_event	src/tcpabstract.h	/^enum tcp_ca_event {$/;"	g
+tcp_ca_state	src/tcpabstract.h	/^enum tcp_ca_state$/;"	g
+tcp_congestion_ops	src/tcpabstract.h	/^struct tcp_congestion_ops {$/;"	s
+tcp_register_congestion_control	src/tcpabstract.h	/^#define tcp_register_congestion_control(/;"	d
+tcp_sk	src/tcpabstract.h	/^#define tcp_sk(/;"	d
+tcp_sock	src/tcpabstract.h	/^#define tcp_sock /;"	d
+tcp_unregister_congestion_control	src/tcpabstract.h	/^#define tcp_unregister_congestion_control(/;"	d
+tcpv_enabled	src/tcpabstract.h	/^	__u32	tcpv_enabled;$/;"	m	struct:tcpvegas_info
+tcpv_minrtt	src/tcpabstract.h	/^	__u32	tcpv_minrtt;$/;"	m	struct:tcpvegas_info
+tcpv_rtt	src/tcpabstract.h	/^	__u32	tcpv_rtt;$/;"	m	struct:tcpvegas_info
+tcpv_rttcnt	src/tcpabstract.h	/^	__u32	tcpv_rttcnt;$/;"	m	struct:tcpvegas_info
+tcpvegas_info	src/tcpabstract.h	/^struct tcpvegas_info {$/;"	s
+try_module_get	src/tcpabstract.h	/^#define try_module_get(/;"	d
+u16	src/tcpabstract.h	/^#define u16 /;"	d
+u32	src/tcpabstract.h	/^#define u32 /;"	d
+u64	src/tcpabstract.h	/^#define u64 /;"	d
+u8	src/tcpabstract.h	/^#define u8 /;"	d
+undo_cwnd	src/tcpabstract.h	/^	u32  (*undo_cwnd)(struct sock *sk);$/;"	m	struct:tcp_congestion_ops
+BROKEN	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+CLOSED	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+CLOSING	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+CONNECTED	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+CONNECTING	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+CPerfMon	src/udt.h	/^struct CPerfMon$/;"	s
+CUDTException	src/udt.h	/^class UDT_API CUDTException$/;"	c
+EASYNCFAIL	src/udt.h	/^   static const int EASYNCFAIL;$/;"	m	class:CUDTException
+EASYNCRCV	src/udt.h	/^   static const int EASYNCRCV;$/;"	m	class:CUDTException
+EASYNCSND	src/udt.h	/^   static const int EASYNCSND;$/;"	m	class:CUDTException
+EBOUNDSOCK	src/udt.h	/^   static const int EBOUNDSOCK;$/;"	m	class:CUDTException
+ECONNFAIL	src/udt.h	/^   static const int ECONNFAIL;$/;"	m	class:CUDTException
+ECONNLOST	src/udt.h	/^   static const int ECONNLOST;$/;"	m	class:CUDTException
+ECONNREJ	src/udt.h	/^   static const int ECONNREJ;$/;"	m	class:CUDTException
+ECONNSETUP	src/udt.h	/^   static const int ECONNSETUP;$/;"	m	class:CUDTException
+ECONNSOCK	src/udt.h	/^   static const int ECONNSOCK;$/;"	m	class:CUDTException
+EDGRAMILL	src/udt.h	/^   static const int EDGRAMILL;$/;"	m	class:CUDTException
+EDUPLISTEN	src/udt.h	/^   static const int EDUPLISTEN;$/;"	m	class:CUDTException
+EFILE	src/udt.h	/^   static const int EFILE;$/;"	m	class:CUDTException
+EINVOP	src/udt.h	/^   static const int EINVOP;$/;"	m	class:CUDTException
+EINVPARAM	src/udt.h	/^   static const int EINVPARAM;$/;"	m	class:CUDTException
+EINVPOLLID	src/udt.h	/^   static const int EINVPOLLID;$/;"	m	class:CUDTException
+EINVRDOFF	src/udt.h	/^   static const int EINVRDOFF;$/;"	m	class:CUDTException
+EINVSOCK	src/udt.h	/^   static const int EINVSOCK;$/;"	m	class:CUDTException
+EINVWROFF	src/udt.h	/^   static const int EINVWROFF;$/;"	m	class:CUDTException
+ELARGEMSG	src/udt.h	/^   static const int ELARGEMSG;$/;"	m	class:CUDTException
+ENOBUF	src/udt.h	/^   static const int ENOBUF;$/;"	m	class:CUDTException
+ENOCONN	src/udt.h	/^   static const int ENOCONN;$/;"	m	class:CUDTException
+ENOLISTEN	src/udt.h	/^   static const int ENOLISTEN;$/;"	m	class:CUDTException
+ENOSERVER	src/udt.h	/^   static const int ENOSERVER;$/;"	m	class:CUDTException
+EPEERERR	src/udt.h	/^   static const int EPEERERR;$/;"	m	class:CUDTException
+EPOLLOpt	src/udt.h	/^enum EPOLLOpt$/;"	g
+ERDPERM	src/udt.h	/^   static const int ERDPERM;$/;"	m	class:CUDTException
+ERDVNOSERV	src/udt.h	/^   static const int ERDVNOSERV;$/;"	m	class:CUDTException
+ERDVUNBOUND	src/udt.h	/^   static const int ERDVUNBOUND;$/;"	m	class:CUDTException
+ERESOURCE	src/udt.h	/^   static const int ERESOURCE;$/;"	m	class:CUDTException
+ERROR	src/udt.h	/^#undef ERROR$/;"	d
+ERRORINFO	src/udt.h	/^typedef CUDTException ERRORINFO;$/;"	t	namespace:UDT
+ESECFAIL	src/udt.h	/^   static const int ESECFAIL;$/;"	m	class:CUDTException
+ESOCKFAIL	src/udt.h	/^   static const int ESOCKFAIL;$/;"	m	class:CUDTException
+ESTREAMILL	src/udt.h	/^   static const int ESTREAMILL;$/;"	m	class:CUDTException
+ETHREAD	src/udt.h	/^   static const int ETHREAD;$/;"	m	class:CUDTException
+ETIMEOUT	src/udt.h	/^   static const int ETIMEOUT;$/;"	m	class:CUDTException
+EUNBOUNDSOCK	src/udt.h	/^   static const int EUNBOUNDSOCK;$/;"	m	class:CUDTException
+EUNKNOWN	src/udt.h	/^   static const int EUNKNOWN;$/;"	m	class:CUDTException
+EWRPERM	src/udt.h	/^   static const int EWRPERM;$/;"	m	class:CUDTException
+INIT	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+LISTENING	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+NONEXIST	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+NO_BUSY_WAITING	src/udt.h	/^#define NO_BUSY_WAITING$/;"	d
+OPENED	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	e	enum:UDTSTATUS
+SOCKOPT	src/udt.h	/^typedef UDTOpt SOCKOPT;$/;"	t	namespace:UDT
+SUCCESS	src/udt.h	/^   static const int SUCCESS;$/;"	m	class:CUDTException
+SYSSOCKET	src/udt.h	/^      typedef SOCKET SYSSOCKET;$/;"	t
+SYSSOCKET	src/udt.h	/^      typedef int SYSSOCKET;$/;"	t
+SYSSOCKET	src/udt.h	/^   typedef int SYSSOCKET;$/;"	t
+TRACEINFO	src/udt.h	/^typedef CPerfMon TRACEINFO;$/;"	t	namespace:UDT
+UDPSOCKET	src/udt.h	/^typedef SYSSOCKET UDPSOCKET;$/;"	t
+UDP_RCVBUF	src/udt.h	/^   UDP_RCVBUF,          \/\/ UDP receiving buffer size$/;"	e	enum:UDTOpt
+UDP_SNDBUF	src/udt.h	/^   UDP_SNDBUF,          \/\/ UDP sending buffer size$/;"	e	enum:UDTOpt
+UDSET	src/udt.h	/^typedef ud_set UDSET;$/;"	t	namespace:UDT
+UDT	src/udt.h	/^namespace UDT$/;"	n
+UDTOpt	src/udt.h	/^enum UDTOpt$/;"	g
+UDTSOCKET	src/udt.h	/^typedef int UDTSOCKET;$/;"	t
+UDTSTATUS	src/udt.h	/^enum UDTSTATUS {INIT = 1, OPENED, LISTENING, CONNECTING, CONNECTED, BROKEN, CLOSING, CLOSED, NONEXIST};$/;"	g
+UDT_API	src/udt.h	/^         #define UDT_API /;"	d
+UDT_API	src/udt.h	/^      #define UDT_API$/;"	d
+UDT_API	src/udt.h	/^   #define UDT_API /;"	d
+UDT_CC	src/udt.h	/^   UDT_CC,              \/\/ custom congestion control algorithm$/;"	e	enum:UDTOpt
+UDT_EPOLL_ERR	src/udt.h	/^   UDT_EPOLL_ERR = 0x8$/;"	e	enum:EPOLLOpt
+UDT_EPOLL_IN	src/udt.h	/^   UDT_EPOLL_IN = 0x1,$/;"	e	enum:EPOLLOpt
+UDT_EPOLL_OUT	src/udt.h	/^   UDT_EPOLL_OUT = 0x4,$/;"	e	enum:EPOLLOpt
+UDT_EVENT	src/udt.h	/^   UDT_EVENT,		\/\/ current avalable events associated with the socket$/;"	e	enum:UDTOpt
+UDT_FC	src/udt.h	/^   UDT_FC,		\/\/ Flight flag size (window size)$/;"	e	enum:UDTOpt
+UDT_LINGER	src/udt.h	/^   UDT_LINGER,          \/\/ waiting for unsent data when closing$/;"	e	enum:UDTOpt
+UDT_MAXBW	src/udt.h	/^   UDT_MAXBW,		\/\/ maximum bandwidth (bytes per second) that the connection can use$/;"	e	enum:UDTOpt
+UDT_MAXMSG	src/udt.h	/^   UDT_MAXMSG,          \/\/ maximum datagram message size$/;"	e	enum:UDTOpt
+UDT_MSGTTL	src/udt.h	/^   UDT_MSGTTL,          \/\/ time-to-live of a datagram message$/;"	e	enum:UDTOpt
+UDT_MSS	src/udt.h	/^   UDT_MSS,             \/\/ the Maximum Transfer Unit$/;"	e	enum:UDTOpt
+UDT_RCVBUF	src/udt.h	/^   UDT_RCVBUF,          \/\/ UDT receiving buffer size$/;"	e	enum:UDTOpt
+UDT_RCVDATA	src/udt.h	/^   UDT_RCVDATA		\/\/ size of data available for recv$/;"	e	enum:UDTOpt
+UDT_RCVSYN	src/udt.h	/^   UDT_RCVSYN,          \/\/ if receiving is blocking$/;"	e	enum:UDTOpt
+UDT_RCVTIMEO	src/udt.h	/^   UDT_RCVTIMEO,        \/\/ recv() timeout$/;"	e	enum:UDTOpt
+UDT_RENDEZVOUS	src/udt.h	/^   UDT_RENDEZVOUS,      \/\/ rendezvous connection mode$/;"	e	enum:UDTOpt
+UDT_REUSEADDR	src/udt.h	/^   UDT_REUSEADDR,	\/\/ reuse an existing port or create a new one$/;"	e	enum:UDTOpt
+UDT_SNDBUF	src/udt.h	/^   UDT_SNDBUF,          \/\/ maximum buffer in sending queue$/;"	e	enum:UDTOpt
+UDT_SNDDATA	src/udt.h	/^   UDT_SNDDATA,		\/\/ size of data in the sending buffer$/;"	e	enum:UDTOpt
+UDT_SNDSYN	src/udt.h	/^   UDT_SNDSYN,          \/\/ if sending is blocking$/;"	e	enum:UDTOpt
+UDT_SNDTIMEO	src/udt.h	/^   UDT_SNDTIMEO,        \/\/ send() timeout$/;"	e	enum:UDTOpt
+UDT_STATE	src/udt.h	/^   UDT_STATE,		\/\/ current socket state, see UDTSTATUS, read only$/;"	e	enum:UDTOpt
+UD_CLR	src/udt.h	/^#define UD_CLR(/;"	d
+UD_ISSET	src/udt.h	/^#define UD_ISSET(/;"	d
+UD_SET	src/udt.h	/^#define UD_SET(/;"	d
+UD_ZERO	src/udt.h	/^#define UD_ZERO(/;"	d
+__UDT_H__	src/udt.h	/^#define __UDT_H__$/;"	d
+byteAvailRcvBuf	src/udt.h	/^   int byteAvailRcvBuf;                 \/\/ available UDT receiver buffer size$/;"	m	struct:CPerfMon
+byteAvailSndBuf	src/udt.h	/^   int byteAvailSndBuf;                 \/\/ available UDT sender buffer size$/;"	m	struct:CPerfMon
+int32_t	src/udt.h	/^      typedef __int32 int32_t;$/;"	t
+int64_t	src/udt.h	/^      typedef __int64 int64_t;$/;"	t
+m_iErrno	src/udt.h	/^   int m_iErrno;		\/\/ errno returned by the system if there is any$/;"	m	class:CUDTException
+m_iMajor	src/udt.h	/^   int m_iMajor;        \/\/ major exception categories$/;"	m	class:CUDTException
+m_iMinor	src/udt.h	/^   int m_iMinor;		\/\/ for specific error reasons$/;"	m	class:CUDTException
+m_strAPI	src/udt.h	/^   std::string m_strAPI;	\/\/ the name of UDT function that returns the error$/;"	m	class:CUDTException
+m_strDebug	src/udt.h	/^   std::string m_strDebug;	\/\/ debug information, set to the original place that causes the error$/;"	m	class:CUDTException
+m_strMsg	src/udt.h	/^   std::string m_strMsg;	\/\/ text error message$/;"	m	class:CUDTException
+mbpsBandwidth	src/udt.h	/^   double mbpsBandwidth;                \/\/ estimated bandwidth, in Mb\/s$/;"	m	struct:CPerfMon
+mbpsRecvRate	src/udt.h	/^   double mbpsRecvRate;                 \/\/ receiving rate in Mb\/s$/;"	m	struct:CPerfMon
+mbpsSendRate	src/udt.h	/^   double mbpsSendRate;                 \/\/ sending rate in Mb\/s$/;"	m	struct:CPerfMon
+msRTT	src/udt.h	/^   double msRTT;                        \/\/ RTT, in milliseconds$/;"	m	struct:CPerfMon
+msTimeStamp	src/udt.h	/^   int64_t msTimeStamp;                 \/\/ time since the UDT entity is started, in milliseconds$/;"	m	struct:CPerfMon
+pktCongestionWindow	src/udt.h	/^   int pktCongestionWindow;             \/\/ congestion window size, in number of packets$/;"	m	struct:CPerfMon
+pktFlightSize	src/udt.h	/^   int pktFlightSize;                   \/\/ number of packets on flight$/;"	m	struct:CPerfMon
+pktFlowWindow	src/udt.h	/^   int pktFlowWindow;                   \/\/ flow window size, in number of packets$/;"	m	struct:CPerfMon
+pktRcvLoss	src/udt.h	/^   int pktRcvLoss;                      \/\/ number of lost packets (receiver side)$/;"	m	struct:CPerfMon
+pktRcvLossTotal	src/udt.h	/^   int pktRcvLossTotal;                 \/\/ total number of lost packets (receiver side)$/;"	m	struct:CPerfMon
+pktRecv	src/udt.h	/^   int64_t pktRecv;                     \/\/ number of received packets$/;"	m	struct:CPerfMon
+pktRecvACK	src/udt.h	/^   int pktRecvACK;                      \/\/ number of received ACK packets$/;"	m	struct:CPerfMon
+pktRecvACKTotal	src/udt.h	/^   int pktRecvACKTotal;                 \/\/ total number of received ACK packets$/;"	m	struct:CPerfMon
+pktRecvNAK	src/udt.h	/^   int pktRecvNAK;                      \/\/ number of received NAK packets$/;"	m	struct:CPerfMon
+pktRecvNAKTotal	src/udt.h	/^   int pktRecvNAKTotal;                 \/\/ total number of received NAK packets$/;"	m	struct:CPerfMon
+pktRecvTotal	src/udt.h	/^   int64_t pktRecvTotal;                \/\/ total number of received packets$/;"	m	struct:CPerfMon
+pktRetrans	src/udt.h	/^   int pktRetrans;                      \/\/ number of retransmitted packets$/;"	m	struct:CPerfMon
+pktRetransTotal	src/udt.h	/^   int pktRetransTotal;                 \/\/ total number of retransmitted packets$/;"	m	struct:CPerfMon
+pktSent	src/udt.h	/^   int64_t pktSent;                     \/\/ number of sent data packets, including retransmissions$/;"	m	struct:CPerfMon
+pktSentACK	src/udt.h	/^   int pktSentACK;                      \/\/ number of sent ACK packets$/;"	m	struct:CPerfMon
+pktSentACKTotal	src/udt.h	/^   int pktSentACKTotal;                 \/\/ total number of sent ACK packets$/;"	m	struct:CPerfMon
+pktSentNAK	src/udt.h	/^   int pktSentNAK;                      \/\/ number of sent NAK packets$/;"	m	struct:CPerfMon
+pktSentNAKTotal	src/udt.h	/^   int pktSentNAKTotal;                 \/\/ total number of sent NAK packets$/;"	m	struct:CPerfMon
+pktSentTotal	src/udt.h	/^   int64_t pktSentTotal;                \/\/ total number of sent data packets, including retransmissions$/;"	m	struct:CPerfMon
+pktSndLoss	src/udt.h	/^   int pktSndLoss;                      \/\/ number of lost packets (sender side)$/;"	m	struct:CPerfMon
+pktSndLossTotal	src/udt.h	/^   int pktSndLossTotal;                 \/\/ total number of lost packets (sender side)$/;"	m	struct:CPerfMon
+ud_set	src/udt.h	/^typedef std::set<UDTSOCKET> ud_set;$/;"	t
+uint32_t	src/udt.h	/^      typedef unsigned __int32 uint32_t;$/;"	t
+uint64_t	src/udt.h	/^         typedef __int64 uint64_t;$/;"	t
+uint64_t	src/udt.h	/^         typedef unsigned __int64 uint64_t;$/;"	t
+usPktSndPeriod	src/udt.h	/^   double usPktSndPeriod;               \/\/ packet sending period, in microseconds$/;"	m	struct:CPerfMon
+usSndDuration	src/udt.h	/^   int64_t usSndDuration;		\/\/ busy sending time (i.e., idle time exclusive)$/;"	m	struct:CPerfMon
+usSndDurationTotal	src/udt.h	/^   int64_t usSndDurationTotal;		\/\/ total time duration when UDT is sending data (idle time exclusive)$/;"	m	struct:CPerfMon
+CACKWindow	src/window.cpp	/^CACKWindow::CACKWindow(int size):$/;"	f	class:CACKWindow
+CPktTimeWindow	src/window.cpp	/^CPktTimeWindow::CPktTimeWindow(int asize, int psize):$/;"	f	class:CPktTimeWindow
+acknowledge	src/window.cpp	/^int CACKWindow::acknowledge(int32_t seq, int32_t& ack)$/;"	f	class:CACKWindow
+getBandwidth	src/window.cpp	/^int CPktTimeWindow::getBandwidth() const$/;"	f	class:CPktTimeWindow
+getMinPktSndInt	src/window.cpp	/^int CPktTimeWindow::getMinPktSndInt() const$/;"	f	class:CPktTimeWindow
+getPktRcvSpeed	src/window.cpp	/^int CPktTimeWindow::getPktRcvSpeed() const$/;"	f	class:CPktTimeWindow
+onPktArrival	src/window.cpp	/^void CPktTimeWindow::onPktArrival()$/;"	f	class:CPktTimeWindow
+onPktSent	src/window.cpp	/^void CPktTimeWindow::onPktSent(int currtime)$/;"	f	class:CPktTimeWindow
+probe1Arrival	src/window.cpp	/^void CPktTimeWindow::probe1Arrival()$/;"	f	class:CPktTimeWindow
+probe2Arrival	src/window.cpp	/^void CPktTimeWindow::probe2Arrival()$/;"	f	class:CPktTimeWindow
+store	src/window.cpp	/^void CACKWindow::store(int32_t seq, int32_t ack)$/;"	f	class:CACKWindow
+~CACKWindow	src/window.cpp	/^CACKWindow::~CACKWindow()$/;"	f	class:CACKWindow
+~CPktTimeWindow	src/window.cpp	/^CPktTimeWindow::~CPktTimeWindow()$/;"	f	class:CPktTimeWindow
+CACKWindow	src/window.h	/^class CACKWindow$/;"	c
+CPktTimeWindow	src/window.h	/^class CPktTimeWindow$/;"	c
+__UDT_WINDOW_H__	src/window.h	/^#define __UDT_WINDOW_H__$/;"	d
+m_CurrArrTime	src/window.h	/^   uint64_t m_CurrArrTime;      \/\/ current packet arrival time$/;"	m	class:CPktTimeWindow
+m_LastArrTime	src/window.h	/^   uint64_t m_LastArrTime;      \/\/ last packet arrival time$/;"	m	class:CPktTimeWindow
+m_ProbeTime	src/window.h	/^   uint64_t m_ProbeTime;        \/\/ arrival time of the first probing packet$/;"	m	class:CPktTimeWindow
+m_iAWSize	src/window.h	/^   int m_iAWSize;               \/\/ size of the packet arrival history window$/;"	m	class:CPktTimeWindow
+m_iHead	src/window.h	/^   int m_iHead;                 \/\/ Pointer to the lastest ACK record$/;"	m	class:CACKWindow
+m_iLastSentTime	src/window.h	/^   int m_iLastSentTime;         \/\/ last packet sending time$/;"	m	class:CPktTimeWindow
+m_iMinPktSndInt	src/window.h	/^   int m_iMinPktSndInt;         \/\/ Minimum packet sending interval$/;"	m	class:CPktTimeWindow
+m_iPWSize	src/window.h	/^   int m_iPWSize;               \/\/ size of probe history window size$/;"	m	class:CPktTimeWindow
+m_iPktWindowPtr	src/window.h	/^   int m_iPktWindowPtr;         \/\/ position pointer of the packet info. window.$/;"	m	class:CPktTimeWindow
+m_iProbeWindowPtr	src/window.h	/^   int m_iProbeWindowPtr;       \/\/ position pointer to the probing window$/;"	m	class:CPktTimeWindow
+m_iSize	src/window.h	/^   int m_iSize;                 \/\/ Size of the ACK history window$/;"	m	class:CACKWindow
+m_iTail	src/window.h	/^   int m_iTail;                 \/\/ Pointer to the oldest ACK record$/;"	m	class:CACKWindow
+m_pTimeStamp	src/window.h	/^   uint64_t* m_pTimeStamp;      \/\/ The timestamp when the ACK was sent$/;"	m	class:CACKWindow
+m_piACK	src/window.h	/^   int32_t* m_piACK;            \/\/ Data Seq. No. carried by the ACK packet$/;"	m	class:CACKWindow
+m_piACKSeqNo	src/window.h	/^   int32_t* m_piACKSeqNo;       \/\/ Seq. No. for the ACK packet$/;"	m	class:CACKWindow
+m_piPktReplica	src/window.h	/^   int* m_piPktReplica;$/;"	m	class:CPktTimeWindow
+m_piPktWindow	src/window.h	/^   int* m_piPktWindow;          \/\/ packet information window$/;"	m	class:CPktTimeWindow
+m_piProbeReplica	src/window.h	/^   int* m_piProbeReplica;$/;"	m	class:CPktTimeWindow
+m_piProbeWindow	src/window.h	/^   int* m_piProbeWindow;        \/\/ record inter-packet time for probing packet pairs$/;"	m	class:CPktTimeWindow
