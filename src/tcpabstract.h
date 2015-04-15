@@ -104,8 +104,12 @@
 #define JIFFY_RATIO 1000
 #define US_RATIO 1000000
 #define MS_RATIO 1000
+
 #define jiffies_to_usecs(x) ((US_RATIO/JIFFY_RATIO)*(x))
 #define msecs_to_jiffies(x) ((JIFFY_RATIO/MS_RATIO)*(x))
+#define usecs_to_jiffies(x) ((JIFFY_RATIO/US_RATIO)*(x))
+
+
 #define min_t(type,x,y) \
 	(((type)(x)) < ((type)(y)) ? ((type)(x)): ((type)(y)))
 
@@ -118,6 +122,8 @@
 #define tcp_sk(sk) (sk)
 #define inet_csk_ca(sk) ((struct vegas*)(sk)->icsk_ca_priv)
 #define inet_csk_ca_cubic(sk) ((struct bictcp*)(sk)->icsk_ca_priv)
+
+
 
 //TCP state machine
 enum tcp_ca_state

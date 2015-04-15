@@ -10,6 +10,67 @@
 #include "tcpabstract.h"
 
 
+
+#define cpu_has_mips32r1    0
+#define cpu_has_mips32r2    0
+#define cpu_has_mips64r1    0
+#define cpu_has_mips64r2    0
+#define LONG_MAX 0xffffffff
+#define MAX_JIFFY_OFFSET ((LONG_MAX >> 1)-1)
+#define cpu_has_mips_r  (cpu_has_mips32r1 | cpu_has_mips32r2 | \
+             cpu_has_mips64r1 | cpu_has_mips64r2)
+
+# ifndef cpu_has_clo_clz
+# define cpu_has_clo_clz    cpu_has_mips_r
+# endif
+
+#define div64_u64(x,y)  (((u64)(x))/((u64)(y)))
+
+
+inline int fls(int x)
+{
+    int r;
+
+    if (__builtin_constant_p(cpu_has_clo_clz) && cpu_has_clo_clz) {
+        __asm__("clz %0, %1" : "=r" (x) : "r" (x));
+
+        return 32 - x;
+    }
+
+    r = 32;
+    if (!x)
+        return 0;
+    if (!(x & 0xffff0000u)) {
+        x <<= 16;
+        r -= 16;
+    }
+    if (!(x & 0xff000000u)) {
+        x <<= 8;
+        r -= 8;
+    }
+    if (!(x & 0xf0000000u)) {
+        x <<= 4;
+        r -= 4;
+    }
+    if (!(x & 0xc0000000u)) {
+        x <<= 2;
+        r -= 2;
+    }
+    if (!(x & 0x80000000u)) {
+        x <<= 1;
+        r -= 1;
+    }
+    return r;
+}
+
+inline int fls64(__u64 x)
+{
+    __u32 h = x >> 32;
+    if (h)
+        return fls(h) + 32;
+    return fls(x);
+}
+
 #define __jiffy_data  __attribute__((section(".data")))
 #define __read_mostly __attribute__((__section__(".data..read_mostly")))
 #define tcp_time_stamp      ((__u32)(jiffies))
@@ -17,6 +78,7 @@
 #ifndef HZ
 #define HZ 100
 #endif
+
 
 struct timeval
 {
@@ -41,12 +103,29 @@ static inline u32 raid6_jiffies(void)
 #define HYSTART_ACK_TRAIN   0x1
 #define HYSTART_DELAY       0x2
 
+//#define clamp(x,min,max) ({\
+//    if( (x) < (min) ){ (x) = (min);}\
+//    if( (x) > (max) ){ (x) = (max);}\
+//    })
+
 /* Number of delay samples for detecting the increase of delay */
 #define HYSTART_MIN_SAMPLES 8
 #define HYSTART_DELAY_MIN   (2U<<3)
 #define HYSTART_DELAY_MAX   (16U<<3)
-#define HYSTART_DELAY_THRESH(x) clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX)
+//#define HYSTART_DELAY_THRESH(x) (clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX))
 
+int HYSTART_DELAY_THRESH(u32 x)
+{
+    if( x < HYSTART_DELAY_MIN)
+    {
+        return HYSTART_DELAY_MIN;
+    }
+    if(x > HYSTART_DELAY_MAX)
+    {
+        return HYSTART_DELAY_MAX;
+    }
+    return x;
+}
 
 /* BIC TCP Parameters */
 struct bictcp {
@@ -125,9 +204,6 @@ struct inet_connection_sock {
     u32           icsk_user_timeout;
 #define ICSK_CA_PRIV_SIZE   (16 * sizeof(u32))
 };
-
-
-
 
 
 #endif /* SRC_TCP_CUBIC_H_ */

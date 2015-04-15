@@ -31,6 +31,7 @@
 #include "tcp_cubic.h"
 #include <stdio.h>
 
+
 static int fast_convergence __read_mostly = 1;
 static int beta __read_mostly = 717;	/* = 717/1024 (BICTCP_BETA_SCALE) */
 static int initial_ssthresh __read_mostly;
@@ -326,8 +327,7 @@ static void hystart_update(struct sock *sk, u32 delay)
 
 			ca->sample_cnt++;
 		} else {
-			if (ca->curr_rtt > ca->delay_min +
-			    HYSTART_DELAY_THRESH(ca->delay_min>>4))
+			if (ca->curr_rtt > ca->delay_min + HYSTART_DELAY_THRESH(ca->delay_min>>4))
 				ca->found |= HYSTART_DELAY;
 		}
 		/*
