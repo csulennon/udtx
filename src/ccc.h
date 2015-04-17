@@ -46,6 +46,7 @@
 #include "tcpabstract.h"	//Our new tcp abstract layer
 #include "tcp_vegas.h"		//vegas
 
+
 class UDT_API CCC
 {
     friend class CUDT;
@@ -278,31 +279,6 @@ public:
     }
 };
 
-class LINUXCC: public CCC
-{
-public:
-    LINUXCC();
-public:
-    virtual void init();
-    virtual void registerLinuxprotocol(struct tcp_congestion_ops *linuxtco);
-    virtual void updatesock();	//update tcp_sock struct
-    virtual void onACK(int32_t);
-    virtual void onLoss(const int32_t*, int);
-    virtual void onTimeout();
-    virtual void statemachine(int32_t); //from kernel tcp_fastretrans_alert (in future)
-    //virtual void tcp_reno_cong_avoid(const struct sock* sk, int ack, int inflight);	//reno cong avoid action *additive increase*
-    //virtual void tcp_reno_min_cwnd(const struct sock* sk);	//reno min cwnd action
-    virtual void updateudt();
-private:
-    int m_issthresh;		// 慢启动阈值；slowstart threshold
-    bool m_bSlowStart;		// 是否再慢启动阶段；see if in slowstart phase
-    int m_iDupACKCount;		// 重复ACK个数；count DupAck
-    int m_iLastACK;			// 最新ACK序列号；Last Ack Seq no
-    unsigned char ca_state;	// TCP的状态；TCP state
-    struct sock sk;
-    struct tcp_congestion_ops *ca_ops;
-};
-
 class CUDTCC: public CCC
 {
 public:
@@ -315,17 +291,16 @@ public:
     virtual void onTimeout();
 
 private:
-    int m_iRCInterval;			// UDT Rate control interval
-    uint64_t m_LastRCTime;		// last rate increase time
-    bool m_bSlowStart;			// if in slow start phase
-    int32_t m_iLastAck;			// last ACKed seq no
-    bool m_bLoss;			    // if loss happened since last rate increase
-    int32_t m_iLastDecSeq;		// max pkt seq no sent out when last decrease happened
-    double m_dLastDecPeriod;		// value of pktsndperiod when last decrease happened
-    int m_iNAKCount;             // NAK counter
-    int m_iDecRandom;            // random threshold on decrease by number of loss events
-    int m_iAvgNAKNum;            // average number of NAKs per congestion
-    int m_iDecCount;			    // number of decreases in a congestion epoch
+    int m_iRCInterval;          // UDT Rate control interval
+    uint64_t m_LastRCTime;      // last rate increase time
+    bool m_bSlowStart;          // if in slow start phase
+    int32_t m_iLastAck;         // last ACKed seq no
+    bool m_bLoss;               // if loss happened since last rate increase
+    int32_t m_iLastDecSeq;      // max pkt seq no sent out when last decrease happened
+    double m_dLastDecPeriod;    // value of pktsndperiod when last decrease happened
+    int m_iNAKCount;            // NAK counter
+    int m_iDecRandom;           // random threshold on decrease by number of loss events
+    int m_iAvgNAKNum;           // average number of NAKs per congestion
+    int m_iDecCount;            // number of decreases in a congestion epoch
 };
-
 #endif

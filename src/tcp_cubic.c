@@ -108,6 +108,7 @@ static void bictcp_init(struct sock *sk)
 
 	if (!hystart && initial_ssthresh)
 		tcp_sk(sk)->snd_ssthresh = initial_ssthresh;
+	printf("initial_ssthresh = %d\n", initial_ssthresh);
 }
 
 /* calculate the cubic root of x using a table lookup followed by one
@@ -159,15 +160,44 @@ static u32 cubic_root(u64 a)
 }
 
 /*
- * Compute congestion window to use.
+函数关键点
+
+1.  我们最终要得到的是ca->cnt，用来控制snd_cwnd的增长。
+
+2.  ca->cnt的值，是根据cwnd和w( t + after ) 的大小来判断的。
+	w( t + after )即bic_target，它表示我们预期的
+
+在经过after时间后的snd_cwnd。如果此时cwnd < w( t + after )，那么我们就快速增加窗口，达到预期目标。
+
+如果cwnd > w( t + after )，那说明我们已经增加过快了，需要降速了，这样才能达到预期目标。
+
+              cwnd / (bic_target - cwnd )   // bic_target > cwnd 
+
+cnt =   100 * cwnd   // bic_target < cwnd 
+
+3.  cwnd是传入的参数，已知。现在我们只需要计算bic_target。
+
+而根据Cubic的窗口增长函数：W(t) = C(t - K)^3 + Wmax，
+
+我们要计算时间( 当前 + after )，以及时间K。时间K即bic_K，表示函数值为Wmax所对应的时间。
+
+通过代码可以发现，after为min RTT，即连接的传播时延。
+
+4.  然后就是bic_K和t的计算了，详细可看代码。
+ */
+/*
+ * 计算拥塞窗口,Compute congestion window to use.
  */
 static inline void bictcp_update(struct bictcp *ca, u32 cwnd)
 {
-	u64 offs;
+	u64 offs;/* 时间差，| t - K | */  
+
+	/* delta是cwnd差，bic_target是预测值，t为预测时间 */ 
 	u32 delta, t, bic_target, max_cnt;
 
 	ca->ack_cnt++;	/* count the number of ACKs */
 
+	 /* 31.25ms以内不更新ca！！！*/  
 	if (ca->last_cwnd == cwnd &&
 	    (s32)(tcp_time_stamp - ca->last_time) <= HZ / 32)
 		return;
@@ -175,23 +205,27 @@ static inline void bictcp_update(struct bictcp *ca, u32 cwnd)
 	ca->last_cwnd = cwnd;
 	ca->last_time = tcp_time_stamp;
 
+	/*丢包后 一个新的时段 */  
 	if (ca->epoch_start == 0) {
 		ca->epoch_start = tcp_time_stamp;	/* record the beginning of an epoch */
 		ca->ack_cnt = 1;			/* start counting */
 		ca->tcp_cwnd = cwnd;			/* syn with cubic */
 
+		/* 取max(last_max_cwnd , cwnd)作为当前Wmax */  
 		if (ca->last_max_cwnd <= cwnd) {
 			ca->bic_K = 0;
 			ca->bic_origin_point = cwnd;
 		} else {
 			/* Compute new K based on
 			 * (wmax-cwnd) * (srtt>>3 / HZ) / c * 2^(3*bictcp_HZ)
+			 * bic_K本来单位为秒，转成单位为 1 / 1024秒
 			 */
 			ca->bic_K = cubic_root(cube_factor
 					       * (ca->last_max_cwnd - cwnd));
 			ca->bic_origin_point = ca->last_max_cwnd;
 		}
 	}
+
 
 	/* cubic function - calc*/
 	/* calculate c * time^3 / rtt,
@@ -202,21 +236,27 @@ static inline void bictcp_update(struct bictcp *ca, u32 cwnd)
 	 *  also NOTE the unit of those veriables
 	 *	  time  = (t - K) / 2^bictcp_HZ
 	 *	  c = bic_scale >> 10
+	 * Constant = c / srtt = 0.4, 实际参数为0.4 
 	 * rtt  = (srtt >> 3) / HZ
 	 * !!! The following code does not have overflow problems,
 	 * if the cwnd < 1 million packets !!!
+	 * 预测时间为：ca->delay_min >> 3后
 	 */
 
 	/* change the unit from HZ to bictcp_HZ */
 	t = ((tcp_time_stamp + (ca->delay_min>>3) - ca->epoch_start)
 	     << BICTCP_HZ) / HZ;
 
+	 /* 求| t - bic_K | */  
 	if (t < ca->bic_K)		/* t - K */
 		offs = ca->bic_K - t;
 	else
-		offs = t - ca->bic_K;
+		offs = t - ca->bic_K;/* 此时已经超过Wmax */
 
 	/* c/rtt * (t-K)^3 */
+	/* 计算delta =| W(t) - W(bic_K) |  
+     * cube_rtt_scale = (bic_scale * 10) = c / srtt * 2^10，c/srtt = 0.4 
+     */ 
 	delta = (cube_rtt_scale * offs * offs * offs) >> (10+3*BICTCP_HZ);
 	if (t < ca->bic_K)                                	/* below origin*/
 		bic_target = ca->bic_origin_point - delta;
@@ -224,20 +264,31 @@ static inline void bictcp_update(struct bictcp *ca, u32 cwnd)
 		bic_target = ca->bic_origin_point + delta;
 
 	/* cubic function - calc bictcp_cnt*/
+	/* 计算bic_target，即预测cwnd */ 
 	if (bic_target > cwnd) {
+		/* 相差越多，增长越快，这就是函数形状由来 */  
 		ca->cnt = cwnd / (bic_target - cwnd);
 	} else {
+		/* very small increment，目前cwnd已经超出预期了，应该降速 */
 		ca->cnt = 100 * cwnd;              /* very small increment*/
 	}
-
-	/* TCP Friendly */
+	/* TCP Friendly —如果bic比RENO慢，则提升cwnd增长速度，即减小cnt 
+     * 以上次丢包以后的时间t算起，每次RTT增长 3B / ( 2 - B)，那么可以得到 
+     * 采用RENO算法的cwnd。 
+     * cwnd (RENO) = cwnd + 3B / (2 - B) * ack_cnt / cwnd 
+     * B为乘性减少因子，在此算法中为0.3 
+     */ 
 	if (tcp_friendliness) {
-		u32 scale = beta_scale;
-		delta = (cwnd * scale) >> 3;
+		u32 scale = 15;//通过计算获得
+		delta = (cwnd * scale) >> 3;/* delta代表多少ACK可使tcp_cwnd++ */ 
+		//printf("cwnd = %d, scale = %d\n", cwnd, scale);
+		//printf("入bictcp_update\n");
 		while (ca->ack_cnt > delta) {		/* update tcp cwnd */
+		//printf("ca->ack_cnt = %d, delta=%d\n", ca->ack_cnt, delta);
 			ca->ack_cnt -= delta;
 			ca->tcp_cwnd++;
 		}
+		//printf("出bictcp_update\n");
 
 		if (ca->tcp_cwnd > cwnd){	/* if bic is slower than tcp */
 			delta = ca->tcp_cwnd - cwnd;
@@ -249,42 +300,65 @@ static inline void bictcp_update(struct bictcp *ca, u32 cwnd)
 
 	ca->cnt = (ca->cnt << ACK_RATIO_SHIFT) / ca->delayed_ack;
 	if (ca->cnt == 0)			/* cannot be zero */
-		ca->cnt = 1;
+		ca->cnt = 1;/* 此时代表cwnd远小于bic_target，增长速度最大 */
 }
 
+/*
+ * 拥塞避免
+ */
 static void bictcp_cong_avoid(struct sock *sk, u32 ack, u32 in_flight)
 {
 	struct tcp_sock *tp = tcp_sk(sk);
 	struct bictcp *ca = inet_csk_ca_cubic(sk);
 
+	 // 如果传输中的报文数量 <= 窗口数量，那么没有必要执行拥塞避免
+	// 如果发送拥塞窗口不被限制，不能再增加，则返回 
 	if (!tcp_is_cwnd_limited(sk, in_flight))
 		return;
 
+	/*  希望收到的窗口大小比门限小,则进入慢启动.否则计算拥塞窗口,并进入拥塞避免阶段. */
+	/*  after(ack, ca->end_seq): 表示end_seq-ack < 0 返回1, end_seq-ack >= 0 返回0*/
 	if (tp->snd_cwnd <= tp->snd_ssthresh) {
+		/*如果ack 包的序号大于,前面ACK 过数据*/
 		if (hystart && after(ack, ca->end_seq))
 			bictcp_hystart_reset(sk);
+		
+		//printf("进入慢启动,snd_cwnd=%d, snd_ssthresh=%d\n",tp->snd_cwnd,tp->snd_ssthresh);
 		tcp_slow_start(tp);
 	} else {
+		;//printf("进入拥塞避免,snd_cwnd=%d, snd_ssthresh=%d\n",tp->snd_cwnd,tp->snd_ssthresh);
 		bictcp_update(ca, tp->snd_cwnd);
 		tcp_cong_avoid_ai(tp, ca->cnt);
 	}
 
 }
 
+/**
+ * 重新计算门限
+ */
 static u32 bictcp_recalc_ssthresh(struct sock *sk)
 {
+
 	const struct tcp_sock *tp = tcp_sk(sk);
 	struct bictcp *ca = inet_csk_ca_cubic(sk);
+	printf("重新计算门限,snd_cwnd=%d, snd_ssthresh=%d\n",tp->snd_cwnd,tp->snd_ssthresh);
 
 	ca->epoch_start = 0;	/* end of epoch */
 
-	/* Wmax and fast convergence */
+	/* 当发送窗口小于上一次的最大窗口的时候,快速收敛;Wmax and fast convergence */
+	/*如果第二拥塞, 并且cwnd 值小于前面一次的cwnd, 进入该流程*/
 	if (tp->snd_cwnd < ca->last_max_cwnd && fast_convergence)
+	{
+		//last_max_cwnd = (snd_cwnd * (1024+717))/(2*1024)
 		ca->last_max_cwnd = (tp->snd_cwnd * (BICTCP_BETA_SCALE + beta))
 			/ (2 * BICTCP_BETA_SCALE);
+	}
 	else
+	{
 		ca->last_max_cwnd = tp->snd_cwnd;
+	}
 
+	/*丢包时候的窗口值*/
 	ca->loss_cwnd = tp->snd_cwnd;
 
 	return max((tp->snd_cwnd * beta) / BICTCP_BETA_SCALE, 2U);
@@ -305,15 +379,19 @@ static void bictcp_state(struct sock *sk, u8 new_state)
 	}
 }
 
+/*Hybrid Start算法*/
 static void hystart_update(struct sock *sk, u32 delay)
 {
+	//printf("--->进入Hybrid Start\n");
 	struct tcp_sock *tp = tcp_sk(sk);
 	struct bictcp *ca = inet_csk_ca_cubic(sk);
 
+	//如果找到了, 只能在下次出现丢包的时候才能在次进入该流程
 	if (!(ca->found & hystart_detect)) {
 		u32 curr_jiffies = jiffies;
 
 		/* first detection parameter - ack-train detection */
+		/*如果ack  过来的速度小于等于2 ms */
 		if (curr_jiffies - ca->last_jiffies <= msecs_to_jiffies(2)) {
 			ca->last_jiffies = curr_jiffies;
 			if (curr_jiffies - ca->round_start >= ca->delay_min>>4)
@@ -334,7 +412,7 @@ static void hystart_update(struct sock *sk, u32 delay)
 		 * Either one of two conditions are met,
 		 * we exit from slow start immediately.
 		 */
-		if (ca->found & hystart_detect)
+		if (ca->found & hystart_detect);
 			tp->snd_ssthresh = tp->snd_cwnd;
 	}
 }
@@ -344,10 +422,13 @@ static void hystart_update(struct sock *sk, u32 delay)
  */
 static void bictcp_acked(struct sock *sk, u32 cnt, s32 rtt_us)
 {
+
 	const struct inet_connection_sock *icsk = inet_csk(sk);
 	const struct tcp_sock *tp = tcp_sk(sk);
 	struct bictcp *ca = inet_csk_ca_cubic(sk);
 	u32 delay;
+
+	//printf("入bictcp_acked,snd_cwnd=%d, snd_ssthresh=%d\n",tp->snd_cwnd,tp->snd_ssthresh);
 
 	if (icsk->icsk_ca_state == TCP_CA_Open) {
 		cnt -= ca->delayed_ack >> ACK_RATIO_SHIFT;
@@ -374,6 +455,7 @@ static void bictcp_acked(struct sock *sk, u32 cnt, s32 rtt_us)
 	if (hystart && tp->snd_cwnd <= tp->snd_ssthresh &&
 	    tp->snd_cwnd >= hystart_low_window)
 		hystart_update(sk, delay);
+	
 }
 
 struct tcp_congestion_ops tcp_cubic = {
@@ -382,22 +464,32 @@ struct tcp_congestion_ops tcp_cubic = {
 	.cong_avoid	= bictcp_cong_avoid,
 	.set_state	= bictcp_state,
 	.undo_cwnd	= bictcp_undo_cwnd,
-	.pkts_acked     = bictcp_acked,
+	.pkts_acked = bictcp_acked,
 	.owner		= THIS_MODULE,
 	.name		= "cubic",
 };
 
+/*注册tcp_cubic算法*/
 static int __init cubictcp_register(void)
 {
+	/* 始终会成立,因为bictcp结构的大小< 16*4字节*/
 	BUILD_BUG_ON(sizeof(struct bictcp) > ICSK_CA_PRIV_SIZE);
 
 	/* Precompute a bunch of the scaling factors that are used per-packet
 	 * based on SRTT of 100ms
+	 * beta_scale = 8*(1024 + 717) / 3 / (1024 -717 )，大约为15 
 	 */
 
-	beta_scale = 8*(BICTCP_BETA_SCALE+beta)/ 3 / (BICTCP_BETA_SCALE - beta);
+	beta_scale = 8 * (BICTCP_BETA_SCALE + beta) / 3 / (BICTCP_BETA_SCALE - beta);
 
+	/* 1024 * c / rtt ，值为410 
+	 * c = bic_scale >> 10 = 41 / 2^10 = 0.04 
+     *  rtt = 100ms = 0.1s 
+     * 如此算来，cube_rtt_scale = 1024 * c / rtt 
+     * c / rtt = 0.4 
+     */ 
 	cube_rtt_scale = (bic_scale * 10);	/* 1024*c/rtt */
+
 
 	/* calculate the "K" for (wmax-cwnd) = c/rtt * K^3
 	 *  so K = cubic_root( (wmax-cwnd)*rtt/c )
@@ -418,6 +510,7 @@ static int __init cubictcp_register(void)
 	/* divide by bic_scale and by constant Srtt (100ms) */
 	do_div(cube_factor, bic_scale * 10);
 
+	// 注册拥塞控制算法
 	tcp_register_congestion_control(&cubictcp);
 	return 0;
 }

@@ -115,11 +115,12 @@ CUDT::CUDT()
     m_iRcvTimeOut = -1;
     m_bReuseAddr = true;
     m_llMaxBW = -1;
-#ifndef NODEBUG
+#ifdef NODEBUG
     printf("自定拥塞控制算法实例化\n");
 #endif
-    //m_pCCFactory = new CCCFactory<LINUXCC>;
-    m_pCCFactory = new CCCFactory<CUBICCC>;
+    //m_pCCFactory = new CCCFactory<CUDTCC>;
+    m_pCCFactory = new CCCFactory<LINUXCC>;
+
     m_pCC = NULL;
     m_pCache = NULL;
 
@@ -1979,6 +1980,7 @@ void CUDT::processCtrl(CPacket& ctrlpkt)
 
     switch (ctrlpkt.getType())
     {
+    printf("确认报文类型:%d\n",ctrlpkt.getType());
     case 2: //010 - 确认报文;Acknowledgement
     {
         int32_t ack;

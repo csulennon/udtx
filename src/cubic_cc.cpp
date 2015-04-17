@@ -82,7 +82,47 @@ void CUBICCC::registerLinuxprotocol(struct tcp_congestion_ops *ops)
 
 void CUBICCC::onACK(int32_t ack)
 {
-    //  printf("onACK\n");
+    int in_flight = 0;
+        updatesock();
+        if (ack == m_iLastACK)
+        {
+            if (3 == ++m_iDupACKCount)
+            {
+                //three DupACK action
+                printf("连续收到3个重复的ack\n");
+            }
+            else if (m_iDupACKCount > 3)
+            {
+                //more than three DupACK action
+                printf("连续收到大于3个重复的ack\n");
+            }
+            else
+            {
+                //less than three DupACK action
+                printf("连续收到小于3个重复的ack\n");
+            }
+        }
+        else
+        {
+            if (m_iDupACKCount >= 3)
+            {
+                printf("不连续收到3个重复的ack\n");
+                ca_ops->set_state(&sk, TCP_CA_Open);
+                sk.snd_cwnd = ca_ops->ssthresh(&sk);
+            }
+
+            m_iLastACK = ack;
+            m_iDupACKCount = 0;
+            //printf("m_iRTT %d\n",m_iRTT);
+            ca_ops->pkts_acked(&sk, 0, m_iRTT);
+            //printf("pkts_acked\n");
+            ca_ops->cong_avoid(&sk, ack, getPerfInfo()->pktFlightSize);
+
+        }
+
+        updateudt();    //write back sock variables to UDT variables
+    //  printf("Debugsock: snd_cwnd %d snd_sstresh %d snd_nxt %d\n",sk.snd_cwnd,sk.snd_ssthresh,sk.snd_nxt);
+        //m_dCWndSize = 50;
 }
 
 void CUBICCC::updateudt()

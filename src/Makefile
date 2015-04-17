@@ -30,7 +30,7 @@ ifeq ($(arch), AMD64)
    CCFLAGS += -DAMD64
 endif
 
-OBJS = api.o buffer.o cache.o ccc.o channel.o common.o core.o epoll.o list.o md5.o packet.o queue.o window.o tcp_vegas.o tcpabstract.o tcp_cubic.o cubic_cc.o
+OBJS = api.o buffer.o cache.o ccc.o channel.o common.o core.o epoll.o list.o md5.o packet.o queue.o window.o tcp_vegas.o tcpabstract.o tcp_cubic.o cubic_cc.o linux_cc.o
 
 all: libudt.so libudt.a udt
 	cp libudt.so /usr/lib/

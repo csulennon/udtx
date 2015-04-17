@@ -71,23 +71,24 @@ u32 tcp_current_ssthresh(struct sock *sk)
 	return max(tp->snd_ssthresh, 2U);
 }
 
-
+ 
 //tcp_is_cwnd_limited from kernel source ignoring GSO part
+/* 返回0，不需要增加cwnd ; 返回1，cwnd被限制，需要增加 */  
 int tcp_is_cwnd_limited(const struct sock *sk, u32 in_flight)
 {
 	const struct tcp_sock *tp = tcp_sk(sk);
 	u32 left;
-
 	if (in_flight >= tp->snd_cwnd)
 		return 1;
+	return 0;
 }
 
 //tcp_slow_start from kernel source ignoring sysctl_tcp_abc
 void tcp_slow_start(struct tcp_sock *tp)
 {
-	//printf("tcp_slow_start");
-	int cnt; 					/* increase in packets */
-	cnt = tp->snd_cwnd;			/* exponential increase */
+	//printf("\t进入慢启动,snd_cwnd=%d, snd_ssthresh=%d\n",tp->snd_cwnd,tp->snd_ssthresh);
+	int cnt; 					
+	cnt = tp->snd_cwnd;			// 指数增长,exponential increase 
 	tp->snd_cwnd_cnt += cnt;
 	while (tp->snd_cwnd_cnt >= tp->snd_cwnd) {
 		tp->snd_cwnd_cnt -= tp->snd_cwnd;

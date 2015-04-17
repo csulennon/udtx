@@ -97,7 +97,7 @@ static inline void vegas_disable(struct sock *sk)
 void tcp_vegas_init(struct sock *sk)
 {
     struct vegas *vegas = inet_csk_ca(sk);
-    printf("tcp_vegas_init in C version\n");
+    printf("tcp_vegas_init \n");
     vegas->baseRTT = 0x7fffffff;
     vegas_enable(sk);
 }
@@ -169,6 +169,7 @@ static inline u32 tcp_vegas_ssthresh(struct tcp_sock *tp)
 /* 拥塞避免 */
 static void tcp_vegas_cong_avoid(struct sock *sk, u32 ack, u32 in_flight)
 {
+    //printf("拥塞避免,sk->snd_cwnd_cnt=%d, sk->snd_cwnd=%d\n",sk->snd_cwnd_cnt,sk->snd_cwnd);
     struct tcp_sock *tp = tcp_sk(sk);
     struct vegas *vegas = inet_csk_ca(sk);
     //printf("ack %d\n",ack);

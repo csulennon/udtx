@@ -24,7 +24,13 @@
 # define cpu_has_clo_clz    cpu_has_mips_r
 # endif
 
-#define div64_u64(x,y)  (((u64)(x))/((u64)(y)))
+/**
+ * div64_u64 - unsigned 64bit divide with 64bit divisor
+ */
+static inline u64 div64_u64(u64 dividend, u64 divisor)
+{
+    return dividend / divisor;
+}
 
 
 inline int fls(int x)
@@ -63,6 +69,14 @@ inline int fls(int x)
     return r;
 }
 
+/**
+ * fls64 - find last bit set in a 64-bit value
+ * @n: the value to search
+ *
+ * This is defined the same way as ffs:
+ * - return 64..1 to indicate bit 63..0 most significant bit set
+ * - return 0 to indicate no bits set
+ */
 inline int fls64(__u64 x)
 {
     __u32 h = x >> 32;
@@ -94,60 +108,56 @@ static inline u32 raid6_jiffies(void)
 }
 # define jiffies    raid6_jiffies()
 
-#define BICTCP_BETA_SCALE    1024   /* Scale factor beta calculation
-                     * max_cwnd = snd_cwnd * beta
-                     */
-#define BICTCP_HZ       10  /* BIC HZ 2^10 = 1024 */
+/* 缩放因子,max_cwnd = snd_cwnd * beta;
+ * Scale factor beta calculation
+ * max_cwnd = snd_cwnd * beta
+ */
+#define BICTCP_BETA_SCALE   1024
+#define BICTCP_HZ           10  /* BIC HZ 2^10 = 1024 */
 
 /* Two methods of hybrid slow start */
 #define HYSTART_ACK_TRAIN   0x1
 #define HYSTART_DELAY       0x2
 
-//#define clamp(x,min,max) ({\
-//    if( (x) < (min) ){ (x) = (min);}\
-//    if( (x) > (max) ){ (x) = (max);}\
-//    })
+#define clamp(val, min, max) ({         \
+    typeof(val) __val = (val);      \
+    typeof(min) __min = (min);      \
+    typeof(max) __max = (max);      \
+    (void) (&__val == &__min);      \
+    (void) (&__val == &__max);      \
+    __val = __val < __min ? __min: __val;   \
+    __val > __max ? __max: __val; })
+
+
 
 /* Number of delay samples for detecting the increase of delay */
 #define HYSTART_MIN_SAMPLES 8
 #define HYSTART_DELAY_MIN   (2U<<3)
 #define HYSTART_DELAY_MAX   (16U<<3)
-//#define HYSTART_DELAY_THRESH(x) (clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX))
+#define HYSTART_DELAY_THRESH(x) (clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX))
 
-int HYSTART_DELAY_THRESH(u32 x)
-{
-    if( x < HYSTART_DELAY_MIN)
-    {
-        return HYSTART_DELAY_MIN;
-    }
-    if(x > HYSTART_DELAY_MAX)
-    {
-        return HYSTART_DELAY_MAX;
-    }
-    return x;
-}
 
 /* BIC TCP Parameters */
 struct bictcp {
-    u32 cnt;        /* increase cwnd by 1 after ACKs */
+    u32 cnt;        /* 窗口增加计数器,收到一个ack增加1,用于控制snd_cwnd增长速度.increase cwnd by 1 after ACKs */
     u32     last_max_cwnd;  /* last maximum snd_cwnd */
     u32 loss_cwnd;  /* congestion window at last loss */
     u32 last_cwnd;  /* the last snd_cwnd */
     u32 last_time;  /* time when updated last_cwnd */
-    u32 bic_origin_point;/* origin point of bic function */
-    u32 bic_K;      /* time to origin point from the beginning of the current epoch */
-    u32 delay_min;  /* min delay */
+    u32 bic_origin_point;/* 即新的Wmax，取Wlast_max和snd_cwnd大者,origin point of bic function */
+    u32 bic_K;      /* 即新Wmax所对应的时间点t，W(bic_K) = Wmax ;time to origin point from the beginning of the current epoch */
+    u32 delay_min;  /* 应该是最小RTT;min delay */
     u32 epoch_start;    /* beginning of an epoch */
     u32 ack_cnt;    /* number of acks */
-    u32 tcp_cwnd;   /* estimated tcp cwnd */
+    u32 tcp_cwnd;   /* 按照Reno算法计算得的cwnd;estimated tcp cwnd */
 #define ACK_RATIO_SHIFT 4
     u16 delayed_ack;    /* estimate the ratio of Packets/ACKs << 4 */
-    u8  sample_cnt; /* number of samples to decide curr_rtt */
+    u8  sample_cnt; /* 第几个sample;number of samples to decide curr_rtt */
     u8  found;      /* the exit point is found? */
-    u32 round_start;    /* beginning of each round */
-    u32 end_seq;    /* end_seq of the round */
-    u32 last_jiffies;   /* last time when the ACK spacing is close */
-    u32 curr_rtt;   /* the minimum rtt of current round */
+    u32 round_start;    /* beginning of each round,针对每个RTT*/
+    u32 end_seq;    /* end_seq of the round,用来标识每个RTT */
+    u32 last_jiffies;   /* 超过2ms则不认为是连续的;last time when the ACK spacing is close */
+    u32 curr_rtt;   /* 由sample中最小的决定;the minimum rtt of current round */
 };
 
 /*
