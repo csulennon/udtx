@@ -37,6 +37,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 written by
    Yi Huang, last updated 24/11/2014
 *****************************************************************************/
+#ifdef __cplusplus
+extern "C"{
+#endif
 #include "tcpabstract.h"
 
 /* some useful functions here*/
@@ -124,4 +127,108 @@ void tcp_reno_cong_avoid(struct sock *sk, u32 ack, u32 in_flight)
 		tcp_cong_avoid_ai(tp, tp->snd_cwnd);	
 }
 
+unsigned int tcp_left_out(const struct tcp_sock *tp)
+{
+    return tp->sacked_out + tp->lost_out;
+}
+
+/* This determines how many packets are "in the network" to the best
+ * of our knowledge.  In many cases it is conservative, but where
+ * detailed information is available from the receiver (via SACK
+ * blocks etc.) we can make more aggressive calculations.
+ *
+ * Use this for decisions involving congestion control, use just
+ * tp->packets_out to determine if the send queue is empty or not.
+ *
+ * Read this equation as:
+ *
+ *  "Packets sent once on transmission queue" MINUS
+ *  "Packets left network, but not honestly ACKed yet" PLUS
+ *  "Packets fast retransmitted"
+ */
+unsigned int tcp_packets_in_flight(const struct tcp_sock *tp)
+{
+    return tp->packets_out - tcp_left_out(tp) + tp->retrans_out;
+}
+
+void tcp_update_wl(struct tcp_sock *tp, u32 seq)
+{
+    tp->snd_wl1 = seq;
+}
+
+
+
+static pthread_mutex_t mutex_set_state = PTHREAD_MUTEX_INITIALIZER;
+static inline void set_state(struct sock *sk, const u8 ca_state)
+{
+    pthread_mutex_lock(&mutex_set_state);
+    sk->icsk_ca_state = ca_state;
+    pthread_mutex_unlock(&mutex_set_state);
+}
+
+/**
+ * 设置拥塞控制状态
+ */
+void tcp_set_ca_state(struct sock *sk, const u8 ca_state)
+{
+    //printf("进入tcp_set_ca_state\n");
+    struct inet_connection_sock *icsk = inet_csk(sk);
+
+    if (sk->icsk_ca_ops->set_state)
+       sk->icsk_ca_ops->set_state(sk, ca_state);
+    sk->icsk_ca_state = ca_state;
+    //printf("出tcp_set_ca_state\n");
+}
+
+static void tcp_clear_retrans_partial(struct tcp_sock *tp)
+{
+    tp->retrans_out = 0;
+    tp->lost_out = 0;
+
+    //tp->undo_marker = 0;
+    tp->undo_retrans = 0;
+}
+
+void tcp_clear_retrans(struct tcp_sock *tp)
+{
+    tcp_clear_retrans_partial(tp);
+
+    tp->fackets_out = 0;
+    tp->sacked_out = 0;
+}
+
+/*忽略了skb和sack*/
+static int tcp_any_retrans_done(struct sock *sk)
+{
+    struct tcp_sock *tp = tcp_sk(sk);
+    struct sk_buff *skb;
+
+    if (tp->retrans_out)
+        return 1;
+
+    //skb = tcp_write_queue_head(sk);
+    //if (unlikely(skb && TCP_SKB_CB(skb)->sacked & TCPCB_EVER_RETRANS))
+        return 1;
+
+    return 0;
+}
+
+void tcp_try_keep_open(struct sock *sk)
+{
+    struct tcp_sock *tp = tcp_sk(sk);
+    int state = TCP_CA_Open;
+
+    // 如果发生了左边发送成功/重传完成或者undo_marker被标记则进入TCP_CA_Disorder状态
+    if (tcp_left_out(tp) || tcp_any_retrans_done(sk) /*|| tp->undo_marker*/)
+        state = TCP_CA_Disorder;
+
+    if (inet_csk(sk)->icsk_ca_state != state) {
+        tcp_set_ca_state(sk, state);
+        tp->high_seq = tp->snd_nxt;
+    }
+}
+
+#ifdef __cplusplus
+}
+#endif
 /* some useful functions here*/

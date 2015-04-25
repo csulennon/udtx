@@ -40,6 +40,7 @@
 #include "core.h"
 #include "ccc.h"
 #include "linux_cc.h"
+#include "tcpabstract.h"
 #include <string.h>
 
 LINUXCC::LINUXCC()
@@ -47,7 +48,7 @@ LINUXCC::LINUXCC()
     printf("tcp_vegas\n");
     registerLinuxprotocol(&tcp_vegasx);
     //registerLinuxprotocol(&tcp_cubic);
-    init();
+    //init();
 }
 
 LINUXCC::LINUXCC(char* name)
@@ -71,34 +72,60 @@ LINUXCC::LINUXCC(char* name)
 /* 在此处向系统注册拥塞控制算法 */
 void LINUXCC::registerLinuxprotocol(struct tcp_congestion_ops *ops)
 {
-    ca_ops = ops;
+    ca_ops              = ops;
+    //ca_ops->set_state   = tcp_set_ca_state;
 }
 
-/* 初始化 */
+/* 初始化,默认会调用 */
 void LINUXCC::init()
 {
     //sk initialization
-    sk.snd_cwnd = 2;
-    sk.snd_cwnd_clamp = 83333;
-    sk.snd_cwnd_cnt = 0;
-    sk.srtt = 0;
-    sk.snd_nxt = 0;
-    sk.snd_una = 0;
-    sk.snd_ssthresh = 83333;
-    sk.snd_wnd = 83333;
+    sk.snd_cwnd                 = 2;
+    sk.snd_cwnd_clamp           = 83333;
+    sk.snd_cwnd_cnt             = 0;
+    sk.srtt                     = 0;
+    sk.snd_nxt                  = 0;
+    sk.snd_una                  = 0;
+    sk.snd_ssthresh             = 83333;
+    sk.snd_wnd                  = 83333;
+
+    sk.prior_ssthresh           = 0;
+    sk.bytes_acked              = 0;
+    sk.icsk_ca_ops              = new tcp_congestion_ops;
+    sk.icsk_ca_ops->set_state   = tcp_set_ca_state;
+    sk.icsk_ca_ops              = NULL;
+    sk.retrans_out              = 0;
+    sk.sacked_out               = 0; /* SACK'd packets */
+    sk.lost_out                 = 0;
+    sk.snd_wl1                  = 0;
+    sk.packets_out              = 0;
+    sk.fackets_out              = 0;
+    sk.undo_retrans             = 0;
+    sk.high_seq                 = 0;
 
     //class var initialization
-    m_bSlowStart = true;    //in slowstart phrase
-    m_dCWndSize = 2;        //cwnd
-    m_issthresh = 83333;    //sstreshold
-    m_iDupACKCount = 0;     //dup count
-    m_iLastACK = m_iSndCurrSeqNo;
+    m_bSlowStart    = true;    //in slowstart phrase
+    m_bLoss         = false;
+    m_dCWndSize     = 2;        //cwnd
+    m_issthresh     = 83333;    //sstreshold
+    m_iDupACKCount  = 0;     //dup count
+    m_iLastACK      = m_iSndCurrSeqNo;
     setACKInterval(2);
     setRTO(1000000);        //200ms
 
+    sysctl_tcp_abc = 0; // 默认值应该是0，即对每个ACK都进行拥塞避免。
+
     //tcp_congestion_ops initialization
     ca_ops->init(&sk);      //callback LINUX TCP init()
-    ca_ops->set_state(&sk, TCP_CA_Open);
+    if(ca_ops->set_state)
+    {
+        printf("调用\n");
+        ca_ops->set_state(&sk, TCP_CA_Open);
+    }
+    else
+        printf("是空的\n");
+    printf("set_state = %p\n", ca_ops->set_state);
+
 }
 /*
  为了防止网络的拥塞现象，TCP提出了一系列的拥塞控制机制。
@@ -206,21 +233,99 @@ void LINUXCC::init()
  那么普通的ACK只会确认序列号4，而SACK会把当前的5，7已经收到的信息在SACK选项里面告知对端，
  从而提高性能，当使用SACK的时候，NewReno算法可以不使用，因为SACK本身携带的信息就可以使得
  发送方有足够的信息来知道需要重传哪些包，而不需要重传哪些包。*/
+
+void LINUXCC::updateudt()
+{
+    m_dCWndSize = sk.snd_cwnd;
+    m_issthresh = sk.snd_ssthresh;
+}
+
+void LINUXCC::updatesock()
+{
+    const CPerfMon* perf      = getPerfInfo();
+    sk.snd_cwnd         = (int) m_dCWndSize;
+    //sock.snd_cwnd_cnt = (int)
+    sk.snd_ssthresh     = (int) m_issthresh;
+    sk.snd_nxt          = m_iSndCurrSeqNo + m_iMSS;
+    sk.retrans_out      = perf->pktRetrans;
+    sk.lost_out         = perf->pktSndLoss;
+    sk.packets_out      = perf->pktFlightSize;
+    //sk.fackets_out  
+       
+}
+
 void LINUXCC::onACK(int32_t ack)
 {
-    //printf("onACK\n");
-    int in_flight = 0;      //正在传输的数据
+    //printf("onack\n");
     updatesock();
+
+    struct tcp_sock *tp = &sk;
+    struct inet_connection_sock *icsk = &sk;
+    u32 in_flight       = 0;      //正在传输的数据
+    u32 prior_in_flight = 0;
+    u32 prior_fackets   = 0;
+    u32 ack_seq         = m_iSndCurrSeqNo;
+    u32 prior_snd_una   = sk.snd_una;
+
+     /*
+      * 检验确认的序号是否落在SND.UNA和SND.NXT之间，否则
+      * 是不合法的序号。
+      * 如果确认的序号在SND.NXT的右边，则说明该序号的数据
+      * 发送方还没有发送，直接返回。
+      * 如果确认的序号在SND.UNA的左边，则说明已经接受过
+      * 该序号的ACK了。因为每个有负载的TCP段都会顺便
+      * 携带一个ACK序号，即使这个序号已经确认过。因此
+      * 如果是一个重复的ACK就无需作处理直接返回即可。但
+      * 如果段中带有SACK选项，则需对此进行处理
+      */
+    // 收到旧的ack,甚至可以忽略他
+    if (before(ack, m_iLastACK))
+    {
+        if (sk.icsk_ca_state == TCP_CA_Open)
+            tcp_try_keep_open(&sk);
+    }
+
+    /*if (after(ack, tp->snd_nxt))
+    {
+        printk(KERN_DEBUG "Ack %u after %u:%u\n", ack, sk.snd_una, sk.snd_nxt);
+        return ;
+    }*/
+
+
+    // 默认不开启
+    if (sysctl_tcp_abc) {
+        if (icsk->icsk_ca_state < TCP_CA_CWR)
+            tp->bytes_acked += ack - prior_snd_una;
+        else if (icsk->icsk_ca_state == TCP_CA_Loss)
+            // we assume just one segment left network 
+            tp->bytes_acked += min(ack - prior_snd_una, tp->mss_cache);
+    }
+
+    const CPerfMon* perf= getPerfInfo();
+    prior_fackets = tp->fackets_out;
+    prior_in_flight = perf->pktFlightSize;
+    in_flight  = prior_in_flight;
+
     if (ack == m_iLastACK)
     {
         if (3 == ++m_iDupACKCount)
         {
             //three DupACK action
             printf("连续收到3个重复的ack\n");
+            m_issthresh = m_iBandwidth * perf->msRTT ;
+            
+            if(m_dCWndSize > m_issthresh) /*拥塞避免 */
+                m_dCWndSize = m_issthresh ;
+            sk.icsk_ca_ops->set_state(&sk,TCP_CA_Recovery);
+            updatesock();
+            ca_ops->cong_avoid(&sk, ack, perf->pktFlightSize);
+            //TODO:进入Recovery状态,fast-retransmitting,直到所有的Recovery状态的数据都确认后回到Open状态
+            // 重传或者超时有可能终端Recovery状态
         }
         else if (m_iDupACKCount > 3)
         {
-            //more than three DupACK action
+            m_dCWndSize++;
+            sk.snd_cwnd++;
             printf("连续收到大于3个重复的ack\n");
         }
         else
@@ -246,6 +351,7 @@ void LINUXCC::onACK(int32_t ack)
         ca_ops->cong_avoid(&sk, ack, getPerfInfo()->pktFlightSize);
 
     }
+    
 
     updateudt();
     //write back sock variables to UDT variables
@@ -253,30 +359,29 @@ void LINUXCC::onACK(int32_t ack)
     //m_dCWndSize = 50;
 }
 
-void LINUXCC::updateudt()
-{
-    m_dCWndSize = sk.snd_cwnd;
-    m_issthresh = sk.snd_ssthresh;
-}
 
 void LINUXCC::onTimeout()
 {
+    // 进入LOSS状态
     printf("onTimeout()\n");
-    m_issthresh = getPerfInfo()->pktFlightSize / 2;
+    const CPerfMon* perf= getPerfInfo();
+    m_issthresh = perf->pktFlightSize / 2;
+    //m_issthresh = m_iBandwidth * perf->msRTT / 1000;
+    
+    printf("snd_cwnd=%d,  snd_sstresh=%d,m_issthresh=%d,  mbpsBandwidth=%f, m_iRTT=%d, msRTT=%f\n",
+        sk.snd_cwnd,sk.snd_ssthresh,m_issthresh,perf->mbpsBandwidth,m_iRTT, perf->msRTT );
+
     if (m_issthresh < 2)
+    {
         m_issthresh = 2;
+    }
 
-    m_bSlowStart = true;
+    m_bSlowStart = false;
     m_dCWndSize = 2.0;
+    //updatesock();
 }
 
-void LINUXCC::updatesock()
-{
-    sk.snd_cwnd = (int) m_dCWndSize;
-    //sock.snd_cwnd_cnt = (int)
-    sk.snd_ssthresh = (int) m_issthresh;
-    sk.snd_nxt = m_iSndCurrSeqNo + m_iMSS;
-}
+
 
 void LINUXCC::onLoss(const int32_t *, int)
 {
@@ -285,3 +390,10 @@ void LINUXCC::onLoss(const int32_t *, int)
 void LINUXCC::statemachine(int32_t)
 {
 }
+
+void LINUXCC::tcp_fastretrans_alert(int pkts_acked, int flag)
+{
+
+
+}
+

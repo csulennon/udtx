@@ -45,6 +45,10 @@ static int alpha = 2;
 static int beta = 4;
 static int gamma = 1;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  module_param(alpha, int, 0644);
  MODULE_PARM_DESC(alpha, "lower bound of packets in network");
@@ -323,8 +327,7 @@ void tcp_vegas_get_info(struct sock *sk, u32 ext, struct sk_buff *skb)
                 .tcpv_enabled = ca->doing_vegas_now,
                 .tcpv_rttcnt = ca->cntRTT,
                 .tcpv_rtt = ca->baseRTT,
-                .tcpv_minrtt =
-                ca->minRTT,
+                .tcpv_minrtt = ca->minRTT,
         };
 
         nla_put(skb, INET_DIAG_VEGASINFO, sizeof(info), &info);
@@ -365,3 +368,7 @@ module_exit( tcp_vegas_unregister);
 MODULE_AUTHOR("Stephen Hemminger");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("TCP Vegas");
+
+#ifdef __cplusplus
+}
+#endif

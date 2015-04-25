@@ -140,7 +140,6 @@ public:
     //    1) [in] size: the payload size.
     // Returned value:
     //    None.
-
     virtual void onPktReceived(const CPacket*)
     {
     }
@@ -151,7 +150,6 @@ public:
     //    0) [in] pkt: the user defined packet.
     // Returned value:
     //    None.
-
     virtual void processCustomMsg(const CPacket*)
     {
     }
@@ -231,11 +229,11 @@ protected:
     double m_dMaxCWndSize;           // 最大窗口大小，单位包；maximum cwnd size, in packets
 
     int m_iMSS;				        // 最大报文段大小（包括包头）；Maximum Packet Size, including all packet headers
-    int32_t m_iSndCurrSeqNo;		    // 当前发送的最大序列号；current maximum seq no sent out
+    int32_t m_iSndCurrSeqNo;		// 当前发送的最大序列号；current maximum seq no sent out
     int m_iRcvRate;			        // 接收端到达速率，包每秒；packet arrive rate at receiver side, packets per second
-    int m_iRTT;				        // 当前估计RTT值，单位毫秒；current estimated RTT, microsecond
+    int m_iRTT;				        // 当前估计RTT值，单位微秒；current estimated RTT, microsecond
 
-    char* m_pcParam;			        // 用户定义参数；user defined parameter
+    char* m_pcParam;			    // 用户定义参数；user defined parameter
     int m_iPSize;			        // 用户定义参数m_pcParam的大小；size of m_pcParam
 
 private:
@@ -273,6 +271,7 @@ public:
     {
         return new T;
     }
+
     virtual CCCVirtualFactory* clone()
     {
         return new CCCFactory<T> ;

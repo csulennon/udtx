@@ -92,7 +92,7 @@ void CCC::sendCustomMsg(CPacket& pkt) const
     }
 }
 
-/*取样后返回统计信息*/
+/*取样后返回统计信息,会调用sample函数*/
 const CPerfMon* CCC::getPerfInfo()
 {
     try
@@ -102,6 +102,8 @@ const CPerfMon* CCC::getPerfInfo()
             u->sample(&m_PerfInfo, false);
     } catch (...)
     {
+
+        //std::cout << "获取统计信息异常!" << std::endl;
         return NULL;
     }
 
@@ -148,7 +150,17 @@ void CCC::setUserParam(const char* param, int size)
 
 
 CUDTCC::CUDTCC() :
-        m_iRCInterval(), m_LastRCTime(), m_bSlowStart(), m_iLastAck(), m_bLoss(), m_iLastDecSeq(), m_dLastDecPeriod(), m_iNAKCount(), m_iDecRandom(), m_iAvgNAKNum(), m_iDecCount()
+        m_iRCInterval(),
+        m_LastRCTime(), 
+        m_bSlowStart(), 
+        m_iLastAck(), 
+        m_bLoss(), 
+        m_iLastDecSeq(), 
+        m_dLastDecPeriod(), 
+        m_iNAKCount(), 
+        m_iDecRandom(), 
+        m_iAvgNAKNum(), 
+        m_iDecCount()
 {
 }
 
@@ -280,6 +292,7 @@ void CUDTCC::onLoss(const int32_t* losslist, int)
 
 void CUDTCC::onTimeout()
 {
+    printf("onTimeout()\n");
     if (m_bSlowStart)
     {
         m_bSlowStart = false;

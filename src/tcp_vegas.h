@@ -1,8 +1,8 @@
 #ifndef __TCP_VEGAS_H
 #define __TCP_VEGAS_H 1
+
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 /*
@@ -28,8 +28,10 @@ void tcp_vegas_pkts_acked(struct sock *sk, u32 cnt, s32 rtt_us);
 void tcp_vegas_cwnd_event(struct sock *sk, enum tcp_ca_event event);
 void tcp_vegas_get_info(struct sock *sk, u32 ext, struct sk_buff *skb);
 
+
 #ifdef __cplusplus
 }
 #endif
 
 #endif	/* __TCP_VEGAS_H */
+

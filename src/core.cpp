@@ -1659,9 +1659,8 @@ void CUDT::sample(CPerfMon* perf, bool clear)
 
     if (clear)
     {
-        m_llTraceSent = m_llTraceRecv = m_iTraceSndLoss = m_iTraceRcvLoss = m_iTraceRetrans = m_iSentACK = m_iRecvACK =
-                m_iSentNAK = m_iRecvNAK = 0;
-        m_llSndDuration = 0;
+        m_llTraceSent = m_llTraceRecv = m_iTraceSndLoss = m_iTraceRcvLoss = m_iTraceRetrans = 0;
+        m_iSentACK = m_iRecvACK = m_iSentNAK = m_iRecvNAK = m_llSndDuration = 0;
         m_LastSampleTime = currtime;
     }
 }

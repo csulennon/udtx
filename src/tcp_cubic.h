@@ -7,6 +7,12 @@
 
 #ifndef SRC_TCP_CUBIC_H_
 #define SRC_TCP_CUBIC_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "tcpabstract.h"
 
 
@@ -160,60 +166,9 @@ struct bictcp {
     u32 curr_rtt;   /* 由sample中最小的决定;the minimum rtt of current round */
 };
 
-/*
- * Pointers to address related TCP functions
- * (i.e. things that depend on the address family)
- */
-struct inet_connection_sock_af_ops;
-struct inet_sock{} ;
-struct request_sock_queue{};
-struct timer_list{};
 
-struct inet_connection_sock {
-    /* inet_sock has to be the first member! */
-    struct inet_sock      icsk_inet;
-    struct request_sock_queue icsk_accept_queue;
-    struct inet_bind_bucket   *icsk_bind_hash;
-    unsigned long         icsk_timeout;
-    struct timer_list     icsk_retransmit_timer;
-    struct timer_list     icsk_delack_timer;
-    __u32             icsk_rto;
-    __u32             icsk_pmtu_cookie;
-    const struct tcp_congestion_ops *icsk_ca_ops;
-    const struct inet_connection_sock_af_ops *icsk_af_ops;
-    unsigned int          (*icsk_sync_mss)(struct sock *sk, u32 pmtu);
-    __u8              icsk_ca_state;
-    __u8              icsk_retransmits;
-    __u8              icsk_pending;
-    __u8              icsk_backoff;
-    __u8              icsk_syn_retries;
-    __u8              icsk_probes_out;
-    __u16             icsk_ext_hdr_len;
-    struct {
-        __u8          pending;   /* ACK is pending             */
-        __u8          quick;     /* Scheduled number of quick acks     */
-        __u8          pingpong;  /* The session is interactive         */
-        __u8          blocked;   /* Delayed ACK was blocked by socket lock */
-        __u32         ato;       /* Predicted tick of soft clock       */
-        unsigned long     timeout;   /* Currently scheduled timeout        */
-        __u32         lrcvtime;  /* timestamp of last received data packet */
-        __u16         last_seg_size; /* Size of last incoming segment      */
-        __u16         rcv_mss;   /* MSS used for delayed ACK decisions     */
-    } icsk_ack;
-    struct {
-        int       enabled;
-
-        /* Range of MTUs to search */
-        int       search_high;
-        int       search_low;
-
-        /* Information on the current probe. */
-        int       probe_size;
-    } icsk_mtup;
-    u32           icsk_ca_priv[16];
-    u32           icsk_user_timeout;
-#define ICSK_CA_PRIV_SIZE   (16 * sizeof(u32))
-};
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SRC_TCP_CUBIC_H_ */

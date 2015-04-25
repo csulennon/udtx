@@ -31,6 +31,9 @@
 #include "tcp_cubic.h"
 #include <stdio.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 static int fast_convergence __read_mostly = 1;
 static int beta __read_mostly = 717;	/* = 717/1024 (BICTCP_BETA_SCALE) */
@@ -108,7 +111,7 @@ static void bictcp_init(struct sock *sk)
 
 	if (!hystart && initial_ssthresh)
 		tcp_sk(sk)->snd_ssthresh = initial_ssthresh;
-	printf("initial_ssthresh = %d\n", initial_ssthresh);
+	//printf("initial_ssthresh = %d\n", initial_ssthresh);
 }
 
 /* calculate the cubic root of x using a table lookup followed by one
@@ -308,6 +311,7 @@ static inline void bictcp_update(struct bictcp *ca, u32 cwnd)
  */
 static void bictcp_cong_avoid(struct sock *sk, u32 ack, u32 in_flight)
 {
+	//printf("bictcp_cong_avoid\n");
 	struct tcp_sock *tp = tcp_sk(sk);
 	struct bictcp *ca = inet_csk_ca_cubic(sk);
 
@@ -527,3 +531,7 @@ MODULE_AUTHOR("Sangtae Ha, Stephen Hemminger");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("CUBIC TCP");
 MODULE_VERSION("2.3");
+
+#ifdef __cplusplus
+}
+#endif

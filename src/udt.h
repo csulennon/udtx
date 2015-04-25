@@ -185,7 +185,7 @@ struct CPerfMon
    int pktRecvNAK;                      // number of received NAK packets
    double mbpsSendRate;                 // 发送速率Mb/s；sending rate in Mb/s
    double mbpsRecvRate;                 // 接收速率Mb/s；receiving rate in Mb/s
-   int64_t usSndDuration;		        // busy sending time (i.e., idle time exclusive)
+   int64_t usSndDuration;		          // busy sending time (i.e., idle time exclusive)
 
    // 瞬时量；instant measurements
    double usPktSndPeriod;               // packet sending period, in microseconds

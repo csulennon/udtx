@@ -58,6 +58,9 @@ public:
     //virtual void tcp_reno_cong_avoid(const struct sock* sk, int ack, int inflight);   //reno cong avoid action *additive increase*
     //virtual void tcp_reno_min_cwnd(const struct sock* sk);    //reno min cwnd action
     virtual void updateudt();
+
+    // 状态机主要实现的函数
+    void tcp_fastretrans_alert(int pkts_acked, int flag);
 private:
     int m_issthresh;        // 慢启动阈值；slowstart threshold
     bool m_bSlowStart;      // 是否再慢启动阶段；see if in slowstart phase
@@ -66,20 +69,34 @@ private:
     unsigned char ca_state; // TCP的状态；TCP state
     struct sock sk;
     struct tcp_congestion_ops *ca_ops;
+
+    bool m_bLoss;               // if loss happened since last rate increase
+
+    /*“Controls Appropriate Byte Count defined in RFC3465. 
+    If set to 0 then does congestion avoid once per ACK. 
+    1 is conservative value, and 2 is more aggressive. 
+    The default value is 1.”*/
+    int sysctl_tcp_abc;     
 };
 
 /*
 class CUDTCC: public CCC
 {
-public:
-    CUDTCC();
+pconst int32_t& m_iSYNInterval;   // 常量，SYN；UDT constant parameter, SYN
 
-public:
-    virtual void init();
-    virtual void onACK(int32_t);
-    virtual void onLoss(const int32_t*, int);
-    virtual void onTimeout();
+    double m_dPktSndPeriod;          // 数据包发送周期，毫秒；Packet sending period, in microseconds
+    double m_dCWndSize;              // 拥塞窗口大小，单位包个数；Congestion window size, in packets
 
+    int m_iBandwidth;                // 估计带宽，单位数据包/秒；estimated bandwidth, packets per second
+    double m_dMaxCWndSize;           // 最大窗口大小，单位包；maximum cwnd size, in packets
+
+    int m_iMSS;                     // 最大报文段大小（包括包头）；Maximum Packet Size, including all packet headers
+    int32_t m_iSndCurrSeqNo;        // 当前发送的最大序列号；current maximum seq no sent out
+    int m_iRcvRate;                 // 接收端到达速率，包每秒；packet arrive rate at receiver side, packets per second
+    int m_iRTT;                     // 当前估计RTT值，单位毫秒；current estimated RTT, microsecond
+
+    char* m_pcParam;                // 用户定义参数；user defined parameter
+    int m_iPSize;                   // 用户定义参数m_pcParam的大小；size of m_pcParam
 private:
     int m_iRCInterval;          // UDT Rate control interval
     uint64_t m_LastRCTime;      // last rate increase time

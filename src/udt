@@ -156,20 +156,22 @@ enum UDTOpt
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/* 用来统计UDT各项指数的结构
+ * */
 struct CPerfMon
 {
    // global measurements
-   int64_t msTimeStamp;                 // time since the UDT entity is started, in milliseconds
-   int64_t pktSentTotal;                // total number of sent data packets, including retransmissions
-   int64_t pktRecvTotal;                // total number of received packets
-   int pktSndLossTotal;                 // total number of lost packets (sender side)
-   int pktRcvLossTotal;                 // total number of lost packets (receiver side)
-   int pktRetransTotal;                 // total number of retransmitted packets
-   int pktSentACKTotal;                 // total number of sent ACK packets
-   int pktRecvACKTotal;                 // total number of received ACK packets
-   int pktSentNAKTotal;                 // total number of sent NAK packets
-   int pktRecvNAKTotal;                 // total number of received NAK packets
-   int64_t usSndDurationTotal;		// total time duration when UDT is sending data (idle time exclusive)
+   int64_t msTimeStamp;                 // 从UDT实例开始后的毫秒数；time since the UDT entity is started, in milliseconds
+   int64_t pktSentTotal;                // 发送数据包的总数，包括重传数据；total number of sent data packets, including retransmissions
+   int64_t pktRecvTotal;                // 接收数据包的总数；total number of received packets
+   int pktSndLossTotal;                 // 发送方丢失的数据包；total number of lost packets (sender side)
+   int pktRcvLossTotal;                 // 接收方丢失的数据包；total number of lost packets (receiver side)
+   int pktRetransTotal;                 // 重传的数据包总数；total number of retransmitted packets
+   int pktSentACKTotal;                 // 发送的ACK数据包总数；total number of sent ACK packets
+   int pktRecvACKTotal;                 // 接收的ACK总数；total number of received ACK packets
+   int pktSentNAKTotal;                 // 发送的NAK总数；total number of sent NAK packets
+   int pktRecvNAKTotal;                 // 接收的NAK总数；total number of received NAK packets
+   int64_t usSndDurationTotal;		    // UDT发送的总时间（例如：独占空闲时间）；total time duration when UDT is sending data (idle time exclusive)
 
    // local measurements
    int64_t pktSent;                     // number of sent data packets, including retransmissions
@@ -181,19 +183,19 @@ struct CPerfMon
    int pktRecvACK;                      // number of received ACK packets
    int pktSentNAK;                      // number of sent NAK packets
    int pktRecvNAK;                      // number of received NAK packets
-   double mbpsSendRate;                 // sending rate in Mb/s
-   double mbpsRecvRate;                 // receiving rate in Mb/s
-   int64_t usSndDuration;		// busy sending time (i.e., idle time exclusive)
+   double mbpsSendRate;                 // 发送速率Mb/s；sending rate in Mb/s
+   double mbpsRecvRate;                 // 接收速率Mb/s；receiving rate in Mb/s
+   int64_t usSndDuration;		          // busy sending time (i.e., idle time exclusive)
 
-   // instant measurements
+   // 瞬时量；instant measurements
    double usPktSndPeriod;               // packet sending period, in microseconds
-   int pktFlowWindow;                   // flow window size, in number of packets
-   int pktCongestionWindow;             // congestion window size, in number of packets
-   int pktFlightSize;                   // number of packets on flight
+   int pktFlowWindow;                   // 流窗口大小；flow window size, in number of packets
+   int pktCongestionWindow;             // 拥塞窗口大小；congestion window size, in number of packets
+   int pktFlightSize;                   // 正在发送的数据包；number of packets on flight
    double msRTT;                        // RTT, in milliseconds
    double mbpsBandwidth;                // estimated bandwidth, in Mb/s
-   int byteAvailSndBuf;                 // available UDT sender buffer size
-   int byteAvailRcvBuf;                 // available UDT receiver buffer size
+   int byteAvailSndBuf;                 // 可用UDT发送缓存；available UDT sender buffer size
+   int byteAvailRcvBuf;                 // 可用UDT接收缓存；available UDT receiver buffer size
 };
 
 ////////////////////////////////////////////////////////////////////////////////
