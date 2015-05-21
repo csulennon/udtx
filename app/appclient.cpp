@@ -12,6 +12,7 @@
 #include <udt.h>
 #include "cc.h"
 #include "test_util.h"
+#include "fstream"
 
 using namespace std;
 
@@ -20,6 +21,9 @@ void* monitor(void*);
 #else
 DWORD WINAPI monitor(LPVOID);
 #endif
+
+char filename[] = "result_data.txt";
+ofstream fout(filename);
 
 int main(int argc, char* argv[])
 {
@@ -50,6 +54,7 @@ int main(int argc, char* argv[])
 
     // 创建UDT Socket并返回它的描述符
     UDTSOCKET client = UDT::socket(local->ai_family, local->ai_socktype, local->ai_protocol);
+
 #ifndef NODEBUG
     cout << "UDTSOCKET创建成功!" << endl;
 #endif
@@ -133,10 +138,13 @@ int main(int argc, char* argv[])
     }
 
     UDT::close(client);
+    fout.close();
     delete[] data;
     return 0;
 }
 
+
+// 
 #ifndef WIN32
 void* monitor(void* s)
 #else
@@ -148,12 +156,14 @@ DWORD WINAPI monitor(LPVOID s)
     UDT::TRACEINFO perf;
 
     cout << "SendRate(Mb/s)\tRTT(ms)\tCWnd\tPktSndPeriod(us)\tRecvACK\tRecvNAK" << endl;
+    //fout << "SendRate(Mb/s)\tRTT(ms)\tCWnd\tPktSndPeriod(us)\tRecvACK\tRecvNAK" << endl;
 
     while (true)
     {
         // 每隔1s统计
 #ifndef WIN32
-        sleep(1);
+        //sleep(1);
+        usleep(10000);
 #else
         Sleep(1000);
 #endif
@@ -165,7 +175,11 @@ DWORD WINAPI monitor(LPVOID s)
         }
 
         cout << perf.mbpsSendRate << "\t\t" << perf.msRTT << "\t" << perf.pktCongestionWindow << "\t"
-                << perf.usPktSndPeriod << "\t\t\t" << perf.pktRecvACK << "\t" << perf.pktRecvNAK << endl;
+             << perf.usPktSndPeriod << "\t\t\t" << perf.pktRecvACK << "\t" << perf.pktRecvNAK << endl;
+
+        fout << perf.mbpsSendRate << "\t\t" << perf.msRTT << "\t" << perf.pktCongestionWindow << "\t"
+             << perf.usPktSndPeriod << "\t\t\t" << perf.pktRecvACK << "\t" << perf.pktRecvNAK << endl;
+        fout << flush;
     }
 
 #ifndef WIN32
